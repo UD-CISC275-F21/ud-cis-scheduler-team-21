@@ -9,7 +9,7 @@ function App(): JSX.Element {
                 <img src={logo} className="App-logo" alt="logo" />
                 UD CIS Scheduler Updated by:
                 <p>
-                    Ryan Miller Connor Creavin and Usama Mahmood.
+                    Ryan Miller, Connor Creavin, and Usama Mahmood.
                 </p>
             </header>
         </div>
