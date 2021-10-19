@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 
 export const Course=({
-    crsName: string,
-    description: string,
-    credits: string
+    string: crsName,
+    string: description,
+    string: credits
 })=>{
     return (
         <div className="row padding">
