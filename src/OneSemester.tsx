@@ -20,8 +20,8 @@ function OneSemester(): JSX.Element {
                 crsName="EGGG101"
                 description="Introduction to Engineering"
                 credits="2"
-            >
-            </Course>
+            />
+
 
             <div className="row padding">
                 <div className="col-md-8">
