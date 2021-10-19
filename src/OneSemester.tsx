@@ -16,7 +16,12 @@ function OneSemester(): JSX.Element {
                 </div>
             </div>
 
-            <Course />
+            <Course 
+                crsName="EGGG101"
+                description="Introduction to Engineering"
+                credits="2"
+            >
+            </Course>
 
             <div className="row padding">
                 <div className="col-md-8">
