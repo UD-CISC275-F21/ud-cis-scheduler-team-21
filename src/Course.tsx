@@ -15,8 +15,7 @@ const Course=({
         crsName: PropTypes.string,
         description: PropTypes.string,
         credits: PropTypes.string
-    }
-//function Course(crsName: string, description: string, credits: string): JSX.Element{
+    };//function Course(crsName: string, description: string, credits: string): JSX.Element{
     return (
         <div className="row padding">
             <div className="col-md-8">
