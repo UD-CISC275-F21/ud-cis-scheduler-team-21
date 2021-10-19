@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 
 /*Course.propTypes = {
     crsName: PropTypes.string,
@@ -26,4 +26,4 @@ function Course(crsName: string, description: string, credits: string): JSX.Elem
     );
 }
 
-//export default Course;
+export default Course;
