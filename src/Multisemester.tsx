@@ -25,7 +25,7 @@ function MultiSemester(): JSX.Element {
                                 <b>ENGL 110</b> Seminar in Composition
                             </p>
                             <p>
-                                <h2>Total Credits:</h2>
+                                <b>Total Credits:</b>
                             </p>
                         </div>
                         <div className="col-md-4 col-lg-2">
