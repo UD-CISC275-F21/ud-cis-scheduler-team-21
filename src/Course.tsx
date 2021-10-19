@@ -4,7 +4,7 @@ import "./App.css";
 export const Course({
     crsName,
     description,
-    credits,
+    credits
 })=>{
     return (
         <div className="row padding">
