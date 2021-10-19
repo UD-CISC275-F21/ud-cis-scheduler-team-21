@@ -7,10 +7,15 @@ import PropTypes from "prop-types";
 
 }*/
 const Course=({
-    crsName: PropTypes.string,
-    description: PropTypes.string,
-    credits: PropTypes.string
+    crsName,
+    description: PropType,
+    credits: PropType.string
 })=>{
+    Course.propTypes = {
+        crsName: PropTypes.string,
+        description: PropTypes.string,
+        credits: PropTypes.string
+    }
 //function Course(crsName: string, description: string, credits: string): JSX.Element{
     return (
         <div className="row padding">
