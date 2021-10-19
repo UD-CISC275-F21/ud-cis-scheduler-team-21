@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import MultiSemester from "./MultiSemester";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 //import Button from 'react-bootstrap/Button';
 
 function App(): JSX.Element {
