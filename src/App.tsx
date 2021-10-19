@@ -1,6 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import MultiSemester from "./MultiSemester";
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import Button from 'react-bootstrap/Button';
 
 function App(): JSX.Element {
     return (
@@ -12,6 +15,7 @@ function App(): JSX.Element {
                     Ryan Miller, Connor Creavin, and Usama Mahmood.
                 </p>
             </header>
+            <MultiSemester />
         </div>
         
     );
