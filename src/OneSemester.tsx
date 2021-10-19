@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Course from "./Course";
 
 function OneSemester(): JSX.Element {
     return (
@@ -15,16 +16,7 @@ function OneSemester(): JSX.Element {
                 </div>
             </div>
 
-            <div className="row padding">
-                <div className="col-md-8">
-                    <p>
-                        <b>EGGG 101</b> Introduction to Engineering
-                    </p>
-                </div>
-                <div className="col-md-4">
-                    <p>2</p>
-                </div>
-            </div>
+            <Course />
 
             <div className="row padding">
                 <div className="col-md-8">
