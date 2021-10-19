@@ -13,16 +13,16 @@ function MultiSemester(): JSX.Element {
                         <div className="col-md-8 col-lg-4">
                             <h3>Course</h3>
                             <p>
-                                <h2>EGGG 101</h2> Introduction to Engineering
+                                <b>EGGG 101</b> Introduction to Engineering
                             </p>
                             <p>
-                                <h2>CISC 108</h2> Introduction to Computer Science I
+                                <b>CISC 108</b> Introduction to Computer Science I
                             </p>
                             <p>
-                                <h2>MATH 241</h2> Analytic Geometry and Calculus A
+                                <b>MATH 241</b> Analytic Geometry and Calculus A
                             </p>
                             <p>
-                                <h2>ENGL 110</h2> Seminar in Composition
+                                <b>ENGL 110</b> Seminar in Composition
                             </p>
                             <p>
                                 <h2>Total Credits:</h2>
