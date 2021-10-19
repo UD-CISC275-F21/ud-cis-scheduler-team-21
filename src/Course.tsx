@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 
 }*/
 const Course=({
-    crsName,
-    description,
-    credits
+    crsName: string,
+    description: string,
+    credits: string
 })=>{
     Course.propTypes = {
         crsName: PropTypes.string,
@@ -27,7 +27,7 @@ const Course=({
                 <p>{credits}</p>
             </div>
         </div>
-    );
+    )as JSX.Element;
 };
 
 export default Course;
