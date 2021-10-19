@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-export const Course({
+export const Course=({
     crsName,
     description,
     credits
