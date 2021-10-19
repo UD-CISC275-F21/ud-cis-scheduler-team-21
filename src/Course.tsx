@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 }*/
 const Course=({
     crsName,
-    description: PropType,
-    credits: PropType.string
+    description,
+    credits
 })=>{
     Course.propTypes = {
         crsName: PropTypes.string,
