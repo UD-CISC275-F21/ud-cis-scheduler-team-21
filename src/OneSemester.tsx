@@ -18,8 +18,8 @@ function OneSemester(): JSX.Element {
 
             <Course 
                 crsName="EGGG101"
-                description="Introduction to Engineering"
-                credits="2"
+                crsDescription="Introduction to Engineering"
+                crsCredits="2"
             />
 
 

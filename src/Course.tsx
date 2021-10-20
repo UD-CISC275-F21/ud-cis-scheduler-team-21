@@ -1,33 +1,25 @@
 import React from "react";
 import "./App.css";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 
-/*Course.propTypes = {
-    crsName: PropTypes.string,
-
-}*/
-const Course=({
-    crsName: string,
-    description: string,
-    credits: string
-})=>{
-    Course.propTypes = {
-        crsName: PropTypes.string,
-        description: PropTypes.string,
-        credits: PropTypes.string
-    };//function Course(crsName: string, description: string, credits: string): JSX.Element{
+interface CourseIntf {
+    crsName: string
+    crsDescription: string
+    crsCredits: string
+}
+export function Course({ crsName, crsDescription, crsCredits} : CourseIntf): JSX.Element{
     return (
         <div className="row padding">
             <div className="col-md-8">
                 <p>
-                    <b>{crsName}</b> {description}
+                    <b>{crsName}</b> {crsDescription}
                 </p>
             </div>
             <div className="col-md-4">
-                <p>{credits}</p>
+                <p>{crsCredits}</p>
             </div>
         </div>
-    )as JSX.Element;
+    );//as JSX.Element;
 };
 
-export default Course;
+//export default Course;
