@@ -20,6 +20,6 @@ export function Course({ crsName, crsDescription, crsCredits} : CourseIntf): JSX
             </div>
         </div>
     );//as JSX.Element;
-};
+}
 
 //export default Course;
