@@ -2,12 +2,12 @@ import React from "react";
 import "./App.css";
 //import PropTypes from "prop-types";
 
-interface CourseIntf {
+/*interface CourseIntf {
     crsName: string
     crsDescription: string
     crsCredits: string
-}
-export function Course({ crsName, crsDescription, crsCredits} : CourseIntf): JSX.Element{
+}*/
+export function Course(crsName: string, crsDescription: string, crsCredits: string): JSX.Element{
     return (
         <div className="row padding">
             <div className="col-md-8">
