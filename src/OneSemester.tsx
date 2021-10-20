@@ -4,14 +4,14 @@ import Course from "./Course";
 
 function OneSemester(): JSX.Element {
     return (
-        <div className="col-md-12 col-lg-6">
+        <div className="col-md-6">
             <h2>Semester</h2>
 
             <div className="row padding">
-                <div className="col-md-8">
+                <div className="col-md-4">
                     <h3>Course</h3>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-2">
                     <h3>Credits</h3>
                 </div>
             </div>
