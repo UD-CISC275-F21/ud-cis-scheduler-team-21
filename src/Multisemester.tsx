@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import logo from "./logo.svg";
 import OneSemester from "./OneSemester";
 
 function MultiSemester(): JSX.Element {
@@ -11,7 +12,7 @@ function MultiSemester(): JSX.Element {
                 Ryan Miller, Connor Creavin, and Usama Mahmood.
             </p>
         </header>
-        
+
         <div className="container-fluid padding">
             <div className="row padding">
 
