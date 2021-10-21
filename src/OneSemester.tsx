@@ -3,14 +3,14 @@ import "./App.css";
 import { Course, CourseIntf } from "./Course";
 
 export type SemesterIntf = {
-    course_1: CourseIntf
-    //course_2 : CourseIntf,
-    //course_3 : CourseIntf,
-    //course_4 : CourseIntf,
-    //course_5 : CourseIntf
+    course_1: CourseIntf,
+    course_2: CourseIntf,
+    course_3: CourseIntf,
+    course_4: CourseIntf,
+    course_5: CourseIntf
 }
 
-export const Semester: FunctionComponent<SemesterIntf> = ({ course_1 }) =>
+export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5 }) =>
     <div className="col-md-6">
         <h2>Semester</h2>
 
@@ -26,13 +26,13 @@ export const Semester: FunctionComponent<SemesterIntf> = ({ course_1 }) =>
 
         <Course crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
 
-        <Course crsName="CISC 108" crsDescription="Introduction to Computer Science I" crsCredits="3" />
+        <Course crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
 
-        <Course crsName="MATH 241" crsDescription="Analytic Geometry and Calculus A" crsCredits="4" />
+        <Course crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
 
-        <Course crsName="ENGL 110" crsDescription="Seminar in Composition" crsCredits="3" />
+        <Course crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
 
-        <Course crsName="Breadth Requirement I" crsDescription="Breadth Elective of Required Category" crsCredits="3" />
+        <Course crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
 
 
         <div className="row padding">
@@ -40,7 +40,7 @@ export const Semester: FunctionComponent<SemesterIntf> = ({ course_1 }) =>
                 <h5>Total Credits</h5>
             </div>
             <div className="col-md-4">
-                <h5>12</h5>
+                <h5>15</h5>
             </div>
         </div>
 
