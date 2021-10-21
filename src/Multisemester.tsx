@@ -6,7 +6,7 @@ import { CourseIntf } from "./Course";
 
 function MultiSemester(): JSX.Element {
 
-    const example_courses: CourseIntf[] = [{ crsName: "EGGG101", crsDescription: "Introduction to Engineering", crsCredits: "2" }, { crsName: "CISC108", crsDescription: "Introduction to Somputer Science I", crsCredits: "3" }, { crsName: "MATH241", crsDescription: "Analytic Geometry and Calculus A", crsCredits: "4" }, { crsName: "ENGL110", crsDescription: "Seminar in Composition", crsCredits: "3" }, { crsName: "Breadth Req. I", crsDescription: "Breadth Elective of Required Category", crsCredits: "3" }];
+    const example_courses: CourseIntf[] = [{ crsName: "EGGG101", crsDescription: "Introduction to Engineering", crsCredits: 2 }, { crsName: "CISC108", crsDescription: "Introduction to Somputer Science I", crsCredits: 3 }, { crsName: "MATH241", crsDescription: "Analytic Geometry and Calculus A", crsCredits: 4 }, { crsName: "ENGL110", crsDescription: "Seminar in Composition", crsCredits: 3 }, { crsName: "Breadth Req. I", crsDescription: "Breadth Elective of Required Category", crsCredits: 3 }];
 
     const example_semester: SemesterIntf = { course_1: example_courses[0], course_2: example_courses[1], course_3: example_courses[2], course_4: example_courses[3], course_5: example_courses[4] };
 
@@ -75,7 +75,7 @@ function MultiSemester(): JSX.Element {
                         course_4={example_semester.course_4}
                         course_5={example_semester.course_5}
                     />
-                    
+
                     <Semester course_1={example_semester.course_1}
                         course_2={example_semester.course_2}
                         course_3={example_semester.course_3}
