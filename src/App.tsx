@@ -6,9 +6,7 @@ import MultiSemester from "./Multisemester";
 
 function App(): JSX.Element {
     return (
-        <div className="App">
             <MultiSemester />
-        </div>
         
     );
 }
