@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 //import PropTypes from "prop-types";
 
-type CourseIntf {
-    crsName: string
-    crsDescription: string
+type CourseIntf = {
+    crsName: string,
+    crsDescription: string,
     crsCredits: string
 }
 export const Course = ({crsName, crsDescription, crsCredits}: CourseIntf) => 
