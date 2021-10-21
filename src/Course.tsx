@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import "./App.css";
 
-type CourseIntf = {
+export type CourseIntf = {
     crsName: string,
     crsDescription: string,
     crsCredits: string
