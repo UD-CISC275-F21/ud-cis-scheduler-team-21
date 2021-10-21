@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-//import OneSemester from "./OneSemester";
+import OneSemester from "./OneSemester";
 
 function MultiSemester(): JSX.Element {
     return (
         <div className="container-fluid padding">
             <div className="row padding">
-
+                <OneSemester />
 
                 <div className="col-md-12 col-lg-6">
                     <h2>Spring Semester</h2>
@@ -46,6 +46,8 @@ function MultiSemester(): JSX.Element {
             </div>
 
             <div className="row padding">
+                <OneSemester />
+                <OneSemester />
             </div>
 
         </div>
