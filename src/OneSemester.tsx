@@ -40,7 +40,7 @@ export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, 
                 <h5>Total Credits</h5>
             </div>
             <div className="col-md-4">
-                <h5>15</h5>
+                <h5>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</h5>
             </div>
         </div>
 
