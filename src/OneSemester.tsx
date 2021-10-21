@@ -3,7 +3,7 @@ import "./App.css";
 import { Course } from "./Course";
 
 function OneSemester(): JSX.Element {
-    const sem1 = <Course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>;
+    //const sem1 = <Course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>;
     return (
         <div className="col-md-6">
             <h2>Semester</h2>
@@ -17,7 +17,7 @@ function OneSemester(): JSX.Element {
                 </div>
             </div>
 
-            {sem1}
+            <Course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>
 
             <div className="row padding">
                 <div className="col-md-8">
