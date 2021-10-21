@@ -4,6 +4,14 @@ import OneSemester from "./OneSemester";
 
 function MultiSemester(): JSX.Element {
     return (
+        <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            UD CIS Scheduler Updated by:
+            <p>
+                Ryan Miller, Connor Creavin, and Usama Mahmood.
+            </p>
+        </header>
+        
         <div className="container-fluid padding">
             <div className="row padding">
 
