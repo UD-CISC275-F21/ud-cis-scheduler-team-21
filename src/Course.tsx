@@ -7,7 +7,7 @@ type CourseIntf = {
     crsDescription: string,
     crsCredits: string
 }
-export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
+export const course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
     //return (
     <div className="row padding">
         <div className="col-md-8">
