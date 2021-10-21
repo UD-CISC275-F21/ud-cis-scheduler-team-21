@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Course from "./Course";
+import { Course } from "./Course";
 
 function OneSemester(): JSX.Element {
     const sem1 = <Course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>;
