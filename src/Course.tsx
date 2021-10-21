@@ -2,13 +2,13 @@ import React from "react";
 import "./App.css";
 //import PropTypes from "prop-types";
 
-/*interface CourseIntf {
+type CourseIntf {
     crsName: string
     crsDescription: string
     crsCredits: string
-}*/
-export function Course(crsName: string, crsDescription: string, crsCredits: string): JSX.Element{
-    return (
+}
+export const Course = ({crsName, crsDescription, crsCredits}: CourseIntf) => 
+    //return (
         <div className="row padding">
             <div className="col-md-8">
                 <p>
@@ -19,7 +19,7 @@ export function Course(crsName: string, crsDescription: string, crsCredits: stri
                 <p>{crsCredits}</p>
             </div>
         </div>
-    );//as JSX.Element;
-}
+    //);//as JSX.Element;
+//}
 
 //export default Course;
