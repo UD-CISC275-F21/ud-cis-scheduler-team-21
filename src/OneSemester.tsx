@@ -1,30 +1,23 @@
 import React from "react";
 import "./App.css";
+import { Course } from "./Course";
 
 function OneSemester(): JSX.Element {
+    const sem1 = <Course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>;
     return (
-        <div className="col-md-12 col-lg-6">
+        <div className="col-md-6">
             <h2>Semester</h2>
 
             <div className="row padding">
-                <div className="col-md-8">
+                <div className="col-md-4">
                     <h3>Course</h3>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-2">
                     <h3>Credits</h3>
                 </div>
             </div>
 
-            <div className="row padding">
-                <div className="col-md-8">
-                    <p>
-                        <b>EGGG 101</b> Introduction to Engineering
-                    </p>
-                </div>
-                <div className="col-md-4">
-                    <p>2</p>
-                </div>
-            </div>
+            {sem1}
 
             <div className="row padding">
                 <div className="col-md-8">
