@@ -3,7 +3,7 @@ import "./App.css";
 import course from "./Course";
 
 function OneSemester(): JSX.Element {
-    const sem1 = <course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>
+    const sem1 = <course crsName="EGG101" crsDescription="Introduction to Engineering" crsCredits="2"/>;
     return (
         <div className="col-md-6">
             <h2>Semester</h2>
