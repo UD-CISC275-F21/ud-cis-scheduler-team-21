@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import logo from "./logo.svg";
-import OneSemester from "./OneSemester";
+import { Semester } from "./OneSemester";
+//import { Course, CourseIntf } from "./Course";
 
 function MultiSemester(): JSX.Element {
     return (
@@ -17,7 +18,7 @@ function MultiSemester(): JSX.Element {
             <div className="container-fluid padding">
                 <div className="row padding">
 
-                    <OneSemester />
+                    <Semester />
 
                     <div className="col-md-12 col-lg-6">
                         <h2>Spring Semester</h2>
@@ -57,8 +58,8 @@ function MultiSemester(): JSX.Element {
                 </div>
 
                 <div className="row padding">
-                    <OneSemester />
-                    <OneSemester />
+                    <Semester />
+                    <Semester />
                 </div>
 
             </div>
