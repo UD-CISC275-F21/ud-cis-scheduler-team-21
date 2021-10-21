@@ -1,14 +1,15 @@
 import React, { FunctionComponent } from "react";
 import "./App.css";
-//import PropTypes from "prop-types";
 
 type CourseIntf = {
     crsName: string,
     crsDescription: string,
     crsCredits: string
 }
+
+
 export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
-    //return (
+
     <div className="row padding">
         <div className="col-md-8">
             <p>
@@ -19,7 +20,3 @@ export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription,
             <p>{crsCredits}</p>
         </div>
     </div>;
-    //);//as JSX.Element;
-//}
-
-//export default Course;
