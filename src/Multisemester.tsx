@@ -52,7 +52,6 @@ function MultiSemester(): JSX.Element {
             </div>
 
         </div>
-
     );
 }
 

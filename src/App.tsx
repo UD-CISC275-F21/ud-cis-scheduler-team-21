@@ -8,6 +8,7 @@ import MultiSemester from "./Multisemester";
 function App(): JSX.Element {
     return (
         <div className="App">
+            
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 UD CIS Scheduler Updated by:
@@ -15,6 +16,7 @@ function App(): JSX.Element {
                     Ryan Miller, Connor Creavin, and Usama Mahmood.
                 </p>
             </header>
+
             <MultiSemester />
         </div>
         
