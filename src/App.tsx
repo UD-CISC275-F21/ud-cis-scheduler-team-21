@@ -15,7 +15,6 @@ function App(): JSX.Element {
                     Ryan Miller, Connor Creavin, and Usama Mahmood.
                 </p>
             </header>
-
             <MultiSemester />
         </div>
         
