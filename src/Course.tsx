@@ -13,7 +13,7 @@ export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription,
     <div className="row padding">
         <div className="col-md-8">
             <p>
-                <b>{crsName}:</b> {crsDescription}
+                <b>{crsName}</b> {crsDescription}
             </p>
         </div>
         <div className="col-md-4">
