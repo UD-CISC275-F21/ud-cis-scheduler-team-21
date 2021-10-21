@@ -1,5 +1,4 @@
 import React from "react";
-//simport logo from "./logo.svg";
 import "./App.css";
 import MultiSemester from "./Multisemester";
 //import "bootstrap/dist/css/bootstrap.min.css";
