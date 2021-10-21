@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import "./App.css";
 //import PropTypes from "prop-types";
 
@@ -7,7 +7,7 @@ type CourseIntf = {
     crsDescription: string,
     crsCredits: string
 }
-export const Course = ({ crsName, crsDescription, crsCredits }: CourseIntf) =>
+export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
     //return (
     <div className="row padding">
         <div className="col-md-8">
