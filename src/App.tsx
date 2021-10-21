@@ -7,7 +7,6 @@ import MultiSemester from "./Multisemester";
 function App(): JSX.Element {
     return (
             <MultiSemester />
-        
     );
 }
 
