@@ -5,7 +5,7 @@ import { Semester } from "./OneSemester";
 import { CourseIntf } from "./Course";
 
 function MultiSemester(): JSX.Element {
-    let example_class: CourseIntf = {crsName="EGGG666", crsDescription="Introduction to Engineering", crsCredits="2"};
+    const example_class: CourseIntf = {crsName:"EGGG666", crsDescription:"Introduction to Engineering", crsCredits:"2"};
     return (
         <div className="App">
             <header className="App-header">
