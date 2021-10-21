@@ -4,7 +4,7 @@ import "./App.css";
 export type CourseIntf = {
     crsName: string,
     crsDescription: string,
-    crsCredits: string
+    crsCredits: number
 }
 
 
