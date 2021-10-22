@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: auto;
 }
 
 .App-logo {
@@ -14,6 +14,7 @@
 }
 
 .App-header {
+  text-align: center;
   background-color: #038cfc;
   min-height: 15vh;
   display: flex;
@@ -26,11 +27,22 @@
   width: 20%;
 }
 
+.logo{
+  height: 10%;
+  width: 8%;
+  position: absolute;
+  left: 1%;
+  top: 2%;
+}
+
 .Year{
   padding: 0.2%;
   text-align: center;
   background: #1abc9c;
   color: white;
+}
+.Semester{
+  text-align: center;
 }
 
 .App-link {

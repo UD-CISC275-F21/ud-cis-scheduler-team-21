@@ -12,7 +12,7 @@ export type SemesterIntf = {
 
 export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5 }) =>
     <div className="col-md-6">
-        <h2>Semester</h2>
+        <h2 className="Semester">Semester</h2>
 
         <div className="row padding">
             <div className="col-md-8">
