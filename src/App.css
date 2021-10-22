@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: auto;
 }
 
 .App-logo {
@@ -14,14 +14,35 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  text-align: center;
+  background-color: #038cfc;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
+  color:white;
+}
+
+.btn-lg{
+  width: 20%;
+}
+
+.logo{
+  height: 10%;
+  width: 8%;
+  position: absolute;
+  left: 1%;
+  top: 2%;
+}
+
+.Year{
+  padding: 0.2%;
+  text-align: center;
+  background: #1abc9c;
   color: white;
+}
+.Semester{
+  text-align: center;
 }
 
 .App-link {
