@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import logo from "./logo.svg";
 import { Semester, SemesterIntf } from "./OneSemester";
 import { CourseIntf } from "./Course";
 
@@ -25,87 +24,90 @@ function MultiSemester(): JSX.Element {
     const example_semester8: SemesterIntf = { course_1: example_courses[35], course_2: example_courses[36], course_3: example_courses[37], course_4: example_courses[38], course_5: example_courses[39] };
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                UD CIS Scheduler Updated by:
-                <p>
-                    Ryan Miller, Connor Creavin, and Usama Mahmood.
-                </p>
-            </header>
 
-            <div className="container-fluid padding">
+        <div className="container-fluid padding">
 
-                <div className="row padding">
-
-                    <Semester course_1={example_semester1.course_1}
-                        course_2={example_semester1.course_2}
-                        course_3={example_semester1.course_3}
-                        course_4={example_semester1.course_4}
-                        course_5={example_semester1.course_5}
-                    />
-
-                    <Semester course_1={example_semester2.course_1}
-                        course_2={example_semester2.course_2}
-                        course_3={example_semester2.course_3}
-                        course_4={example_semester2.course_4}
-                        course_5={example_semester2.course_5}
-                    />
+            <div className="row padding">
+                <div className="Year">
+                    <h4>First Year</h4>
                 </div>
+                <Semester course_1={example_semester1.course_1}
+                    course_2={example_semester1.course_2}
+                    course_3={example_semester1.course_3}
+                    course_4={example_semester1.course_4}
+                    course_5={example_semester1.course_5}
+                />
 
-                <div className="row padding">
-
-                    <Semester course_1={example_semester3.course_1}
-                        course_2={example_semester3.course_2}
-                        course_3={example_semester3.course_3}
-                        course_4={example_semester3.course_4}
-                        course_5={example_semester3.course_5}
-                    />
-
-                    <Semester course_1={example_semester4.course_1}
-                        course_2={example_semester4.course_2}
-                        course_3={example_semester4.course_3}
-                        course_4={example_semester4.course_4}
-                        course_5={example_semester4.course_5}
-                    />
-                </div>
-
-                <div className="row padding">
-
-                    <Semester course_1={example_semester5.course_1}
-                        course_2={example_semester5.course_2}
-                        course_3={example_semester5.course_3}
-                        course_4={example_semester5.course_4}
-                        course_5={example_semester5.course_5}
-                    />
-
-                    <Semester course_1={example_semester6.course_1}
-                        course_2={example_semester6.course_2}
-                        course_3={example_semester6.course_3}
-                        course_4={example_semester6.course_4}
-                        course_5={example_semester6.course_5}
-                    />
-                </div>
-
-                <div className="row padding">
-
-                    <Semester course_1={example_semester7.course_1}
-                        course_2={example_semester7.course_2}
-                        course_3={example_semester7.course_3}
-                        course_4={example_semester7.course_4}
-                        course_5={example_semester7.course_5}
-                    />
-
-                    <Semester course_1={example_semester8.course_1}
-                        course_2={example_semester8.course_2}
-                        course_3={example_semester8.course_3}
-                        course_4={example_semester8.course_4}
-                        course_5={example_semester8.course_5}
-                    />
-                </div>
-
+                <Semester course_1={example_semester2.course_1}
+                    course_2={example_semester2.course_2}
+                    course_3={example_semester2.course_3}
+                    course_4={example_semester2.course_4}
+                    course_5={example_semester2.course_5}
+                />
             </div>
-        </div >
+
+            <div className="row padding">
+                <div className="Year">
+                    <h4>Second Year</h4>
+                </div>
+
+                <Semester course_1={example_semester3.course_1}
+                    course_2={example_semester3.course_2}
+                    course_3={example_semester3.course_3}
+                    course_4={example_semester3.course_4}
+                    course_5={example_semester3.course_5}
+                />
+
+                <Semester course_1={example_semester4.course_1}
+                    course_2={example_semester4.course_2}
+                    course_3={example_semester4.course_3}
+                    course_4={example_semester4.course_4}
+                    course_5={example_semester4.course_5}
+                />
+            </div>
+
+            <div className="row padding">
+                <div className="Year">
+                    <h4>Third Year</h4>
+                </div>
+
+                <Semester course_1={example_semester5.course_1}
+                    course_2={example_semester5.course_2}
+                    course_3={example_semester5.course_3}
+                    course_4={example_semester5.course_4}
+                    course_5={example_semester5.course_5}
+                />
+
+                <Semester course_1={example_semester6.course_1}
+                    course_2={example_semester6.course_2}
+                    course_3={example_semester6.course_3}
+                    course_4={example_semester6.course_4}
+                    course_5={example_semester6.course_5}
+                />
+            </div>
+
+            <div className="row padding">
+            
+                <div className="Year">
+                    <h4>Fourth Year</h4>
+                </div>
+
+                <Semester course_1={example_semester7.course_1}
+                    course_2={example_semester7.course_2}
+                    course_3={example_semester7.course_3}
+                    course_4={example_semester7.course_4}
+                    course_5={example_semester7.course_5}
+                />
+
+                <Semester course_1={example_semester8.course_1}
+                    course_2={example_semester8.course_2}
+                    course_3={example_semester8.course_3}
+                    course_4={example_semester8.course_4}
+                    course_5={example_semester8.course_5}
+                />
+            </div>
+
+        </div>
     );
 }
 
