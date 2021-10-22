@@ -26,7 +26,11 @@
 .btn-lg{
   width: 20%;
 }
-
+.custom{
+  position: absolute;
+  left: auto;
+  top: 15%;
+}
 .logo{
   height: 10%;
   width: 8%;
