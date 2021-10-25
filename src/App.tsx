@@ -13,6 +13,10 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">
                 <h1 >UD CIS Scheduler</h1>
+                <div className="col text-center">
+                    <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<MultiSemester />)}>Multi-Semester View</button>
+                    <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
+                </div>
             </header>
 
             <div className="text-left"><img className="logo" src={logo} alt="Logo" /></div>
@@ -25,10 +29,7 @@ function App(): JSX.Element {
                 <button type="button" className="btn btn-primary m-3 ">Custom</button>
             </div>
 
-            <div className="col text-center">
-                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<MultiSemester />)}>Multi-Semester View</button>
-                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
-            </div>
+            <hr>
 
             {view_mode}
 
