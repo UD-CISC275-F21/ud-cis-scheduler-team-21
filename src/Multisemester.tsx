@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Semester, SemesterIntf } from "./OneSemester";
+import { Semester } from "./OneSemester";
 //import { CourseIntf } from "./Course";
 import { semester_list } from "./Globals";
 
