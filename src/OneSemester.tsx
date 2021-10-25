@@ -43,7 +43,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_1, course_
         </table>
 
     </div>
-;
+    ;
 
 export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5, semester_number }) =>
     <div className="col-md-6">
@@ -60,32 +60,23 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_
 
             <tbody>
                 <Course_SS crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
-                <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
-                </tr>
 
                 <Course_SS crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
-                <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
-                </tr>
 
                 <Course_SS crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
-                <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
-                </tr>
 
                 <Course_SS crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
-                <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
-                </tr>
 
                 <Course_SS crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
-                <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
-                </tr>
-            </tbody>
+
+            </tbody >
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
                     <td><b>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</b></td>
                 </tr>
             </tfoot>
-        </table>
+        </table >
 
-    </div>
-;
+    </div >
+    ;
