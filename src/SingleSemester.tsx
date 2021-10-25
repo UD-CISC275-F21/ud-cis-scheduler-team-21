@@ -22,7 +22,7 @@ function SingleSemester(): JSX.Element {
                     course_3={semester_list[0].course_3}
                     course_4={semester_list[0].course_4}
                     course_5={semester_list[0].course_5}
-                    semester_number={1}
+                    semester_number={semester_list[0].semester_number}
                 />
 
             </div>
