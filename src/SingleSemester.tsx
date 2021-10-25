@@ -13,11 +13,11 @@ function SingleSemester(): JSX.Element {
         semester_number={semester_list[0].semester_number}
     />);
 
-    let current_semester_num = 1;
+    const [current_semester_num, changeSemNum] = useState(1);
 
     const next_click=()=>{
         if(current_semester_num<8){
-            current_semester_num = current_semester_num + 1;
+            changeSemNum(v=>v+1);
             updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
                 course_2={semester_list[current_semester_num-1].course_2}
                 course_3={semester_list[current_semester_num-1].course_3}
@@ -29,7 +29,7 @@ function SingleSemester(): JSX.Element {
     };
     const prev_click=()=>{
         if(current_semester_num>1){
-            current_semester_num = current_semester_num - 1;
+            changeSemNum(v=>v-1);
             updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
                 course_2={semester_list[current_semester_num-1].course_2}
                 course_3={semester_list[current_semester_num-1].course_3}
