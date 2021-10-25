@@ -5,7 +5,7 @@ import { semester_list } from "./Globals";
 
 function SingleSemester(): JSX.Element {
 
-    const current_semester_num: number = 1;
+    const current_semester_num = 1;
 
     return (
 
