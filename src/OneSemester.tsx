@@ -32,7 +32,7 @@ export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, 
             <Course crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
 
             <tr>
-                <td>Total Credits</htd
+                <td>Total Credits</td>
                 <td>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</td>
             </tr>
         </table>
