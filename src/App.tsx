@@ -5,31 +5,9 @@ import SingleSemester from "./SingleSemester";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.png";
 
-//let view_mode: number = 1; //0=multiSemester, 1=singleSemester
-
-//const multiView = () => updateView(0);
-//const singleView = () => updateView(1);
-
-/*function change_view(): void {
-    if (view_mode == 0) {
-        view = <MultiSemester />;
-    }else if(view_mode == 1){
-        view = <SingleSemester />;
-    }
-}*/
-
 function App(): JSX.Element {
 
     const [view_mode, updateView] = useState(<MultiSemester />);
-    //var view: JSX.Element = <MultiSemester />;
-
-    /*useEffect(()=>{
-        if (view_mode == 0) {
-            view = <MultiSemester />;
-        }else if(view_mode == 1){
-            view = <SingleSemester />;
-        }
-    },[view_mode]);*/
 
     return (
         <div className="App">
@@ -47,7 +25,7 @@ function App(): JSX.Element {
                 <button type="button" className="btn btn-primary m-3 ">Custom</button>
             </div>
 
-            <div className="row padding">
+            <div className="col text-center">
                 <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<MultiSemester />)}>Multi-Semester View</button>
                 <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
             </div>

@@ -9,12 +9,16 @@ function SingleSemester(): JSX.Element {
 
     return (
 
-        <div className="container-fluid padding">
+        <div className="container-fluid padding text-center">
 
             <div className="row padding">
-                <div className="col-sm-4 col-md-6 col-lg-12">
+                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-primary m-3 ">Previous Semester</button>
+                </div>
+                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <h3>Semester #{current_semester_num}</h3>
+                </div>
+                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-primary m-3 ">Next Semester</button>
                 </div>
             </div>
