@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import MultiSemester from "./Multisemester";
 import SingleSemester from "./SingleSemester";
@@ -20,16 +20,16 @@ import logo from "./logo.png";
 
 function App(): JSX.Element {
 
-    const [view_mode, updateView] = useState(0);
-    var view: JSX.Element = <MultiSemester />;
+    const [view_mode, updateView] = useState(<MultiSemester />);
+    //var view: JSX.Element = <MultiSemester />;
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         if (view_mode == 0) {
             view = <MultiSemester />;
         }else if(view_mode == 1){
             view = <SingleSemester />;
         }
-    },[view_mode])
+    },[view_mode]);*/
 
     return (
         <div className="App">
@@ -48,11 +48,11 @@ function App(): JSX.Element {
             </div>
 
             <div className="row padding">
-                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(0)}>Multi-Semester View</button>
-                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(1)}>Single-Semester View</button>
+                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<MultiSemester />)}>Multi-Semester View</button>
+                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
             </div>
 
-            {view}
+            {view_mode}
 
             <div className="col text-center">
                 <button type="button" className="btn btn-primary btn-lg m-3">Add Semester</button>
