@@ -13,29 +13,29 @@ function SingleSemester(): JSX.Element {
         semester_number={semester_list[0].semester_number}
     />);
 
-    const [current_semester_num, changeSemNum] = useState(1);
+    const [current_semester_num, changeSemNum] = useState(0);
 
     const next_click=()=>{
-        if(current_semester_num<8){
+        if(current_semester_num<7){
             changeSemNum(v=>v+1);
             updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
-                course_2={semester_list[current_semester_num-1].course_2}
-                course_3={semester_list[current_semester_num-1].course_3}
-                course_4={semester_list[current_semester_num-1].course_4}
-                course_5={semester_list[current_semester_num-1].course_5}
-                semester_number={semester_list[current_semester_num-1].semester_number}
+                course_2={semester_list[current_semester_num].course_2}
+                course_3={semester_list[current_semester_num].course_3}
+                course_4={semester_list[current_semester_num].course_4}
+                course_5={semester_list[current_semester_num].course_5}
+                semester_number={semester_list[current_semester_num].semester_number}
             />);
         }
     };
     const prev_click=()=>{
-        if(current_semester_num>1){
+        if(current_semester_num>0){
             changeSemNum(v=>v-1);
-            updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
-                course_2={semester_list[current_semester_num-1].course_2}
-                course_3={semester_list[current_semester_num-1].course_3}
-                course_4={semester_list[current_semester_num-1].course_4}
-                course_5={semester_list[current_semester_num-1].course_5}
-                semester_number={semester_list[current_semester_num-1].semester_number}
+            updateFocus(<Semester_SS course_1={semester_list[current_semester_num].course_1}
+                course_2={semester_list[current_semester_num].course_2}
+                course_3={semester_list[current_semester_num].course_3}
+                course_4={semester_list[current_semester_num].course_4}
+                course_5={semester_list[current_semester_num].course_5}
+                semester_number={semester_list[current_semester_num].semester_number}
             />);
         }
     };
@@ -49,7 +49,7 @@ function SingleSemester(): JSX.Element {
                     <button type="button" className="btn btn-primary m-3" onClick={() => prev_click()}>Previous Semester</button>
                 </div>
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-                    <h3>Semester #{current_semester_num}</h3>
+                    <h3>Semester #{current_semester_num+1}</h3>
                 </div>
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-primary m-3" onClick={() => next_click()}>Next Semester</button>
