@@ -7,12 +7,13 @@ export type SemesterIntf = {
     course_2: CourseIntf,
     course_3: CourseIntf,
     course_4: CourseIntf,
-    course_5: CourseIntf
+    course_5: CourseIntf,
+    semester_number: number
 }
 
-export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5 }) =>
+export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5, semester_number }) =>
     <div className="col-md-6">
-        <h2 className="Semester">Semester</h2>
+        <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
             <tr>
