@@ -7,7 +7,7 @@ function MultiSemester(): JSX.Element {
 
     return (
 
-        <div className="container-fluid padding" style="border-width:5px; border-style:groove;">
+        <div className="container-fluid padding">
 
             <div className="row padding">
                 <div className="Year">

@@ -9,7 +9,7 @@ function SingleSemester(): JSX.Element {
 
     return (
 
-        <div className="container-fluid padding" style="border-width:5px; border-style:groove;">
+        <div className="container-fluid padding">
 
             <div className="Semester_Select">
                 <button type="button" className="btn btn-primary m-3 ">Previous Semester</button>
