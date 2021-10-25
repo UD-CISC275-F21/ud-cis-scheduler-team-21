@@ -18,27 +18,27 @@ function SingleSemester(): JSX.Element {
     const next_click=()=>{
         if(current_semester_num<8){
             current_semester_num = current_semester_num + 1;
-            updateFocus(<Semester_SS course_1={semester_list[(current_semester_num-1)].course_1}
-                course_2={semester_list[(current_semester_num-1)].course_2}
-                course_3={semester_list[(current_semester_num-1)].course_3}
-                course_4={semester_list[(current_semester_num-1)].course_4}
-                course_5={semester_list[(current_semester_num-1)].course_5}
-                semester_number={semester_list[(current_semester_num-1)].semester_number}
+            updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
+                course_2={semester_list[current_semester_num-1].course_2}
+                course_3={semester_list[current_semester_num-1].course_3}
+                course_4={semester_list[current_semester_num-1].course_4}
+                course_5={semester_list[current_semester_num-1].course_5}
+                semester_number={semester_list[current_semester_num-1].semester_number}
             />);
         }
-    }
+    };
     const prev_click=()=>{
         if(current_semester_num>1){
             current_semester_num = current_semester_num - 1;
-            updateFocus(<Semester_SS course_1={semester_list[(current_semester_num-1)].course_1}
-                course_2={semester_list[(current_semester_num-1)].course_2}
-                course_3={semester_list[(current_semester_num-1)].course_3}
-                course_4={semester_list[(current_semester_num-1)].course_4}
-                course_5={semester_list[(current_semester_num-1)].course_5}
-                semester_number={semester_list[(current_semester_num-1)].semester_number}
+            updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
+                course_2={semester_list[current_semester_num-1].course_2}
+                course_3={semester_list[current_semester_num-1].course_3}
+                course_4={semester_list[current_semester_num-1].course_4}
+                course_5={semester_list[current_semester_num-1].course_5}
+                semester_number={semester_list[current_semester_num-1].semester_number}
             />);
         }
-    }
+    };
 
     return (
 
