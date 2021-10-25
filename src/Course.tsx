@@ -11,6 +11,6 @@ export type CourseIntf = {
 export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
 
     <tr>
-        <td>{crsName} {crsDescription}</td>
+        <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
     </tr>;
