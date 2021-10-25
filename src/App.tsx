@@ -32,12 +32,6 @@ function App(): JSX.Element {
 
             {view_mode}
 
-            <div className="col text-center">
-                <button type="button" className="btn btn-primary btn-lg m-3">Add Semester</button>
-                <button type="button" className="btn btn-danger btn-lg m-3">Remove All</button>
-                <button type="button" className="btn btn-secondary btn-lg m-3">Reset</button>
-            </div>
-
         </div>
 
     );

@@ -8,9 +8,17 @@ export type CourseIntf = {
 }
 
 
-export const Course: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
+export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
 
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-    </tr>;
+    </tr>
+;
+
+export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
+
+    <tr>
+        <td><b>{crsName}:</b> {crsDescription}</td>
+        <td>{crsCredits}</td>
+;
