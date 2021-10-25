@@ -14,35 +14,28 @@ export const Semester: FunctionComponent<SemesterIntf> = ({ course_1, course_2, 
     <div className="col-md-6">
         <h2 className="Semester">Semester</h2>
 
-        <div className="row padding">
-            <div className="col-md-8">
-                <h3>Course</h3>
-            </div>
-            <div className="col-md-4">
-                <h3>Credits</h3>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Credits</th>
+            </tr>
 
 
-        <Course crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
+            <Course crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
 
-        <Course crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
+            <Course crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
 
-        <Course crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
+            <Course crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
 
-        <Course crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
+            <Course crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
 
-        <Course crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
+            <Course crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
 
-
-        <div className="row padding">
-            <div className="col-md-8">
-                <h5>Total Credits</h5>
-            </div>
-            <div className="col-md-4">
-                <h5>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</h5>
-            </div>
-        </div>
+            <tr>
+                <td>Total Credits</td>
+                <td>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</td>
+            </tr>
+        </table>
 
     </div>;
 
