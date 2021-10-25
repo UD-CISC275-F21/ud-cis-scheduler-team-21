@@ -18,7 +18,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[0].course_3}
                     course_4={semester_list[0].course_4}
                     course_5={semester_list[0].course_5}
-                    semester_number= {semester_list[0].semester_number}
+                    semester_number={semester_list[0].semester_number}
                 />
 
                 <Semester_MS course_1={semester_list[1].course_1}
@@ -26,7 +26,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[1].course_3}
                     course_4={semester_list[1].course_4}
                     course_5={semester_list[1].course_5}
-                    semester_number= {semester_list[1].semester_number}
+                    semester_number={semester_list[1].semester_number}
                 />
             </div>
 
@@ -40,7 +40,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[2].course_3}
                     course_4={semester_list[2].course_4}
                     course_5={semester_list[2].course_5}
-                    semester_number= {semester_list[2].semester_number}
+                    semester_number={semester_list[2].semester_number}
                 />
 
                 <Semester_MS course_1={semester_list[3].course_1}
@@ -48,7 +48,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[3].course_3}
                     course_4={semester_list[3].course_4}
                     course_5={semester_list[3].course_5}
-                    semester_number= {semester_list[3].semester_number}
+                    semester_number={semester_list[3].semester_number}
                 />
             </div>
 
@@ -62,7 +62,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[4].course_3}
                     course_4={semester_list[4].course_4}
                     course_5={semester_list[4].course_5}
-                    semester_number= {semester_list[4].semester_number}
+                    semester_number={semester_list[4].semester_number}
                 />
 
                 <Semester_MS course_1={semester_list[5].course_1}
@@ -70,7 +70,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[5].course_3}
                     course_4={semester_list[5].course_4}
                     course_5={semester_list[5].course_5}
-                    semester_number= {semester_list[5].semester_number}
+                    semester_number={semester_list[5].semester_number}
                 />
             </div>
 
@@ -85,7 +85,7 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[6].course_3}
                     course_4={semester_list[6].course_4}
                     course_5={semester_list[6].course_5}
-                    semester_number= {semester_list[6].semester_number}
+                    semester_number={semester_list[6].semester_number}
                 />
 
                 <Semester_MS course_1={semester_list[7].course_1}
@@ -93,15 +93,15 @@ function MultiSemester(): JSX.Element {
                     course_3={semester_list[7].course_3}
                     course_4={semester_list[7].course_4}
                     course_5={semester_list[7].course_5}
-                    semester_number= {semester_list[7].semester_number}
+                    semester_number={semester_list[7].semester_number}
                 />
             </div>
-        </div> 
 
-        <div className="col text-center">
-            <button type="button" className="btn btn-primary btn-lg m-3">Add Semester</button>
-            <button type="button" className="btn btn-danger btn-lg m-3">Remove All</button>
-            <button type="button" className="btn btn-secondary btn-lg m-3">Reset</button>
+            <div className="col text-center">
+                <button type="button" className="btn btn-primary btn-lg m-3">Add Semester</button>
+                <button type="button" className="btn btn-danger btn-lg m-3">Remove All</button>
+                <button type="button" className="btn btn-secondary btn-lg m-3">Reset</button>
+            </div>
         </div>
     );
 }
