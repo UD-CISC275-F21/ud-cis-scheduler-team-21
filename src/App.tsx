@@ -29,7 +29,7 @@ function App(): JSX.Element {
                 <button type="button" className="btn btn-primary m-3 ">Custom</button>
             </div>
 
-            <hr>
+            <hr></hr>
 
             {view_mode}
 
