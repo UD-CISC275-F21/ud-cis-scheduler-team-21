@@ -7,15 +7,15 @@ import logo from "./logo.png";
 
 function App(): JSX.Element {
 
-    const [view_mode, updateView] = useState(<MultiSemester />);
+    const [view_mode, updateView] = useState(<SingleSemester />);
 
     return (
         <div className="App">
             <header className="App-header">
                 <h1 >UD CIS Scheduler</h1>
                 <div className="col text-center">
-                    <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<MultiSemester />)}>Multi-Semester View</button>
-                    <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
+                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Single-Semester View</button>
+                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<MultiSemester />)}>4 year plan</button>
                 </div>
             </header>
 
@@ -26,7 +26,8 @@ function App(): JSX.Element {
             </div>
 
             <div className="custom">
-                <button type="button" className="btn btn-primary m-3 ">Custom</button>
+                <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Custom</button>
+                
             </div>
 
             <hr></hr>

@@ -21,6 +21,6 @@ export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-        <td> <button type="button" className="btn btn-primary m-3 ">Remove Class</button></td>
+        <td> <button type="button" className="btn btn-primary m-3 ">X</button></td>
     </tr>
     ;
