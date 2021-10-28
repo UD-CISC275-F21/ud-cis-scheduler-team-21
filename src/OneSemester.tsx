@@ -78,5 +78,10 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_
             </tfoot>
         </table >
 
+        <div className="col-sm-2 col-md-3 col-lg-4 text-center">
+            <button type="button" className="btn btn-secondary m-3" >Delete All Courses</button>
+        </div>
+
+    
     </div >
     ;

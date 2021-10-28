@@ -44,7 +44,7 @@ function SingleSemester(): JSX.Element {
 
     return (
 
-        <div className="container-fluid padding text-center">
+        <div className="container-fluid padding text-left">
 
             <div className="row padding">
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
@@ -58,10 +58,11 @@ function SingleSemester(): JSX.Element {
                 </div>
             </div>
 
-
-            {focused_semester}
+            {focused_semester}            
 
         </div>
+
+        
     );
 }
 
