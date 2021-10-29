@@ -28,7 +28,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
-    }, []);
+    }, [semester_number, course_set]);
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
