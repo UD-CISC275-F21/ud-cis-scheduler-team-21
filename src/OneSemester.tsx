@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
 
@@ -11,6 +11,7 @@ export type SemesterIntf = {
     course_set: CourseIntf[],
     semester_number: number
 }
+
 
 export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) =>
     <div className="col-md-6">
@@ -26,7 +27,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
             <tbody>
 
-                { course_set.map((course: CourseIntf, index: number) => {
+                {course_set.map((course: CourseIntf, index: number) => {
                     return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
                 })}
 
@@ -42,8 +43,18 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     </div>
     ;
 
-export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) =>
-    <div className="col-md-6">
+export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
+
+    const [sum, addSum] = useState(0);
+
+    const addCrdts = (course_set: CourseIntf[]): number => {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course.crsCredits);
+        });
+        return sum;
+    };
+
+    return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
@@ -57,7 +68,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
             <tbody>
 
-                {course_set.map((course: CourseIntf, index: number)=>{
+                {course_set.map((course: CourseIntf, index: number) => {
                     return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
                 })}
 
@@ -65,7 +76,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{course_set[0].crsCredits + course_set[1].crsCredits + course_set[2].crsCredits + course_set[3].crsCredits + course_set[4].crsCredits}</b></td>
+                    <td><b>{addCrdts}</b></td>
                 </tr>
             </tfoot>
         </table >
@@ -74,6 +85,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <button type="button" className="btn btn-secondary m-3" >Delete All Courses</button>
         </div>
 
-    
+
     </div >
     ;
+};
