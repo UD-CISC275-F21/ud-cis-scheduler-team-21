@@ -13,8 +13,8 @@ const remove_class = (sem_num: number, course_name: string) =>{
         if(course.crsName == course_name){
             semester_list[sem_num-1].course_set.splice(index,1);
         }
-    })
-}
+    });
+};
 export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits }) =>
 
     <tr>
