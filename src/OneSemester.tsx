@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
 
@@ -17,12 +17,18 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     const [sum, addSum] = useState(0);
 
-    function addCrdts(course_set: CourseIntf[]): number {
+    /*function addCrdts(course_set: CourseIntf[]): number {
         course_set.forEach((course: CourseIntf) => {
             addSum(sum + course.crsCredits);
         });
         return sum;
-    }
+    }*/
+
+    useEffect(() => {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course.crsCredits);
+        });
+    }, []);
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -45,7 +51,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table>
@@ -57,12 +63,17 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     const [sum, addSum] = useState(0);
 
-    const addCrdts = (course_set: CourseIntf[]): number => {
+    /*const addCrdts = (index: number) => {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course_set[index].crsCredits);
+        });
+    };*/
+
+    useEffect(() => {
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
-        return sum;
-    };
+    }, []);
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -86,7 +97,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts}{sum}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table >
