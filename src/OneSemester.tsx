@@ -13,16 +13,16 @@ export type SemesterIntf = {
 }
 
 
-export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
-
+export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) =>{
+    
     const [sum, addSum] = useState(0);
 
-    function addCrdts(course_set: CourseIntf[]): number {
+    const addCrdts = (course_set: CourseIntf[]): number => {
         course_set.forEach((course: CourseIntf) => {
-            addSum(sum + course.crsCredits);
+            addSum(v => v + course.crsCredits);
         });
         return sum;
-    }
+    };
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -45,7 +45,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts(course_set)}{sum}</b></td>
+                    <td><b>{addCrdts()}</b></td>
                 </tr>
             </tfoot>
         </table>
@@ -86,7 +86,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts(course_set)}{sum}</b></td>
+                    <td><b>{addCrdts()}{sum}</b></td>
                 </tr>
             </tfoot>
         </table >
