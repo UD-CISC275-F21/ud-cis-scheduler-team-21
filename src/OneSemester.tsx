@@ -54,7 +54,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         return sum;
     };
 
-    return (<div className="col-md-6">
+    return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
@@ -87,5 +87,5 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
 
     </div >
-    );
-}
+    ;
+};
