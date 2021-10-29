@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Link } from "react";
+import React, { FunctionComponent } from "react";
 import "./App.css";
 import { semester_list } from "./Globals";
 
