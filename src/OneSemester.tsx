@@ -17,12 +17,13 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     const [sum, addSum] = useState(0);
 
-    function addCrdts(course_set: CourseIntf[]): number {
+    function addCrdts(course_set: CourseIntf[]) {
         course_set.forEach((course: CourseIntf) => {
             addSum(sum + course.crsCredits);
         });
-        return sum;
     }
+
+    addCrdts(course_set);
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -45,7 +46,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts(course_set)}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table>
@@ -57,13 +58,14 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     const [sum, addSum] = useState(0);
 
-    const addCrdts = (course_set: CourseIntf[]): number => {
+    const addCrdts = (course_set: CourseIntf[]) => {
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
-        return sum;
     };
 
+    addCrdts(course_set);
+    
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
@@ -86,7 +88,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts(course_set)}{sum}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table >
