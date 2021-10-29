@@ -29,6 +29,6 @@ export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-        <td> <button type="button" className="btn btn-primary m-3 " onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+        <td><button type="button" className="btn btn-primary m-3 " onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
     </tr>
     ;
