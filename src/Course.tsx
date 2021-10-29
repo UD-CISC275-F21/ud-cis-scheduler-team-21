@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, Link } from "react";
 import "./App.css";
 import { semester_list } from "./Globals";
 
@@ -9,7 +9,7 @@ export type CourseIntf = {
     semester_number?: number
 }
 
-const remove_class = (sem_num: number, course_name: string) =>{
+const remove_course = (sem_num: number, course_name: string) =>{
     semester_list[sem_num-1].course_set.forEach((course: CourseIntf, index: number)=>{
         if(course.crsName == course_name){
             semester_list[sem_num-1].course_set.splice(index,1);
@@ -29,6 +29,6 @@ export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-        <td> <button type="button" className="btn btn-primary m-3 " onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+        <td> <Link to='/' onClick={() => remove_course(semester_number as number,crsName)}>X</Link></td>
     </tr>
     ;

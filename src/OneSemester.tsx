@@ -45,7 +45,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts}</b></td>
+                    <td><b>{addCrdts}{sum}</b></td>
                 </tr>
             </tfoot>
         </table>
@@ -86,7 +86,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{addCrdts}</b></td>
+                    <td><b>{addCrdts}{sum}</b></td>
                 </tr>
             </tfoot>
         </table >
