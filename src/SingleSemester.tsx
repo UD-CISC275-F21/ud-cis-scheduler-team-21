@@ -5,11 +5,7 @@ import { semester_list } from "./Globals";
 
 function SingleSemester(): JSX.Element {
 
-    const[focused_semester, updateFocus] = useState(<Semester_SS course_1={semester_list[0].course_1}
-        course_2={semester_list[0].course_2}
-        course_3={semester_list[0].course_3}
-        course_4={semester_list[0].course_4}
-        course_5={semester_list[0].course_5}
+    const[focused_semester, updateFocus] = useState(<Semester_SS course_set={semester_list[0].course_set}
         semester_number={semester_list[0].semester_number}
     />);
 
@@ -19,11 +15,7 @@ function SingleSemester(): JSX.Element {
         if(current_semester_num<7){
             changeSemNum(v=>v+1);
             console.log(current_semester_num);
-            updateFocus(<Semester_SS course_1={semester_list[current_semester_num+1].course_1}
-                course_2={semester_list[current_semester_num+1].course_2}
-                course_3={semester_list[current_semester_num+1].course_3}
-                course_4={semester_list[current_semester_num+1].course_4}
-                course_5={semester_list[current_semester_num+1].course_5}
+            updateFocus(<Semester_SS course_set={semester_list[current_semester_num+1].course_set}
                 semester_number={semester_list[current_semester_num+1].semester_number}
             />);
         }
@@ -32,11 +24,7 @@ function SingleSemester(): JSX.Element {
         if(current_semester_num>0){
             changeSemNum(v=>v-1);
             console.log(current_semester_num);
-            updateFocus(<Semester_SS course_1={semester_list[current_semester_num-1].course_1}
-                course_2={semester_list[current_semester_num-1].course_2}
-                course_3={semester_list[current_semester_num-1].course_3}
-                course_4={semester_list[current_semester_num-1].course_4}
-                course_5={semester_list[current_semester_num-1].course_5}
+            updateFocus(<Semester_SS course_set={semester_list[current_semester_num-1].course_set}
                 semester_number={semester_list[current_semester_num-1].semester_number}
             />);
         }
