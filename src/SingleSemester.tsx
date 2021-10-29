@@ -30,11 +30,11 @@ function SingleSemester(): JSX.Element {
         }
     };
 
-    /*useEffect(() => {
+    useEffect(() => {
         updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
             semester_number={semester_list[current_semester_num].semester_number}
         />);
-    }, [focused_semester]);*/
+    }, [semester_list[0]]);
 
     return (
 
