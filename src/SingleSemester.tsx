@@ -34,7 +34,7 @@ function SingleSemester(): JSX.Element {
         updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
             semester_number={semester_list[current_semester_num].semester_number}
         />);
-    }),[semester_list];
+    },[semester_list]);
 
     return (
 
