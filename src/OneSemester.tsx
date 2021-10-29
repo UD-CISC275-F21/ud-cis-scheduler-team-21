@@ -27,7 +27,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <tbody>
 
                 { course_set.map((course: CourseIntf, index: number) => {
-                return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
+                    return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
                 })}
 
             </tbody>
