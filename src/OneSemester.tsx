@@ -25,15 +25,11 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             </thead>
 
             <tbody>
-                <Course_MS crsName={course_set[0].crsName} crsDescription={course_set[0].crsDescription} crsCredits={course_set[0].crsCredits} />
 
-                <Course_MS crsName={course_set[1].crsName} crsDescription={course_set[1].crsDescription} crsCredits={course_set[1].crsCredits} />
-
-                <Course_MS crsName={course_set[2].crsName} crsDescription={course_set[2].crsDescription} crsCredits={course_set[2].crsCredits} />
-
-                <Course_MS crsName={course_set[3].crsName} crsDescription={course_set[3].crsDescription} crsCredits={course_set[3].crsCredits} />
-
-                <Course_MS crsName={course_set[4].crsName} crsDescription={course_set[4].crsDescription} crsCredits={course_set[4].crsCredits} />
+                {course_set.map((course: CourseIntf, index: number)=>{
+                return (<Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />
+                )}}
+                
             </tbody>
             <tfoot>
                 <tr>
@@ -60,15 +56,10 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             </thead>
 
             <tbody>
-                <Course_SS crsName={course_set[0].crsName} crsDescription={course_set[0].crsDescription} crsCredits={course_set[0].crsCredits} />
 
-                <Course_SS crsName={course_set[1].crsName} crsDescription={course_set[1].crsDescription} crsCredits={course_set[1].crsCredits} />
-
-                <Course_SS crsName={course_set[2].crsName} crsDescription={course_set[2].crsDescription} crsCredits={course_set[2].crsCredits} />
-
-                <Course_SS crsName={course_set[3].crsName} crsDescription={course_set[3].crsDescription} crsCredits={course_set[3].crsCredits} />
-
-                <Course_SS crsName={course_set[4].crsName} crsDescription={course_set[4].crsDescription} crsCredits={course_set[4].crsCredits} />
+            {course_set.map((course: CourseIntf, index: number)=>{
+                return (<Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />
+                )}}
 
             </tbody >
             <tfoot>
