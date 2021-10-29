@@ -5,7 +5,8 @@ import { semester_list } from "./Globals";
 export type CourseIntf = {
     crsName: string,
     crsDescription: string,
-    crsCredits: number
+    crsCredits: number,
+    semester_number?: number
 }
 
 const remove_class = (sem_num: number, course_name: string) =>{
