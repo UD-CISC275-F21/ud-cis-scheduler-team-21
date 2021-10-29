@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Semester_SS } from "./OneSemester";
 import { semester_list } from "./Globals";
@@ -29,6 +29,12 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
+
+    useEffect(() => {
+        updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
+            semester_number={semester_list[current_semester_num].semester_number}
+        />);
+    },[semester_list]);
 
     return (
 
