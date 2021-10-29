@@ -25,6 +25,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     }*/
 
     useEffect(() => {
+        addSum(0);
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
