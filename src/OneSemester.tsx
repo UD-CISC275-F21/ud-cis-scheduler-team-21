@@ -19,7 +19,7 @@ const addCrdts: number = (course_set: CourseIntf[]) => {
         addSum(v=>v+course.crsCredits);
     });
     return sum;
-}
+};
 
 export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) =>
     <div className="col-md-6">
