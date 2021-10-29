@@ -47,7 +47,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     const [sum, addSum] = useState(0);
 
-    const addCrdts: number = (course_set: CourseIntf[]) => {
+    const addCrdts = (course_set: CourseIntf[]): number => {
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
