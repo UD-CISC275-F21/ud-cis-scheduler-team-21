@@ -21,6 +21,7 @@ function SingleSemester(): JSX.Element {
         }
     };
     const prev_click = () => {
+        
         if (current_semester_num > 0) {
             changeSemNum(v => v - 1);
             console.log(current_semester_num);
@@ -28,6 +29,7 @@ function SingleSemester(): JSX.Element {
                 semester_number={semester_list[current_semester_num - 1].semester_number}
             />);
         }
+        
     };
 
     /*useEffect(() => {
