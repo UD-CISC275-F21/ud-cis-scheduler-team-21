@@ -1,18 +1,37 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
 
 export type SemesterIntf = {
-    course_1: CourseIntf,
-    course_2: CourseIntf,
-    course_3: CourseIntf,
-    course_4: CourseIntf,
-    course_5: CourseIntf,
+    //course_1: CourseIntf,
+    //course_2: CourseIntf,
+    //course_3: CourseIntf,
+    //course_4: CourseIntf,
+    //course_5: CourseIntf,
+    course_set: CourseIntf[],
     semester_number: number
 }
 
-export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5, semester_number }) =>
-    <div className="col-md-6">
+
+export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
+
+    const [sum, addSum] = useState(0);
+
+    /*function addCrdts(course_set: CourseIntf[]): number {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(sum + course.crsCredits);
+        });
+        return sum;
+    }*/
+
+    useEffect(() => {
+        addSum(0);
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course.crsCredits);
+        });
+    }, [semester_number, course_set]);
+
+    return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
@@ -24,29 +43,40 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_1, course_
             </thead>
 
             <tbody>
-                <Course_MS crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
 
-                <Course_MS crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
+                {course_set.map((course: CourseIntf, index: number) => {
+                    return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
+                })}
 
-                <Course_MS crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
-
-                <Course_MS crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
-
-                <Course_MS crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
             </tbody>
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table>
 
     </div>
     ;
+};
+export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
 
-export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_2, course_3, course_4, course_5, semester_number }) =>
-    <div className="col-md-6">
+    const [sum, addSum] = useState(0);
+
+    /*const addCrdts = (index: number) => {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course_set[index].crsCredits);
+        });
+    };*/
+
+    useEffect(() => {
+        course_set.forEach((course: CourseIntf) => {
+            addSum(v => v + course.crsCredits);
+        });
+    }, [semester_number, course_set]);
+
+    return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
@@ -59,21 +89,16 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_
             </thead>
 
             <tbody>
-                <Course_SS crsName={course_1.crsName} crsDescription={course_1.crsDescription} crsCredits={course_1.crsCredits} />
 
-                <Course_SS crsName={course_2.crsName} crsDescription={course_2.crsDescription} crsCredits={course_2.crsCredits} />
-
-                <Course_SS crsName={course_3.crsName} crsDescription={course_3.crsDescription} crsCredits={course_3.crsCredits} />
-
-                <Course_SS crsName={course_4.crsName} crsDescription={course_4.crsDescription} crsCredits={course_4.crsCredits} />
-
-                <Course_SS crsName={course_5.crsName} crsDescription={course_5.crsDescription} crsCredits={course_5.crsCredits} />
+                {course_set.map((course: CourseIntf, index: number) => {
+                    return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
+                })}
 
             </tbody >
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
-                    <td><b>{course_1.crsCredits + course_2.crsCredits + course_3.crsCredits + course_4.crsCredits + course_5.crsCredits}</b></td>
+                    <td><b>{sum}</b></td>
                 </tr>
             </tfoot>
         </table >
@@ -82,6 +107,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_1, course_
             <button type="button" className="btn btn-secondary m-3" >Delete All Courses</button>
         </div>
 
-    
+
     </div >
     ;
+};

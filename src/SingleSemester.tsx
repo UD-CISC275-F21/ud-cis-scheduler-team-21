@@ -21,7 +21,6 @@ function SingleSemester(): JSX.Element {
         }
     };
     const prev_click = () => {
-        
         if (current_semester_num > 0) {
             changeSemNum(v => v - 1);
             console.log(current_semester_num);
