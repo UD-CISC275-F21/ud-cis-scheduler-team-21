@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
 
+
 export type SemesterIntf = {
     //course_1: CourseIntf,
     //course_2: CourseIntf,
@@ -39,6 +40,8 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 <tr>
                     <th>Course</th>
                     <th>Credits</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
 
@@ -71,11 +74,12 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     };*/
 
     useEffect(() => {
+        addSum(0);
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
     }, [semester_number, course_set]);
-
+    
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
