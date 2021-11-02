@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
-//import {example_courses} from "./Globals";
 
 
 export type SemesterIntf = {
@@ -20,6 +19,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             addSum(v => v + course.crsCredits);
         });
     }, [semester_number, course_set]);
+
 
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -106,6 +106,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         
     };
     */
+   
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
@@ -131,7 +132,8 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
-
+                <td className="text-center"><b><button type="button" className="btn-sm btn-danger m-1">Remove All</button></b></td>
+ 
             </tfoot>
         </table >
 
@@ -164,3 +166,4 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     </div >
     ;
 };
+
