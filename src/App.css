@@ -38,6 +38,29 @@
   left: 1%;
   top: 2%;
 }
+.inputName{
+  width: 20%;
+  padding: 1%;
+  margin-right: 3px;
+  
+}
+
+.inputDes{
+  width: 40%;
+  padding: 1%;
+  margin: 3px;
+}
+
+.inputCredits{
+  width: 15%;
+  padding: 1%;
+  margin: 3px;
+}
+
+.addcourse{
+  color: #700101;
+  text-align: center;
+}
 
 .Year{
   padding: 0.2%;
@@ -52,6 +75,7 @@
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {

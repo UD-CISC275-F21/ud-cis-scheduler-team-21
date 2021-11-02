@@ -18,6 +18,7 @@ const remove_class = (sem_num: number, course_name: string) =>{
         }
     });
     
+    
 };
 
 export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits, semester_number}) =>
@@ -25,7 +26,9 @@ export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-        <td><button type="button" className="btn btn-primary m-3 " onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+        <td className="editcourse"><button type="button" className="m-1">Edit</button></td>
+
+        <td className="deletecourse"><button type="button" className="m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
 
     </tr>
     ;
@@ -35,6 +38,9 @@ export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
     <tr>
         <td><b>{crsName}:</b> {crsDescription}</td>
         <td>{crsCredits}</td>
-        <td><button type="button" className="btn btn-primary m-3 " onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+        <td className="editcourse"><button type="button" className="m-1">Edit</button></td>
+
+        <td className="deletecourse"><button type="button" className="m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+
     </tr>
     ;

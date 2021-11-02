@@ -1,30 +1,19 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
 import { Course_MS, Course_SS, CourseIntf } from "./Course";
+//import {example_courses} from "./Globals";
 
 
 export type SemesterIntf = {
-    //course_1: CourseIntf,
-    //course_2: CourseIntf,
-    //course_3: CourseIntf,
-    //course_4: CourseIntf,
-    //course_5: CourseIntf,
     course_set: CourseIntf[],
     semester_number: number
 }
 
 
 export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
-
+    
     const [sum, addSum] = useState(0);
-
-    /*function addCrdts(course_set: CourseIntf[]): number {
-        course_set.forEach((course: CourseIntf) => {
-            addSum(sum + course.crsCredits);
-        });
-        return sum;
-    }*/
-
+    
     useEffect(() => {
         addSum(0);
         course_set.forEach((course: CourseIntf) => {
@@ -38,10 +27,9 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         <table>
             <thead>
                 <tr>
-                    <th>Course</th>
-                    <th>Credits</th>
-                    <th>Actions</th>
-
+                    <th className="text-center">Course</th>
+                    <th className="text-center">Credits</th>
+                    <th className="text-center">Actions</th>
                 </tr>
             </thead>
 
@@ -60,19 +48,39 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             </tfoot>
         </table>
 
+        
+        <div className="col-md-9">
+            <h5 className="addcourse"><b>Add Course</b></h5>
+            <form>
+                <input 
+                    className="inputName" 
+                    type="text"
+                    name="crsName"
+                    placeholder="Name"
+                />
+                <input 
+                    className="inputDes" 
+                    type="text"
+                    name="crsDescription"
+                    placeholder="Description"
+                />
+                <input
+                    className="inputCredits" 
+                    type="text"
+                    name="crsCredits"
+                    placeholder="Credits" 
+                />
+                <button type="submit" className="btn btn-success m-3">Add</button>
+
+            </form>
+        </div>
+
     </div>
     ;
 };
 export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
 
     const [sum, addSum] = useState(0);
-
-    /*const addCrdts = (index: number) => {
-        course_set.forEach((course: CourseIntf) => {
-            addSum(v => v + course_set[index].crsCredits);
-        });
-    };*/
-
     useEffect(() => {
         addSum(0);
         course_set.forEach((course: CourseIntf) => {
@@ -80,15 +88,33 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         });
     }, [semester_number, course_set]);
     
+    /*
+    const [addFormData, setFormDta] = useState({
+        crsName: "",
+        crsDescription: "",
+        crsCredits:""
+
+    });
+
+    const handleAddFormChange = (event) =>{
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = {...addFormData};
+        newFormData[fieldName]= fieldValue;
+        
+    };
+    */
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
         <table>
             <thead>
                 <tr>
-                    <th>Course</th>
-                    <th>Credits</th>
-                    <th>Actions</th>
+                    <th className="text-center">Course</th>
+                    <th className="text-center">Credits</th>
+                    <th className="text-center">Actions</th>
                 </tr>
             </thead>
 
@@ -99,18 +125,41 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 })}
 
             </tbody >
+
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
+
             </tfoot>
         </table >
 
-        <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-            <button type="button" className="btn btn-secondary m-3" >Delete All Courses</button>
-        </div>
+        <div className="col-md-9">
+            <h5 className="addcourse"><b>Add Course</b></h5>
+            <form>
+                <input 
+                    className="inputName" 
+                    type="text"
+                    name="crsName"
+                    placeholder="Name"
+                />
+                <input 
+                    className="inputDes" 
+                    type="text"
+                    name="crsDescription"
+                    placeholder="Description"
+                />
+                <input
+                    className="inputCredits" 
+                    type="text"
+                    name="crsCredits"
+                    placeholder="Credits" 
+                />
+                <button type="submit" className="btn btn-success m-3">Add</button>
 
+            </form>
+        </div>
 
     </div >
     ;
