@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
-import { Course_MS, Course_SS, CourseIntf } from "./Course";
+import { Course_MS, Course_SS, CourseIntf, remove_allclass} from "./Course";
 
 
 export type SemesterIntf = {
@@ -132,7 +132,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
-                <td className="text-center"><b><button type="button" className="btn-sm btn-danger m-1">Remove All</button></b></td>
+                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_number as number)}>Remove all</button></td>
 
  
             </tfoot>

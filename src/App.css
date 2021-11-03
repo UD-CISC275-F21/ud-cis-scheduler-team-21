@@ -57,9 +57,14 @@
   margin: 3px;
 }
 
-.addcourse{
+.deletecourse{
   color: #700101;
   text-align: center;
+}
+
+.addcourse{
+  color: #700101;
+  text-align: center; 
 }
 
 .Year{
