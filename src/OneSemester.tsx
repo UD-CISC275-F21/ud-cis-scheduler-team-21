@@ -133,6 +133,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>{sum}</b></td>
                 </tr>
                 <td className="text-center"><b><button type="button" className="btn-sm btn-danger m-1">Remove All</button></b></td>
+
  
             </tfoot>
         </table >
