@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import { Semester_SS } from "./OneSemester";
 import { semester_list } from "./Globals";
-export function SingleSemester(): JSX.Element {
+
+function SingleSemester(): JSX.Element {
 
     const [focused_semester, updateFocus] = useState(<Semester_SS course_set={semester_list[0].course_set}
         semester_number={semester_list[0].semester_number}
     />);
 
     const [current_semester_num, changeSemNum] = useState(0);
-
 
     //shows next semester on click
     const next_click = () => {
@@ -34,17 +34,6 @@ export function SingleSemester(): JSX.Element {
         }
         
     };
-    // removes all the classes from semester view
-    const remove_allclass = (sem_num: number): void => {
-        semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length); 
-
-        updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
-            semester_number={semester_list[current_semester_num].semester_number}
-        />);   
-    };
-
-
-    
     return (
 
         <div className="container-fluid padding text-left">
@@ -60,8 +49,6 @@ export function SingleSemester(): JSX.Element {
                     <button type="button" className="btn btn-success m-3" onClick={() => next_click()}>Next Semester</button>
 
                 </div>
-
-                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_list[current_semester_num].semester_number as number)}>Remove all courses</button></td>
 
             </div>
 
