@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
-import { Course_MS, Course_SS, CourseIntf, remove_allclass} from "./Course";
-
+import { Course_MS, Course_SS, CourseIntf} from "./Course";
 
 export type SemesterIntf = {
     course_set: CourseIntf[],
@@ -29,7 +28,6 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 <tr>
                     <th className="text-center">Course</th>
                     <th className="text-center">Credits</th>
-                    <th className="text-center">Actions</th>
                 </tr>
             </thead>
 
@@ -49,27 +47,8 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         </table>
 
         
-        <div className="col-md-9">
-            <h5 className="addcourse"><b>Add Course</b></h5>
-            <form>
-                <input 
-                    className="inputName" 
-                    type="text"
-                    name="crsName"
-                    placeholder="Name"
-                />
-                <input 
-                    className="inputDes" 
-                    type="text"
-                    name="crsDescription"
-                    placeholder="Description"
-                />
-                <button type="submit" className="btn btn-success m-3">Add</button>
-
-            </form>
-        </div>
-
     </div>
+
     ;
 };
 export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
@@ -91,7 +70,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 <tr>
                     <th className="text-center">Course</th>
                     <th className="text-center">Credits</th>
-                    <th className="text-center">Actions</th>
+                    <th className="Actions">Actions</th>
                 </tr>
             </thead>
 
@@ -108,8 +87,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
-                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_number as number)}>Remove all courses</button></td>
-
  
             </tfoot>
         </table >

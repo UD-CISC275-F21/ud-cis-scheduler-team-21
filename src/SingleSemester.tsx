@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Semester_SS } from "./OneSemester";
 import { semester_list } from "./Globals";
-
-function SingleSemester(): JSX.Element {
+export function SingleSemester(): JSX.Element {
 
     const [focused_semester, updateFocus] = useState(<Semester_SS course_set={semester_list[0].course_set}
         semester_number={semester_list[0].semester_number}
@@ -11,6 +10,8 @@ function SingleSemester(): JSX.Element {
 
     const [current_semester_num, changeSemNum] = useState(0);
 
+
+    //shows next semester on click
     const next_click = () => {
         if (current_semester_num < 7) {
             changeSemNum(v => v + 1);
@@ -20,6 +21,8 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
+
+    //shows perv semester on click
     const prev_click = () => {
         
         if (current_semester_num > 0) {
@@ -31,13 +34,17 @@ function SingleSemester(): JSX.Element {
         }
         
     };
+    // removes all the classes from semester view
+    const remove_allclass = (sem_num: number): void => {
+        semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length); 
 
-    /*useEffect(() => {
         updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
             semester_number={semester_list[current_semester_num].semester_number}
-        />);
-    }, [focused_semester]);*/
+        />);   
+    };
 
+
+    
     return (
 
         <div className="container-fluid padding text-left">
@@ -50,8 +57,12 @@ function SingleSemester(): JSX.Element {
                     <h3>Semester #{current_semester_num + 1}</h3>
                 </div>
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-                    <button type="button" className="btn btn-primary m-3" onClick={() => next_click()}>Next Semester</button>
+                    <button type="button" className="btn btn-success m-3" onClick={() => next_click()}>Next Semester</button>
+
                 </div>
+
+                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_list[current_semester_num].semester_number as number)}>Remove all courses</button></td>
+
             </div>
 
             {focused_semester}

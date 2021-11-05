@@ -61,6 +61,13 @@
   color: #700101;
   text-align: center;
 }
+.editcourse{
+  text-align: center;  
+}
+.Actions{
+  text-align: center;
+  margin: 5px;
+}
 
 .addcourse{
   color: #700101;
