@@ -9,7 +9,7 @@ export type CourseIntf = {
     semester_number?: number
 }
 
-
+//removes one course in the semester
 const remove_class = (sem_num: number, course_name: string) =>{
     semester_list[sem_num-1].course_set.forEach((course: CourseIntf, index: number)=>{
         if(course.crsName == course_name){
@@ -17,13 +17,17 @@ const remove_class = (sem_num: number, course_name: string) =>{
         }
     });
 };
-
+// removes all the courses in the semester
 export const remove_allclass = (sem_num: number): void => {
-    semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length);
+    semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length); 
 };
 
+/*
+export const remove_semester = (sem_num: number): void =>{
+    semester_list[sem_num-1].splice(0,1);
 
-
+};
+*/
 export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits, semester_number}) =>
 
     <tr>
@@ -42,7 +46,6 @@ export const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescripti
         <td>{crsCredits}</td>
         <td className="editcourse"><button type="button" className="m-1">Edit</button></td>
         <td className="deletecourse"><button type="button" className="m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
-
 
     </tr>
     ;

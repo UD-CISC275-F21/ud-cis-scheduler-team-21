@@ -64,12 +64,6 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     name="crsDescription"
                     placeholder="Description"
                 />
-                <input
-                    className="inputCredits" 
-                    type="text"
-                    name="crsCredits"
-                    placeholder="Credits" 
-                />
                 <button type="submit" className="btn btn-success m-3">Add</button>
 
             </form>
@@ -88,24 +82,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         });
     }, [semester_number, course_set]);
     
-    /*
-    const [addFormData, setFormDta] = useState({
-        crsName: "",
-        crsDescription: "",
-        crsCredits:""
-
-    });
-
-    const handleAddFormChange = (event) =>{
-
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-
-        const newFormData = {...addFormData};
-        newFormData[fieldName]= fieldValue;
-        
-    };
-    */
    
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
@@ -132,7 +108,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
-                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_number as number)}>Remove all</button></td>
+                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_number as number)}>Remove all courses</button></td>
 
  
             </tfoot>
@@ -152,12 +128,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     type="text"
                     name="crsDescription"
                     placeholder="Description"
-                />
-                <input
-                    className="inputCredits" 
-                    type="text"
-                    name="crsCredits"
-                    placeholder="Credits" 
                 />
                 <button type="submit" className="btn btn-success m-3">Add</button>
 
