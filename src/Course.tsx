@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import "./App.css";
-import { semester_list  } from "./Globals";
-import "./SingleSemester";
+import { semester_list } from "./Globals";
+
 
 export type CourseIntf = {
     crsName: string,
@@ -11,16 +11,15 @@ export type CourseIntf = {
 }
 
 
-//removes one course in the semester
-const remove_class = (sem_num: number, course_name: string) =>{
+export const remove_class = (sem_num: number, course_name: string): void =>{
+
     semester_list[sem_num-1].course_set.forEach((course: CourseIntf, index: number)=>{
         if(course.crsName == course_name){
-            semester_list[sem_num-1].course_set.splice(index,1);
-                 
+            semester_list[sem_num-1].course_set.splice(index,1);            
         }
-    });    
-};
+    });
 
+};
 
 export const Course_MS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits}) =>
 

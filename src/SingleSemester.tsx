@@ -31,9 +31,10 @@ function SingleSemester(): JSX.Element {
             updateFocus(<Semester_SS course_set={semester_list[current_semester_num - 1].course_set}
                 semester_number={semester_list[current_semester_num - 1].semester_number}
             />);
-        }
-        
+        }  
     };
+
+
     return (
 
         <div className="container-fluid padding text-left">
@@ -47,7 +48,6 @@ function SingleSemester(): JSX.Element {
                 </div>
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-success m-3" onClick={() => next_click()}>Next Semester</button>
-
                 </div>
 
             </div>
