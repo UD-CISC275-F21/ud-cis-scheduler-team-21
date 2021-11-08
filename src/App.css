@@ -81,7 +81,8 @@
   color: white;
 }
 .Semester{
-  text-align: center;
+  text-align: left;
+  margin-left: 100px;
 }
 
 .App-link {
