@@ -38,18 +38,11 @@ function SingleSemester(): JSX.Element {
     return (
 
         <div className="container-fluid padding text-left">
-
             <div className="row padding">
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-primary m-3" onClick={() => prev_click()}>Previous Semester</button>
-                </div>
-                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-                    <h3>Semester #{current_semester_num + 1}</h3>
-                </div>
-                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-success m-3" onClick={() => next_click()}>Next Semester</button>
                 </div>
-
             </div>
 
             {focused_semester}

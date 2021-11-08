@@ -79,12 +79,14 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         addSum(0);
     };
 
+    
+
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
         <table>
             <thead>
                 <tr>
-                    <th className="text-center">Course</th>
+                    <th className="text-center">Courses</th>
                     <th className="text-center">Credits</th>
                     <th className="Actions">Actions</th>
                 </tr>
