@@ -24,12 +24,6 @@ function App(): JSX.Element {
             <div className="text-right">
                 <button type="button" className="btn btn-primary m-3 ">Export PDF</button>
             </div>
-
-            <div className="custom">
-                <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Custom</button>
-                
-            </div>
-
             <hr></hr>
 
             {view_mode}

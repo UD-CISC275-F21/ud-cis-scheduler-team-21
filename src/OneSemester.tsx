@@ -82,7 +82,9 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     
 
     return <div className="col-md-6">
-        <h2 className="Semester">Semester {semester_number}</h2>
+        <h2 className="Semester">Semester {semester_number}
+            <button type="button" className="btn btn-outline-danger m-3">X</button>
+        </h2>
         <table>
             <thead>
                 <tr>
@@ -101,7 +103,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <td><b>Total Credits</b></td>
                     <td><b>{sum}</b></td>
                 </tr>
-                <td className="deletecourse"><button type="button" className="btn-sm btn-danger m-1" onClick={() => remove_allclass(semester_list[semester_number-1].semester_number as number)}>Remove all courses</button></td>
+                <td className="deletecourse"><button type="button" className="btn btn-danger m-1" onClick={() => remove_allclass(semester_list[semester_number-1].semester_number as number)}>Remove all courses</button></td>
             </tfoot>
         </table >
         <div className="col-md-9">
