@@ -112,8 +112,9 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         <tr>
             <td><b>{crsName}:</b> {crsDescription}</td>
             <td className="text-center">{crsCredits}</td>
-            <td className="editcourse"><button type="button" className="btn btn-outline-secondary m-1">Edit</button></td>
-            <td className="deletecourse"><button type="button" className="btn btn-outline-danger m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+            <td className="editcourse">
+                <button type="button" className="btn btn-outline-secondary m-1">Edit</button>
+                <button type="button" className="btn btn-outline-danger m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
         </tr>
     ;
 
@@ -147,29 +148,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <button type="button" className="btn btn-danger m-1" onClick={() => remove_allclass(semester_number as number)}>Remove all courses</button>
 
         </div>
-
-
-
-        <div className="col-md-9">
-            <h5 className="addcourse"><b>Add Course</b></h5>
-            <form>
-                <input
-                    className="inputName"
-                    type="text"
-                    name="crsName"
-                    placeholder="Name"
-                />
-                <input
-                    className="inputDes"
-                    type="text"
-                    name="crsDescription"
-                    placeholder="Description"
-                />
-                <button type="submit" className="btn btn-success m-3">Add</button>
-
-            </form>
-        </div>
-
     </div >
     ;
 };
