@@ -38,7 +38,6 @@ function SingleSemester(): JSX.Element {
     const remove_semester = () => {
         semester_list.splice(current_semester_num,1);
         if (current_semester_num < semester_list.length-1) {
-            //changeSemNum(v => v + 1);
             console.log(current_semester_num);
             updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
                 semester_number={semester_list[current_semester_num].semester_number}
@@ -49,21 +48,15 @@ function SingleSemester(): JSX.Element {
 
     };
 
-
-
-    //Removes the semester
+    //Removes all the semester
     const remove_Allsemester = () => {
         semester_list.splice(0,semester_list.length);
         if (current_semester_num < semester_list.length-1) {
-            //changeSemNum(v => v + 1);
             console.log(current_semester_num);
             updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
                 semester_number={semester_list[current_semester_num].semester_number}
-
             />);
-
         }
-
     };
 
 

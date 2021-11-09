@@ -117,8 +117,8 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 =======
         semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length);
         addSum(0); 
-        updateFocus(<Semester_SS course_set={semester_list[sem_num-1].course_set}
-            semester_number={semester_list[sem_num-1].semester_number}
+        updateFocus(<Semester_SS course_set={semester_list[sem_num].course_set}
+            semester_number={semester_list[sem_num].semester_number}
         />);   
 
     };
