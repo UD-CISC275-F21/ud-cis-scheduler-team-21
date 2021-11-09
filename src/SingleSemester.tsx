@@ -41,7 +41,7 @@ function SingleSemester(): JSX.Element {
             <div className="row padding">
                 <div className="col-sm-2 col-md-3 col-lg-4 text-center">
                     <button type="button" className="btn btn-primary m-3" onClick={() => prev_click()}>Previous Semester</button>
-                    <button type="button" className="btn btn-success m-3" onClick={() => next_click()}>Next Semester</button>
+                    <button type="button" className="btn btn-primary m-3" onClick={() => next_click()}>Next Semester</button>
                 </div>
             </div>
 
