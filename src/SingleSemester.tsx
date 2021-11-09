@@ -13,7 +13,7 @@ function SingleSemester(): JSX.Element {
 
     //shows next semester on click
     const next_click = () => {
-        if (current_semester_num < 7) {
+        if (current_semester_num < semester_list.length-1) {
             changeSemNum(v => v + 1);
             console.log(current_semester_num);
             updateFocus(<Semester_SS course_set={semester_list[current_semester_num + 1].course_set}

@@ -1,73 +1,45 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
-import { Semester_MS } from "./OneSemester";
+import { Semester_MS, SemesterIntf, CourseIntf } from "./OneSemester";
 import { semester_list } from "./Globals";
 
 function MultiSemester(): JSX.Element {
+
+    //Function to removes all the Semesters from the plan
+    const remove_all_semesters = (): void => {
+        semester_list.splice(0, semester_list.length);
+        const empty_sem: SemesterIntf = {course_set:[], semester_number: 1};
+        semester_list.push(empty_sem);
+        addTotal(0);
+    };
+
+    //Variable to manage the credit total per semester
+    const [creditTotal, addTotal] = useState(0);
+
+    //Updates the Sum total at start and if the semester number or courses in the semester change
+    useEffect(() => {
+        addTotal(0);
+        semester_list.forEach((semester: SemesterIntf) => {
+            semester.course_set.forEach((course: CourseIntf) => {
+                addTotal(v => v + course.crsCredits);
+            }); 
+        });
+    }, [semester_list]);
 
     return (
 
         <div className="container-fluid padding">
 
             <div className="row padding">
-                <div className="Year">
-                    <h4>First Year</h4>
-                </div>
-                <Semester_MS course_set={semester_list[0].course_set}
-                    semester_number={semester_list[0].semester_number}
-                />
-
-                <Semester_MS course_set={semester_list[1].course_set}
-                    semester_number={semester_list[1].semester_number}
-                />
-            </div>
-
-            <div className="row padding">
-                <div className="Year">
-                    <h4>Second Year</h4>
-                </div>
-
-                <Semester_MS course_set={semester_list[2].course_set}
-                    semester_number={semester_list[2].semester_number}
-                />
-
-                <Semester_MS course_set={semester_list[3].course_set}
-                    semester_number={semester_list[3].semester_number}
-                />
-            </div>
-
-            <div className="row padding">
-                <div className="Year">
-                    <h4>Third Year</h4>
-                </div>
-
-                <Semester_MS course_set={semester_list[4].course_set}
-                    semester_number={semester_list[4].semester_number}
-                />
-
-                <Semester_MS course_set={semester_list[5].course_set}
-                    semester_number={semester_list[5].semester_number}
-                />
-            </div>
-
-            <div className="row padding">
-
-                <div className="Year">
-                    <h4>Fourth Year</h4>
-                </div>
-
-                <Semester_MS course_set={semester_list[6].course_set}
-                    semester_number={semester_list[6].semester_number}
-                />
-
-                <Semester_MS course_set={semester_list[7].course_set}
-                    semester_number={semester_list[7].semester_number}
-                />
+                {semester_list.map((semester: SemesterIntf, index: number) => {
+                    return <Semester_MS key={index} course_set={semester.course_set} semester_number={semester.semester_number}/>;
+                })}
             </div>
 
             <div className="col text-center">
+                <p><h3>Total Credits: </h3><b>{creditTotal}</b></p>
                 <button type="button" className="btn btn-primary btn-lg m-3">Add Semester</button>
-                <button type="button" className="btn btn-danger btn-lg m-3" >Remove All</button>
+                <button type="button" className="btn btn-danger btn-lg m-3" onClick={() => remove_all_semesters()}>Clear Plan</button>
                 <form>
                     <button type="submit" className="btn btn-secondary btn-lg m-3">Reset</button>
                 </form>
