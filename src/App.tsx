@@ -14,8 +14,8 @@ function App(): JSX.Element {
             <header className="App-header">
                 <h1 >UD CIS Scheduler</h1>
                 <div className="col text-center">
-                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Edit Semester</button>
-                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<MultiSemester />)}>My plan</button>
+                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<MultiSemester />)}>My Plan</button>
+                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Edit Semesters</button>
                 </div>
             </header>
 
