@@ -1,16 +1,11 @@
 .App {
   text-align: auto;
+  margin-bottom: 1cm;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -25,11 +20,6 @@
 
 .btn-lg{
   width: 20%;
-}
-.custom{
-  position: absolute;
-  left: auto;
-  top: 15%;
 }
 .logo{
   height: 10%;
@@ -74,6 +64,14 @@
   text-align: center; 
 }
 
+table, th, td, thead, tr {
+  border: 1px solid black;
+}
+
+table{
+  word-break: break-all;
+  vertical-align: middle;
+}
 .Year{
   padding: 0.2%;
   text-align: center;
@@ -82,19 +80,10 @@
 }
 .Semester{
   text-align: left;
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

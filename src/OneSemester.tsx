@@ -24,7 +24,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
 
-        <table>
+        <table className="table">
             <thead>
                 <tr>
                     <th className="text-center">Course</th>
@@ -46,20 +46,15 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 </tr>
             </tfoot>
         </table>
-
-        
     </div>
-
     ;
 };
 
 export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
 
-
     const [focused_semester, updateFocus] = useState(<Semester_SS course_set={semester_list[0].course_set}
         semester_number={semester_list[0].semester_number}
     />);
-
 
     const [sum, addSum] = useState(0);
     useEffect(() => {
@@ -79,18 +74,18 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         addSum(0);
     };
 
-    
+    //removes semester
 
     return <div className="col-md-6">
-        <h2 className="Semester">Semester {semester_number}
-            <button type="button" className="btn btn-outline-danger m-3">X</button>
-        </h2>
-        <table>
+        <table className="table">
+
             <thead>
+                <h2 className="Semester">Semester {semester_number}</h2>
                 <tr>
                     <th className="text-center">Courses</th>
-                    <th className="text-center">Credits</th>
+                    <th className="text-center">Credit</th>
                     <th className="Actions">Actions</th>
+                    <th><button type="button" className="btn btn-outline-danger m-1">X</button></th>
                 </tr>
             </thead>
             <tbody>
@@ -98,14 +93,21 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
                 })}
             </tbody >
-            <tfoot>
-                <tr>
-                    <td><b>Total Credits</b></td>
-                    <td><b>{sum}</b></td>
-                </tr>
-                <td className="deletecourse"><button type="button" className="btn btn-danger m-1" onClick={() => remove_allclass(semester_list[semester_number-1].semester_number as number)}>Remove all courses</button></td>
-            </tfoot>
         </table >
+
+        <div>
+            <b>Total Credits:  </b>
+            <b>{sum}</b>
+
+        </div>
+
+        <div className="text-center">
+            <button type="button" className="btn btn-danger m-1" onClick={() => remove_allclass(semester_list[semester_number-1].semester_number as number)}>Remove all courses</button>
+
+        </div>
+
+
+
         <div className="col-md-9">
             <h5 className="addcourse"><b>Add Course</b></h5>
             <form>
