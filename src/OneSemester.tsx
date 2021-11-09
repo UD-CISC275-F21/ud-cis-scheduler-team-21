@@ -46,7 +46,6 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     //Return Statement for Multi Semester version of the Semester
     return <div className="col-md-6">
         <h2 className="Semester">Semester {semester_number}</h2>
-
         <table className="table">
             <thead>
                 <tr>
@@ -54,13 +53,10 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                     <th className="text-center">Credits</th>
                 </tr>
             </thead>
-
             <tbody>
-
                 {course_set.map((course: CourseIntf, index: number) => {
                     return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
                 })}
-
             </tbody>
             <tfoot>
                 <tr>
@@ -92,6 +88,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     //Function to removes all the courses from Semester
     const remove_allclass = (sem_num: number): void => {
+<<<<<<< HEAD
         semester_list[sem_num - 1].course_set.splice(0, semester_list[sem_num - 1].course_set.length);
         addSum(0);
     };
@@ -117,6 +114,16 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         </tr>
     ;
 
+=======
+        semester_list[sem_num-1].course_set.splice(0,semester_list[sem_num-1].course_set.length);
+        addSum(0); 
+        updateFocus(<Semester_SS course_set={semester_list[sem_num-1].course_set}
+            semester_number={semester_list[sem_num-1].semester_number}
+        />);   
+
+    };
+
+>>>>>>> 7d48076 (user can remove semester, user can remove all semesters)
 
     //Return Statement for Single Semester version of the Semester
     return <div className="col-md-6">
@@ -138,8 +145,13 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         </table >
 
         <div>
+<<<<<<< HEAD
             <b>Total Credits:  </b>
             <b>{creditSum}</b>
+=======
+            <b>Total Credits: </b>
+            <b>{sum}</b>
+>>>>>>> 7d48076 (user can remove semester, user can remove all semesters)
 
         </div>
 
@@ -148,6 +160,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
         </div>
 
+<<<<<<< HEAD
 
 
         <div className="col-md-9">
@@ -170,6 +183,8 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             </form>
         </div>
 
+=======
+>>>>>>> 7d48076 (user can remove semester, user can remove all semesters)
     </div >
     ;
 };
