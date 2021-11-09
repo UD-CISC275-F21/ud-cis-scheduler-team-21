@@ -71,7 +71,6 @@ function SingleSemester(): JSX.Element {
                     <button type="button" className="btn btn-danger m-3" onClick={() => remove_semester()}>Remove</button>
                     <button type="button" className="btn btn-danger m-3" onClick={() => remove_Allsemester()}>Remove All</button>
 
-
                 </div>
             </div>
 
