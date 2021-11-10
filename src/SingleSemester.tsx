@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Semester_SS } from "./OneSemester";
+import { Semester_SS, SemesterIntf } from "./OneSemester";
 import { semester_list } from "./Globals";
 
 function SingleSemester(): JSX.Element {
@@ -37,13 +37,15 @@ function SingleSemester(): JSX.Element {
     //Removes the semester
     const remove_semester = () => {
         semester_list.splice(current_semester_num,1);
+        semester_list.forEach((semester: SemesterIntf, index: number)=>{
+            semester.semester_number = index+1;
+        });
+        
         if (current_semester_num < semester_list.length-1) {
             console.log(current_semester_num);
             updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
                 semester_number={semester_list[current_semester_num].semester_number}
-
             />);
-
         }
 
     };
