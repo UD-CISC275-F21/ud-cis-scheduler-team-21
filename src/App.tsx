@@ -28,6 +28,8 @@ function App(): JSX.Element {
 
             {view_mode}
 
+
+
         </div>
 
     );

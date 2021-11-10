@@ -45,7 +45,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     //Return Statement for Multi Semester version of the Semester
     return <div className="col-md-6">
-        <h2 className="Semester">Semester {semester_number}</h2>
+        <h2 className="Semester"><b>Semester {semester_number}</b></h2>
 
         <table className="table">
             <thead>
@@ -120,11 +120,11 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
 
     //Return Statement for Single Semester version of the Semester
-    return <div className="col-md-6">
+    return <div className="">
         <table className="table">
 
             <thead>
-                <h2 className="Semester">Semester {semester_number}</h2>
+                <h2 className="Semester"><b>Semester {semester_number}</b></h2>
                 <tr>
                     <th className="text-center">Courses</th>
                     <th className="text-center">Credit</th>
