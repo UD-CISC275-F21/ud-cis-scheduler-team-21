@@ -110,9 +110,11 @@ function SingleSemester(): JSX.Element {
                         }).map(post =>{
                             return(
                                 <div key={post.id}>
-                                    <h4>{post.id}</h4>
-                                    <p>{post.name}</p>
+                                    <h4 className="text-center">{post.id}</h4>
+                                    <p className="text-center">{post.name}</p>
                                     <p className="text-center">{post.credits}</p>
+                                    <p className="text-left">{post.description}</p>
+                                    
                                 </div>
                             );
                         })

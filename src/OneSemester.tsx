@@ -122,7 +122,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     //Return Statement for Single Semester version of the Semester
     return <div className="">
         <table className="table">
-
             <thead>
                 <h2 className="Semester"><b>Semester {semester_number}</b></h2>
                 <tr>
@@ -137,7 +136,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 })}
             </tbody >
         </table >
-
         <div>
             <b>Total Credits:  </b>
             <b>{creditSum}</b>
