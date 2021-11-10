@@ -60,6 +60,9 @@ function SingleSemester(): JSX.Element {
         }
     };
 
+    const[searchTerm, setSearchTerm] = useState<string>("");
+
+
 
 
     return (
@@ -83,7 +86,13 @@ function SingleSemester(): JSX.Element {
                     <h2 className="text-center"><b>Add course</b></h2> 
                     <h5 className="text-center">Add course to the Semester {current_semester_num + 1}</h5>
                     <div className="text-center">
-                        <input className="text-center" placeholder="Enter Course Code"></input>
+                        <input className="text-center" placeholder="Enter Course Code"
+                            onChange={(event)=>{
+                                setSearchTerm(typeof event.target.value==="string"
+                                    ? event.target.value: "");
+                            }}>
+
+                        </input>
 
                     </div>
                     <div className="text-center">
@@ -92,7 +101,13 @@ function SingleSemester(): JSX.Element {
 
                     </div>
                     {
-                        Data.map(post =>{
+                        Data.filter((post)=>{
+                            if(searchTerm==""){
+                                return post;
+                            }else if (post.id.toLowerCase().includes(searchTerm.toLowerCase()))
+                                return post;
+
+                        }).map(post =>{
                             return(
                                 <div key={post.id}>
                                     <h4>{post.id}</h4>
