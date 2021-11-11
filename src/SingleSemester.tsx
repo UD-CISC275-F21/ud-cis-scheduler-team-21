@@ -54,7 +54,7 @@ function SingleSemester(): JSX.Element {
         }
 
     };
-
+    /*
     //Removes all the semester
     const remove_Allsemester = () => {
         semester_list.splice(0,semester_list.length);
@@ -65,6 +65,12 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
+    */
+
+    function holdCourse(entered_id:string):void{
+        console.log(entered_id);
+        alert("Course has been added to the pool");
+    }
 
 
     function getAllCourses():string[]{
@@ -95,34 +101,48 @@ function SingleSemester(): JSX.Element {
     return (
 
         <div className="container-fluid padding text-left">
-            <div className="row padding">
-                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-                    <button type="button" className="btn btn-primary m-3" onClick={() => prev_click()}>Previous</button>
-                    <button type="button" className="btn btn-primary m-3" onClick={() => next_click()}>Next</button>
-                    <button type="button" className="btn btn-danger m-3" onClick={() => remove_semester()}>Remove</button>
-                    <button type="button" className="btn btn-danger m-3" onClick={() => remove_Allsemester()}>Remove All</button>
+            <div className="row">
+                <div className="col-7">
+                    <div className="text-center">
+                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => prev_click()}>Previous</button>
+                        <button type="button" className="col-2 btn btn-danger m-1" onClick={() => remove_semester()}>Remove</button>
+                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => next_click()}>Next</button>
+                    </div>
 
+                    {focused_semester}
+                </div>
+
+                <div className="col-3">
+                    <h2 className="text-center text-success"><b>Add course</b></h2> 
+                    <Form id="searchBar" onSubmit={(event) => {
+                        addCourse(inpu);
+                        event.preventDefault();
+                    }}>
+                        <Form.Group className="text-center mb-3">
+                            <Form.Label>Enter the desired course code:</Form.Label>
+                            <Autocomplete onChange={(event, value) => {
+                                setInpu(value as string); event.preventDefault();
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
+                        </Form.Group>
+                        <Button onClick={() => {
+                            addCourse(inpu);
+                        }}>
+                            Add Course
+                        </Button>
+                        
+                        <Button onClick={() => {
+                            holdCourse(inpu);
+                        }}>
+                            Hold Course
+                        </Button>
+                        
+                    </Form>
+                </div>
+
+                <div className="col-2">
+                    <h3 className="text-center text-warning"><b>Requirements</b></h3>
                 </div>
             </div>
-
-            {focused_semester}
-
-            <Form id="searchBar" onSubmit={(event) => {
-                addCourse(inpu);
-                event.preventDefault();
-            }}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Enter the desired course code:</Form.Label>
-                    <Autocomplete onChange={(event, value) => {
-                        setInpu(value as string); event.preventDefault();
-                    }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
-                </Form.Group>
-                <       Button onClick={() => {
-                    addCourse(inpu);
-                }}>
-                    Add Course
-                </Button>
-            </Form>
 
         </div>
 

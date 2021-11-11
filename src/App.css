@@ -72,6 +72,12 @@ table{
   word-break: break-all;
   vertical-align: middle;
 }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .Year{
   padding: 0.2%;
   text-align: center;
