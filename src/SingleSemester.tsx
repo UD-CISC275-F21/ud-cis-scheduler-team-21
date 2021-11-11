@@ -123,9 +123,8 @@ function SingleSemester(): JSX.Element {
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
-                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
-                                <TextField {...params} type="text" variant="outlined" label="Enter Course Code" 
-                                    placeholder="CISC" size="medium" />} />
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} 
+                            renderInput={(params) => <TextField {...params} label="Course Code" />} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
