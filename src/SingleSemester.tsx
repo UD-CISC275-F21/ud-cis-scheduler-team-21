@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
 import "./App.css";
-import { Semester_SS, SemesterIntf } from "./OneSemester";
+import { Semester_SS, SemesterIntf, CourseIntf } from "./OneSemester";
 import { semester_list } from "./Globals";
 import data from "./assets/data.json";
 
@@ -77,7 +77,18 @@ function SingleSemester(): JSX.Element {
     }
 
     function addCourse(entered_id:string):void{
-        console.log(entered_id);
+        //console.log(entered_id);
+        //const new_crs: CourseIntf = { crsName: [], crsDescription: semester_list[semester_list.length-1].semester_number + 1, crsCredits: };
+        let new_crs: CourseIntf = { crsName: "", crsDescription: "", crsCredits: 0 }; 
+        data.map((courseList) => {
+            if(courseList.id == entered_id){
+                new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits)};
+            }
+        });
+        semester_list[current_semester_num].course_set.push(new_crs);
+        updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
+            semester_number={semester_list[current_semester_num].semester_number}
+        />);
     }
 
 
