@@ -7,7 +7,7 @@ import logo from "./logo.png";
 
 function App(): JSX.Element {
 
-    const [view_mode, updateView] = useState(<SingleSemester />);
+    const [view_mode, updateView] = useState(<MultiSemester />);
 
     return (
         <div className="App">
