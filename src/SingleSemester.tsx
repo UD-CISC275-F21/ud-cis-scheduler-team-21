@@ -95,8 +95,8 @@ function SingleSemester(): JSX.Element {
     return (
 
         <div className="container-fluid padding text-left">
-            <div className="row padding">
-                <div className="col-6">
+            <div className="row">
+                <div className="col-7">
                     <div className="text-center">
                         <button type="button" className="col-2 btn btn-primary m-1" 
                             onClick={() => prev_click()}>Previous</button>
@@ -117,7 +117,7 @@ function SingleSemester(): JSX.Element {
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
-                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size = {undefined} variant = 'outlined' label="Enter Course Code"/>} />
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size = {undefined} variant = 'outlined' label="Enter Course Code" placeholder="CISC"/>} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
