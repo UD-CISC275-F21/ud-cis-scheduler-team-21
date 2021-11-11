@@ -114,13 +114,13 @@ function SingleSemester(): JSX.Element {
                     </div>
                     {focused_semester}
                 </div>
-                <div className="col-3">
-                    <h2 className="text-center text-success mt-5"><b>Add course</b></h2>
+                <div className="col-3 text-center">
+                    <h2 className="text-success mt-5"><b>Add Course</b></h2>
                     <Form id="searchBar" onSubmit={(event) => {
                         addCourse(inpu);
                         event.preventDefault();
                     }}>
-                        <Form.Group className="text-center mb-3">
+                        <Form.Group className="mb-3">
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
@@ -128,7 +128,7 @@ function SingleSemester(): JSX.Element {
                                 <TextField {...params} variant="outlined" color="success" size="small" label="Enter Course Code"
                                     placeholder="CISC" />} />
                         </Form.Group>
-                        <Button className="text-center" onClick={() => {
+                        <Button onClick={() => {
                             addCourse(inpu);
                         }}>
                             Add Course
