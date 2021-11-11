@@ -104,9 +104,12 @@ function SingleSemester(): JSX.Element {
             <div className="row">
                 <div className="col-7">
                     <div className="text-center">
-                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => prev_click()}>Previous</button>
-                        <button type="button" className="col-2 btn btn-danger m-1" onClick={() => remove_semester()}>Remove</button>
-                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => next_click()}>Next</button>
+                        <button type="button" className="col-2 btn btn-primary m-1" 
+                            onClick={() => prev_click()}>Previous</button>
+                        <button type="button" className="col-2 btn btn-danger m-1" 
+                            onClick={() => remove_semester()}>Remove</button>
+                        <button type="button" className="col-2 btn btn-primary m-1" 
+                            onClick={() => next_click()}>Next</button>
                     </div>
 
                     {focused_semester}
@@ -122,7 +125,8 @@ function SingleSemester(): JSX.Element {
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
-                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
+                                <TextField {...params} label="Course Code" />} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
