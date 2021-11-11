@@ -126,14 +126,20 @@ function SingleSemester(): JSX.Element {
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
                             }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
-                                <TextField {...params} id="outlined-basic" variant="outlined" label="Course Code" />} />
+                                <TextField {...params} id="outlined-basic" variant="outlined" label="limitTags" placeholder="Favorites" />} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
                         }}>
                             Add Course
                         </Button>
-                                                
+                        
+                        <Button onClick={() => {
+                            holdCourse(inpu);
+                        }}>
+                            Hold Course
+                        </Button>
+                        
                     </Form>
                 </div>
 
