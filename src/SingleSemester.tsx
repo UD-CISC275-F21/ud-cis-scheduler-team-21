@@ -125,7 +125,7 @@ function SingleSemester(): JSX.Element {
                                 setInpu(value as string); event.preventDefault();
                             }} disablePortal id="combo-box-demo" options={getAllCourses()} 
                             renderInput={(params) => <TextField {...params} 
-                                color="success" label="Enter Course Code" />} />
+                                label="Enter Course Code" />} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
