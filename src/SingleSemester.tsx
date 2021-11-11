@@ -125,9 +125,9 @@ function SingleSemester(): JSX.Element {
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                                setInpu(value as string)!; event.preventDefault();
+                                setInpu(value as string); event.preventDefault();
                             }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
-                                <TextField {...params} id="outlined-basic" variant="outlined" label="Enter Course Code" placeholder="CISC" size="small" />} />
+                                <TextField {...params as unknown as string} id="outlined-basic" variant="outlined" label="Enter Course Code" placeholder="CISC" size="small" />} />
                         </Form.Group>
                         <Button onClick={() => {
                             addCourse(inpu);
