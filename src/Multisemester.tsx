@@ -20,10 +20,6 @@ function MultiSemester(): JSX.Element {
         addCount(semester_list.length);
     };
 
-    const reset=():void => {
-        alert("You have unsaved changes, are you sure you want to reset?");
-    };
-
     //Variable to manage the credit total per semester
     const [creditTotal, addTotal] = useState(0);
     const [SemesterCount, addCount] = useState(semester_list.length);
@@ -55,7 +51,7 @@ function MultiSemester(): JSX.Element {
                 <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => add_empty_semester()}>Add Semester</button>
                 <button type="button" className="btn btn-danger btn-lg m-3" onClick={() => remove_all_semesters()}>Clear Plan</button>
                 <form>
-                    <button type="submit" className="btn btn-secondary btn-lg m-3" onClick={()=> reset()}>Reset</button>
+                    <button type="submit" className="btn btn-secondary btn-lg m-3">Reset</button>
                 </form>
             </div>
         </div>
