@@ -116,7 +116,6 @@ function SingleSemester(): JSX.Element {
                 </div>
 
                 <div className="col-3">
-                    <h2 className="text-center text-success"><b>Add course</b></h2> 
                     <Form id="searchBar" onSubmit={(event) => {
                         addCourse(inpu);
                         event.preventDefault();
