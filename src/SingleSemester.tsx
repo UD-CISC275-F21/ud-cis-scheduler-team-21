@@ -111,12 +111,10 @@ function SingleSemester(): JSX.Element {
                         <button type="button" className="col-2 btn btn-primary m-1" 
                             onClick={() => next_click()}>Next</button>
                     </div>
-
                     {focused_semester}
                 </div>
-
                 <div className="col-3">
-                    <h2 className="text-center text-success"><b>Add course</b></h2>
+                    <h2 className="text-center text-success mt-5"><b>Add course</b></h2>
                     <Form id="searchBar" onSubmit={(event) => {
                         addCourse(inpu);
                         event.preventDefault();
@@ -126,7 +124,7 @@ function SingleSemester(): JSX.Element {
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
                             }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
-                                <TextField {...params} id="outlined-basic" variant="outlined" label="Enter Course Code" 
+                                <TextField {...params} variant="outlined" label="Enter Course Code" 
                                     placeholder="CISC" size="small" />} />
                         </Form.Group>
                         <Button onClick={() => {
@@ -146,7 +144,7 @@ function SingleSemester(): JSX.Element {
                 </div>
 
                 <div className="col-2">
-                    <h3 className="text-center text-warning"><b>Requirements</b></h3>
+                    <h3 className="text-center text-warning mt-5"><b>Requirements</b></h3>
                 </div>
             </div>
 
