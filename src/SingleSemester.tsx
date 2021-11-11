@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { Autocomplete, TextField } from "@mui/material";
 import "./App.css";
 import { Semester_SS, SemesterIntf } from "./OneSemester";
 import { semester_list } from "./Globals";
+import data from "./assets/data.json";
 
 function SingleSemester(): JSX.Element {
 
@@ -10,6 +13,8 @@ function SingleSemester(): JSX.Element {
     />);
 
     const [current_semester_num, changeSemNum] = useState(0);
+
+    const [inpu, setInpu] = useState<string>("");
 
     //shows next semester on click
     const next_click = () => {
@@ -62,6 +67,19 @@ function SingleSemester(): JSX.Element {
     };
 
 
+    function getAllCourses():string[]{
+        const id_list:string[]=[];
+        data.map((courseList) => {
+            id_list.push(courseList.id);
+        });
+        //console.log(id_list);
+        return id_list;
+    }
+
+    function addCourse(entered_id:string):void{
+        console.log(entered_id);
+    }
+
 
     return (
 
@@ -78,9 +96,24 @@ function SingleSemester(): JSX.Element {
 
             {focused_semester}
 
+            <Form id="searchBar" onSubmit={(event) => {
+                addCourse(inpu);
+                event.preventDefault();
+            }}>
+                <Form.Group className="mb-3">
+                    <Form.Label>Enter the desired course code:</Form.Label>
+                    <Autocomplete onChange={(event, value) => {
+                        setInpu(value as string); event.preventDefault();
+                    }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
+                </Form.Group>
+                <       Button onClick={() => {
+                    addCourse(inpu);
+                }}>
+                    Add Course
+                </Button>
+            </Form>
 
         </div>
-
 
     );
 }
