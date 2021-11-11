@@ -45,7 +45,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
 
     //Return Statement for Multi Semester version of the Semester
     return <div className="col-md-6">
-        <h2 className="Semester">Semester {semester_number}</h2>
+        <h2 className="Semester"><b>Semester {semester_number}</b></h2>
 
         <table className="table">
             <thead>
@@ -89,7 +89,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         
     }, [semester_number, course_set]);
 
-
+    
     //Function to removes all the courses from Semester
     const remove_allclass = (sem_num: number): void => {
         semester_list[sem_num - 1].course_set.splice(0, semester_list[sem_num - 1].course_set.length);
@@ -107,6 +107,7 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
     };
 
 
+
     //Function Defining the display characteristics of a Course in the Single Semester View
     const Course_SS: FunctionComponent<CourseIntf> = ({ crsName, crsDescription, crsCredits, semester_number }) =>
         <tr>
@@ -114,17 +115,17 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             <td className="text-center">{crsCredits}</td>
             <td className="editcourse">
                 <button type="button" className="btn btn-outline-secondary m-1">Edit</button>
-                <button type="button" className="btn btn-outline-danger m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button></td>
+                <button type="button" className="btn btn-outline-danger m-1" onClick={() => remove_class(semester_number as number,crsName)}>X</button>
+            </td>
         </tr>
     ;
 
 
     //Return Statement for Single Semester version of the Semester
-    return <div className="col-md-12">
+    return <div className="">
         <table className="table">
-
             <thead>
-                <h2 className="Semester">Semester {semester_number}</h2>
+                <h2 className="Semester"><b>Semester {semester_number}</b></h2>
                 <tr>
                     <th className="text-center">Courses</th>
                     <th className="text-center">Credit</th>
@@ -137,7 +138,6 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
                 })}
             </tbody >
         </table >
-
         <div>
             <b>Total Credits:  </b>
             <b>{creditSum}</b>

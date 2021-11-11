@@ -54,7 +54,7 @@ function SingleSemester(): JSX.Element {
         }
 
     };
-
+    /*
     //Removes all the semester
     const remove_Allsemester = () => {
         semester_list.splice(0,semester_list.length);
@@ -65,7 +65,7 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
-
+    */
 
     function getAllCourses():string[]{
         const id_list:string[]=[];
@@ -107,7 +107,7 @@ function SingleSemester(): JSX.Element {
                     </div>
                     {focused_semester}
                 </div>
-                <div className="col-6 text-center">
+                <div className="col-3 text-center">
                     <h2 className="text-success mt-5"><b>Add Course</b></h2>
                     <Form id="searchBar" onSubmit={(event) => {
                         addCourse(inpu);
