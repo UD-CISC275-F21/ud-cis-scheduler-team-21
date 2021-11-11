@@ -72,19 +72,11 @@ table{
   word-break: break-all;
   vertical-align: middle;
 }
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px;
-  margin-left: 5%;
-}
+
 .row:after {
   content: "";
   display: table;
   clear: both;
-}
-.kutta{
-  background-color: black;
 }
 .Year{
   padding: 0.2%;

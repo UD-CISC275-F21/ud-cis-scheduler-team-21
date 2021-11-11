@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { Autocomplete, TextField } from "@mui/material";
 import "./App.css";
-import { Semester_SS, SemesterIntf } from "./OneSemester";
+import { Semester_SS, SemesterIntf, CourseIntf } from "./OneSemester";
 import { semester_list } from "./Globals";
-import Data from "./assets/data.json";
+import data from "./assets/data.json";
 
 function SingleSemester(): JSX.Element {
 
@@ -11,6 +13,8 @@ function SingleSemester(): JSX.Element {
     />);
 
     const [current_semester_num, changeSemNum] = useState(0);
+
+    const [inpu, setInpu] = useState<string>("");
 
     //shows next semester on click
     const next_click = () => {
@@ -38,7 +42,6 @@ function SingleSemester(): JSX.Element {
     //Removes the semester
     const remove_semester = () => {
         semester_list.splice(current_semester_num,1);
-        if (current_semester_num < semester_list.length) {
         semester_list.forEach((semester: SemesterIntf, index: number)=>{
             semester.semester_number = index+1;
         });
@@ -51,7 +54,7 @@ function SingleSemester(): JSX.Element {
         }
 
     };
-
+    /*
     //Removes all the semester
     const remove_Allsemester = () => {
         semester_list.splice(0,semester_list.length);
@@ -62,77 +65,83 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
+    */
 
-    const[searchTerm, setSearchTerm] = useState<string>("");
+    function getAllCourses():string[]{
+        const id_list:string[]=[];
+        data.map((courseList) => {
+            id_list.push(courseList.id);
+        });
+        //console.log(id_list);
+        return id_list;
+    }
+
+    function holdCourse(entered_id:string):void{
+        console.log(entered_id);
+        alert("Course has been added to the pool");
+    }
+
+    function addCourse(entered_id:string):void{
+        let new_crs: CourseIntf = { crsName: "", crsDescription: "", crsCredits: 0 }; 
+        data.map((courseList) => {
+            if(courseList.id == entered_id){
+                new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits)};
+            }
+        });
+        semester_list[current_semester_num].course_set.push(new_crs);
+        updateFocus(<Semester_SS course_set={semester_list[current_semester_num].course_set}
+            semester_number={semester_list[current_semester_num].semester_number}
+        />);
+    }
+
 
     return (
 
         <div className="container-fluid padding text-left">
-            <div className="row padding">
-                <div className="col-sm-2 col-md-3 col-lg-4 text-center">
-                    <button type="button" className="btn btn-primary m-3" onClick={() => prev_click()}>Previous Semester</button>
-                    <button type="button" className="btn btn-primary m-3" onClick={() => next_click()}>Next Semester</button>
-                    <button type="button" className="btn btn-danger m-3" onClick={() => remove_semester()}>Remove Semester</button>
-                    <button type="button" className="btn btn-danger m-3" onClick={() => remove_Allsemester()}>Remove All Semesters</button>
-
-                </div>
-            </div>
             <div className="row">
-                <div className="col-6">
+                <div className="col-7">
+                    <div className="text-center">
+                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => prev_click()}>Previous</button>
+                        <button type="button" className="col-2 btn btn-danger m-1" onClick={() => remove_semester()}>Remove</button>
+                        <button type="button" className="col-2 btn btn-primary m-1" onClick={() => next_click()}>Next</button>
+                    </div>
+
                     {focused_semester}
                 </div>
 
                 <div className="col-3">
-                    <h2 className="text-center"><b>Add course</b></h2> 
-                    <h5 className="text-center">Add course to the Semester {current_semester_num + 1}</h5>
-                    <div className="text-center">
-                        <input className="text-center" placeholder="Enter Course Code"
-                            onChange={(event)=>{
-                                setSearchTerm(typeof event.target.value==="string"
-                                    ? event.target.value: "");
-                            }}>
-
-                        </input>
-
-                    </div>
-                    <div className="text-center">
-                        <button type="button" className="btn btn-secondary m-3">Hold</button>
-                        <button type="button" className="btn btn-success m-3">Add</button>
-
-                    </div>
-                    {
-                        Data.filter((post)=>{
-                            if(searchTerm==""){
-                                return post;
-                            }else if (post.id.toLowerCase().includes(searchTerm.toLowerCase()))
-                                return post;
-
-                        }).map(post =>{
-                            return(
-                                <div key={post.id}>
-                                    <h4 className="text-center">{post.id}</h4>
-                                    <p className="text-center">{post.name}</p>
-                                    <p className="text-center">{post.credits}</p>
-                                    <p className="text-left">{post.description}</p>
-                                    
-                                </div>
-                            );
-                        })
-                    }
-
+                    <h2 className="text-center text-success"><b>Add course</b></h2> 
+                    <Form id="searchBar" onSubmit={(event) => {
+                        addCourse(inpu);
+                        event.preventDefault();
+                    }}>
+                        <Form.Group className="text-center mb-3">
+                            <Form.Label>Enter the desired course code:</Form.Label>
+                            <Autocomplete onChange={(event, value) => {
+                                setInpu(value as string); event.preventDefault();
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
+                        </Form.Group>
+                        <Button onClick={() => {
+                            addCourse(inpu);
+                        }}>
+                            Add Course
+                        </Button>
+                        
+                        <Button onClick={() => {
+                            holdCourse(inpu);
+                        }}>
+                            Hold Course
+                        </Button>
+                        
+                    </Form>
                 </div>
 
-                <div className="col-3">
-                    <h2 className="text-center"><b>Requirements</b></h2>
+                <div className="col-2">
+                    <h3 className="text-center text-warning"><b>Requirements</b></h3>
                 </div>
             </div>
-            
-          
-
-
 
         </div>
-
 
     );
 }

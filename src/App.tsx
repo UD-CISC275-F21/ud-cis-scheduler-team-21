@@ -14,16 +14,12 @@ function App(): JSX.Element {
             <header className="App-header">
                 <h1 >UD CIS Scheduler</h1>
                 <div className="col text-center">
-                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<MultiSemester />)}>My Plan</button>
-                    <button type="button" className="btn btn-primary m-3" onClick={() => updateView(<SingleSemester />)}>Edit Semesters</button>
+                    <button type="button" className="btn btn-secondary m-3" onClick={() => updateView(<MultiSemester />)}>My Plan</button>
+                    <button type="button" className="btn btn-secondary m-3" onClick={() => updateView(<SingleSemester />)}>Edit Semesters</button>
                 </div>
             </header>
 
             <div className="text-left"><img className="logo" src={logo} alt="Logo" /></div>
-
-            <div className="text-right">
-                <button type="button" className="btn btn-primary m-3 ">Export PDF</button>
-            </div>
             <hr></hr>
 
             {view_mode}
