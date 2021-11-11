@@ -133,13 +133,7 @@ function SingleSemester(): JSX.Element {
                         }}>
                             Add Course
                         </Button>
-                        
-                        <Button onClick={() => {
-                            holdCourse(inpu);
-                        }}>
-                            Hold Course
-                        </Button>
-                        
+                                                
                     </Form>
                 </div>
 
