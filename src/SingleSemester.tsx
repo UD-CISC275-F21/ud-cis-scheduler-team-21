@@ -65,12 +65,13 @@ function SingleSemester(): JSX.Element {
             />);
         }
     };
-    */
+    
 
     function holdCourse(entered_id:string):void{
         console.log(entered_id);
         alert("Course has been added to the pool");
     }
+    */
 
 
     function getAllCourses():string[]{
@@ -123,22 +124,15 @@ function SingleSemester(): JSX.Element {
                             <Form.Label>Enter the desired course code:</Form.Label>
                             <Autocomplete onChange={(event, value) => {
                                 setInpu(value as string); event.preventDefault();
-                            }} disablePortal id="combo-box-demo" options={getAllCourses()} 
-                            renderInput={(params) => <TextField {...params} variant="outlined" size="small" 
-                                color="success" label="Enter Course Code" fullWidth/>} />
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
+                                <TextField {...params} variant="outlined" color="success" size="small" label="Enter Course Code" />} />
                         </Form.Group>
-                        <Button onClick={() => {
+                        <Button className="text-center" onClick={() => {
                             addCourse(inpu);
                         }}>
                             Add Course
                         </Button>
-                        
-                        <Button onClick={() => {
-                            holdCourse(inpu);
-                        }}>
-                            Hold Course
-                        </Button>
-                        
+                                                
                     </Form>
  
                 </div>
