@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-//import { Button, Form } from "react-bootstrap";
-//import { Autocomplete, TextField } from "@mui/material";
+import { Button, Form } from "react-bootstrap";
+import { Autocomplete, TextField } from "@mui/material";
 import "./App.css";
-import { Semester_SS, SemesterIntf} from "./OneSemester";
+import { Semester_SS, SemesterIntf, CourseIntf} from "./OneSemester";
 import { semester_list } from "./Globals";
-//import data from "./assets/data.json";
+import data from "./assets/data.json";
 
 function SingleSemester(): JSX.Element {
 
@@ -14,7 +14,7 @@ function SingleSemester(): JSX.Element {
 
     const [current_semester_num, changeSemNum] = useState(0);
 
-    //const [inpu, setInpu] = useState<string>("");
+    const [inpu, setInpu] = useState<string>("");
 
     //shows next semester on click
     const next_click = () => {
@@ -67,7 +67,7 @@ function SingleSemester(): JSX.Element {
     };
     */
 
-    /*function holdCourse(entered_id:string):void{
+    function holdCourse(entered_id:string):void{
         console.log(entered_id);
         alert("Course has been added to the pool");
     }
@@ -96,7 +96,7 @@ function SingleSemester(): JSX.Element {
             semester_number={semester_list[current_semester_num].semester_number}
         />);
     }
-*/
+
 
     return (
 
@@ -116,7 +116,33 @@ function SingleSemester(): JSX.Element {
                 </div>
 
                 <div className="col-3">
-                    <h2 className="text-center text-success"><b>Add course</b></h2> 
+                    <h2 className="text-center text-success"><b>Add course</b></h2>
+                    <Form id="searchBar" onSubmit={(event) => {
+                        addCourse(inpu);
+                        event.preventDefault();
+                    }}>
+                        <Form.Group className="text-center mb-3">
+                            <Form.Label>Enter the desired course code:</Form.Label>
+                            <Autocomplete onChange={(event, value) => {
+                                setInpu(value as string); event.preventDefault();
+                            }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => 
+                                <TextField {...params} id="outlined-basic" variant="outlined" label="Enter Course Code" 
+                                    placeholder="CISC" size="small" />} />
+                        </Form.Group>
+                        <Button onClick={() => {
+                            addCourse(inpu);
+                        }}>
+                            Add Course
+                        </Button>
+                        
+                        <Button onClick={() => {
+                            holdCourse(inpu);
+                        }}>
+                            Hold Course
+                        </Button>
+                        
+                    </Form>
+ 
                 </div>
 
                 <div className="col-2">
