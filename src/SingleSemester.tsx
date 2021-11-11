@@ -55,7 +55,7 @@ function SingleSemester(): JSX.Element {
 
     };
     /*
-    //Removes all the semester
+    //Removes all the smester
     const remove_Allsemester = () => {
         semester_list.splice(0,semester_list.length);
         if (current_semester_num < semester_list.length-1) {
