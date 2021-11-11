@@ -72,8 +72,12 @@ function SingleSemester(): JSX.Element {
         data.map((courseList) => {
             id_list.push(courseList.id);
         });
-        console.log(id_list);
+        //console.log(id_list);
         return id_list;
+    }
+
+    function addCourse(entered_id:string):void{
+        console.log(entered_id);
     }
 
 
@@ -93,7 +97,7 @@ function SingleSemester(): JSX.Element {
             {focused_semester}
 
             <Form id="searchBar" onSubmit={(event) => {
-                //addCourse(inpu);
+                addCourse(inpu);
                 event.preventDefault();
             }}>
                 <Form.Group className="mb-3">
@@ -103,7 +107,7 @@ function SingleSemester(): JSX.Element {
                     }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} label="Course Code" />} />
                 </Form.Group>
                 <       Button onClick={() => {
-                    //addCourse(inpu);
+                    addCourse(inpu);
                 }}>
                     Add Course
                 </Button>
