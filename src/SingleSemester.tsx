@@ -96,7 +96,7 @@ function SingleSemester(): JSX.Element {
 
         <div className="container-fluid padding text-left">
             <div className="row">
-                <div className="col-7">
+                <div className="col-6">
                     <div className="text-center">
                         <button type="button" className="col-2 btn btn-primary m-1" 
                             onClick={() => prev_click()}>Previous</button>
@@ -129,7 +129,7 @@ function SingleSemester(): JSX.Element {
  
                 </div>
 
-                <div className="col-2">
+                <div className="col-3">
                     <h3 className="text-center text-warning mt-5"><b>Requirements</b></h3>
                 </div>
             </div>
