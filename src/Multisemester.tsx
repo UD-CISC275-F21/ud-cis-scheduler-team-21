@@ -1,57 +1,62 @@
 import React, {useState, useEffect} from "react";
 import "./App.css";
-import { Semester_MS, SemesterIntf, CourseIntf } from "./OneSemester";
-import { semester_list } from "./Globals";
+import { SemesterIntf, CourseIntf } from "./OneSemester";
+import { Semester_MS } from "./OneSemester";
 
-function MultiSemester(): JSX.Element {
+interface Multi_Semester_View {
+    userSemesters: SemesterIntf[];
+    updateSemesters: (s : SemesterIntf[])=>void;
+}
+
+export function MultiSemester({userSemesters, updateSemesters}:Multi_Semester_View): JSX.Element {
+
+    //Variable to manage the credit total per semester
+    const [creditTotal, addTotal] = useState(0);
+    const [SemesterCount, addCount] = useState(userSemesters.length);
 
     //Function to removes all the Semesters from the plan
-    const remove_all_semesters = (): void => {
-        semester_list.splice(0, semester_list.length);
+    function remove_all_semesters () {
         const empty_sem: SemesterIntf = {course_set:[], semester_number: 1};
-        semester_list.push(empty_sem);
+        updateSemesters([empty_sem]);
         addTotal(0);
-    };
+        console.log(SemesterCount);
+    }
 
     //Function to removes all the Semesters from the plan
     const add_empty_semester = (): void => {
-        const empty_sem: SemesterIntf = { course_set: [], semester_number: semester_list[semester_list.length-1].semester_number + 1};
-        semester_list.push(empty_sem);
-        addCount(semester_list.length);
+        console.log(userSemesters[userSemesters.length-1].semester_number+1);
+        const empty_sem: SemesterIntf = { course_set: [], semester_number: userSemesters[userSemesters.length-1].semester_number + 1};
+        updateSemesters([...userSemesters, empty_sem]);
+        addCount(userSemesters.length);
     };
 
     const reset =(): void =>{
         alert("You have unsaved changes, are you sure you want to reset?");
     };
 
-    //Variable to manage the credit total per semester
-    const [creditTotal, addTotal] = useState(0);
-    const [SemesterCount, addCount] = useState(semester_list.length);
-
     //Updates the Sum total at start and if the semester number or courses in the semester change
     useEffect(() => {
         addTotal(0);
-        addCount(semester_list.length);
-        semester_list.forEach((semester: SemesterIntf) => {
+        addCount(userSemesters.length);
+        userSemesters.forEach((semester: SemesterIntf) => {
             semester.course_set.forEach((course: CourseIntf) => {
-                addTotal(v => v + course.crsCredits);
-            }); 
+                addTotal(totalcredits => totalcredits + course.crsCredits);
+            });
         });
-    }, [semester_list]);
+    }, [userSemesters]);
 
     return (
 
         <div className="container-fluid padding">
 
             <div className="row padding">
-                {semester_list.map((semester: SemesterIntf, index: number) => {
-                    return <Semester_MS key={index} course_set={semester.course_set} semester_number={semester.semester_number}/>;
+                {userSemesters.map((semester: SemesterIntf, index: number) => {
+                    return <Semester_MS key={index} course_set={semester.course_set} semester_number={semester.semester_number} userSemesters={userSemesters} updateSemesters={updateSemesters}/>;
                 })}
             </div>
 
             <div className="col text-center">
                 <p><h3>Total Credits: </h3><b>{creditTotal}</b></p>
-                <p><h3>Total Semesters: </h3><b>{SemesterCount}</b></p>
                 <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => add_empty_semester()}>Add Semester</button>
                 <button type="button" className="btn btn-danger btn-lg m-3" onClick={() => remove_all_semesters()}>Clear Plan</button>
                 <form>
@@ -62,4 +67,4 @@ function MultiSemester(): JSX.Element {
     );
 }
 
-export default MultiSemester;
+//export default MultiSemester;

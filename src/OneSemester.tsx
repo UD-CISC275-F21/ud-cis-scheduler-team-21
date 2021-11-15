@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import "./App.css";
-import { semester_list } from "./Globals";
 
 
 //Created a type to define the traits of a Course
@@ -15,13 +14,19 @@ export type CourseIntf = {
 //Created a type to define the traits of a Semester
 export type SemesterIntf = {
     course_set: CourseIntf[],
-    semester_number: number
+    semester_number: number,
+    credits?: number
 }
 
 
-
+interface MS_Semester{
+    course_set: CourseIntf[];
+    semester_number:number;
+    userSemesters: SemesterIntf[];
+    updateSemesters: (s : SemesterIntf[])=>void;
+}
 //Function to create, display, and modify a Semester (This version is for when viewing multiple semesters, as denoted by MS for 'Multi Semester')
-export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
+export function Semester_MS ({ course_set, semester_number, userSemesters }:MS_Semester):JSX.Element{
 
     //Variable to manage the credit total per semester
     const [creditSum, addSum] = useState(0);
@@ -32,7 +37,7 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         course_set.forEach((course: CourseIntf) => {
             addSum(v => v + course.crsCredits);
         });
-    }, [semester_number, course_set]);
+    }, [semester_number, userSemesters, course_set]);
 
 
     //Function Defining the display characteristics of a Course in the Multi Semester View
@@ -71,11 +76,19 @@ export const Semester_MS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         </table>
     </div>
     ;
-};
+}
 
+
+
+interface SS_Semester{
+    course_set: CourseIntf[];
+    semester_number:number;
+    userSemesters: SemesterIntf[];
+    updateSemesters: (s : SemesterIntf[])=>void;
+}
 
 //Function to create, display, and modify a Semester (This version is for when editing one semester at a time, as denoted by SS for 'Single Semester')
-export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semester_number }) => {
+export function Semester_SS({ course_set, semester_number, userSemesters, updateSemesters }:SS_Semester) :JSX.Element {
 
     //Variable to manage the credit total per semester
     const [creditSum, addSum] = useState(0);
@@ -87,20 +100,30 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
             addSum(v => v + course.crsCredits);
         });
         
-    }, [semester_number, course_set]);
+    }, [semester_number, course_set, userSemesters]);
 
     
     //Function to removes all the courses from Semester
     const remove_allclass = (sem_num: number): void => {
-        semester_list[sem_num - 1].course_set.splice(0, semester_list[sem_num - 1].course_set.length);
+        const modifiedSemesterList:SemesterIntf[] = [];
+        userSemesters.forEach((semester:SemesterIntf)=>{
+            modifiedSemesterList.push(semester);
+        });
+        modifiedSemesterList[sem_num - 1].course_set.splice(0, modifiedSemesterList[sem_num - 1].course_set.length);
+        updateSemesters(modifiedSemesterList);
         addSum(0);
     };
 
     //Function to remove a single course from the Semester
     const remove_class = (sem_num: number, course_name: string): void =>{
-        semester_list[sem_num-1].course_set.forEach((course: CourseIntf, index: number)=>{
+        const modifiedSemesterList:SemesterIntf[] = [];
+        userSemesters.forEach((semester:SemesterIntf)=>{
+            modifiedSemesterList.push(semester);
+        });
+        modifiedSemesterList[sem_num-1].course_set.forEach((course: CourseIntf, index: number)=>{
             if(course.crsName == course_name){
-                semester_list[sem_num-1].course_set.splice(index,1);  
+                modifiedSemesterList[sem_num-1].course_set.splice(index,1);  
+                updateSemesters(modifiedSemesterList);
                 addSum(v => v - course.crsCredits);          
             }
         });
@@ -150,4 +173,4 @@ export const Semester_SS: FunctionComponent<SemesterIntf> = ({ course_set, semes
         </div>
     </div >
     ;
-};
+}

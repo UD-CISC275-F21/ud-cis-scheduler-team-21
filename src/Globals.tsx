@@ -1,7 +1,6 @@
 //import React, { FunctionComponent } from "react";
 import "./App.css";
-import { SemesterIntf } from "./OneSemester";
-import { CourseIntf } from "./Course";
+import { SemesterIntf, CourseIntf } from "./OneSemester";
 
 export const example_courses: CourseIntf[] = [{ crsName: "EGGG101", crsDescription: "Introduction to Engineering", crsCredits: 2 }, { crsName: "CISC108", crsDescription: "Introduction to Somputer Science I", crsCredits: 3 }, { crsName: "MATH241", crsDescription: "Analytic Geometry and Calculus A", crsCredits: 4 }, { crsName: "ENGL110", crsDescription: "Seminar in Composition", crsCredits: 3 }, { crsName: "Breadth Req. I", crsDescription: "Breadth Requirement Elective (1/5)", crsCredits: 3 },
     { crsName: "CISC 181", crsDescription: " Introduction to Computer Science II", crsCredits: 3 }, { crsName: "MATH 242", crsDescription: "Analytic Geometry & Calculus B", crsCredits: 4 }, { crsName: "CISC 210", crsDescription: "Introduction to Systems Programming", crsCredits: 3 }, { crsName: "Laboratory Science I", crsDescription: "Laboratory Science (1/3)", crsCredits: 4 }, { crsName: "Breadth Req. II", crsDescription: "Breadth Requirement Elective (2/5)", crsCredits: 3 },
