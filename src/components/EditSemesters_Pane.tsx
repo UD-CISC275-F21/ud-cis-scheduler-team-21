@@ -64,22 +64,6 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
 
 
-    //shows course info
-    function showCourseInfo(entered_id: string){
-        let new_crs: Course = { crsName: "", crsDescription: "", crsCredits: 0 };
-        const modifiedSemesterList: Semester[] = [];
-        userSemesters.forEach((semester: Semester) => {
-            modifiedSemesterList.push(semester);
-        });
-        data.map((courseList) => {
-            if (courseList.id == entered_id) {
-                new_crs = { crsName: courseList.name, crsDescription: courseList.description, crsCredits: parseInt(courseList.credits, 10) };
-                modifiedSemesterList[current_semester_num].course_set.push(new_crs);
-                updateSemesters(modifiedSemesterList);
-            }
-        });
-    }
-
 
     //shows next semester on click
     const show_Next_Semester = () => {
@@ -135,9 +119,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 Add Course
                             </Button>
 
-                            <Button className="btn btn-info text-center m-2" onClick={() => {
-                                showCourseInfo(inpu);
-                            }}>
+                            <Button className="btn btn-info text-center m-2">
                                 Course Info
                             </Button>
 
