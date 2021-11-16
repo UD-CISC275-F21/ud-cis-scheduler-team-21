@@ -1,4 +1,4 @@
-import { Course } from "./Course"
+import { Course } from "./Course";
 
 //Created a type to define the traits of a Semester
 export interface Semester{
