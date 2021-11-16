@@ -62,6 +62,9 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         });
     }
 
+
+
+
     //shows next semester on click
     const show_Next_Semester = () => {
         if (current_semester_num < userSemesters.length-1) {
@@ -83,11 +86,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                 <div className="row">
                     <div className="col-6">
                         <div className="text-center">
-                            <button type="button" className="col-2 btn btn-primary m-1"
+                            <button type="button" className="col-2 btn btn-primary m-3"
                                 onClick={() => show_Prev_Semester()}>Previous</button>
-                            <button type="button" className="col-2 btn btn-danger m-1"
+                            <button type="button" className="col-2 btn btn-danger m-3"
                                 onClick={() => remove_semester()}>Remove</button>
-                            <button type="button" className="col-2 btn btn-primary m-1"
+                            <button type="button" className="col-2 btn btn-primary m-3"
                                 onClick={() => show_Next_Semester()}>Next</button>
                         </div>
 
@@ -107,18 +110,32 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 <Form.Label>Enter the desired course code:</Form.Label>
                                 <Autocomplete onChange={(event, value) => {
                                     setInpu(value as string); event.preventDefault();
-                                }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size={undefined} variant='outlined' label="Enter Course Code" placeholder="CISC" />} />
+                                }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size={undefined} variant='outlined' label="Enter Course ID" placeholder="CISC" />} />
                             </Form.Group>
-                            <Button onClick={() => {
+
+                            <Button className="btn btn-success text-center m-2" onClick={() => {
                                 addCourse(inpu);
                             }}>
                                 Add Course
                             </Button>
+
+                            <Button className="btn btn-info text-center m-2">
+                                Course Info
+                            </Button>
+
                         </Form>
                     </div>
 
-                    <div className="col-3">
-                        <h3 className="text-center text-warning mt-5"><b>Requirements</b></h3>
+                    <div className="col-3 text-center">
+                        <h3 className="text-info mt-5"><b>Course Info</b></h3>
+                        <div>
+                            <h5>Name</h5>
+                            <p> Course Name here </p>
+                            <h5>Description</h5>
+                            <p>Course Description here</p>
+                            <h5>credits</h5>
+                            <p>Course Credits here</p>
+                        </div>
                     </div>
                 </div>
 
