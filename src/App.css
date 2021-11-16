@@ -1,6 +1,7 @@
 .App {
   text-align: auto;
   margin-bottom: 1cm;
+  zoom: 100%;
 }
 
 .App-logo {
@@ -10,7 +11,7 @@
 
 .App-header {
   text-align: center;
-  background-color: #038cfc;
+  background-color: #00539f;
   min-height: 15vh;
   display: flex;
   flex-direction: column;
@@ -18,33 +19,21 @@
   color:white;
 }
 
-.btn-lg{
-  width: 20%;
-}
 .logo{
-  height: 10%;
+  height: 11%;
   width: 8%;
   position: absolute;
   left: 1%;
   top: 2%;
 }
-.inputName{
-  width: 20%;
-  padding: 1%;
-  margin-right: 3px;
-  
-}
 
-.inputDes{
-  width: 40%;
-  padding: 1%;
-  margin: 3px;
-}
+.help{
 
-.inputCredits{
-  width: 15%;
-  padding: 1%;
-  margin: 3px;
+  position: absolute;
+  right: 1%;
+  top: 2%;
+
+
 }
 
 .deletecourse{
@@ -59,10 +48,7 @@
   margin: 5px;
 }
 
-.addcourse{
-  color: #700101;
-  text-align: center; 
-}
+
 
 table, th, td, thead, tr {
   border: 1px solid black;

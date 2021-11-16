@@ -64,13 +64,22 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                 })}
             </div>
 
-            <div className="col text-center">
+            <div className="text-center">
                 <p><h3>Total Credits: </h3><b>{creditTotal}</b></p>
-                <button type="button" className="btn btn-primary btn-lg m-3" onClick={() => add_empty_semester()}>Add Semester</button>
-                <button type="button" className="btn btn-danger btn-lg m-3" onClick={() => remove_all_semesters()}>Clear Plan</button>
-                <form>
-                    <button type="submit" className="btn btn-secondary btn-lg m-3" onClick={()=> reset_alert()}>Reset</button>
-                </form>
+                <div className="row">
+                    <div className="col-4">
+                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => add_empty_semester()}>Add Semester</button>
+                    </div>
+                    <div className="col-4">
+                        <button type="button" className="btn btn-danger btn-lg btn-block" onClick={() => remove_all_semesters()}>Clear Plan</button>
+                    </div>
+                    <div className="col-4">
+                        <form>
+                            <button type="submit" className="btn btn-secondary btn-lg btn-block" onClick={()=> reset_alert()}>Reset</button>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
     );
