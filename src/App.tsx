@@ -1,31 +1,38 @@
 import React, { useState} from "react";
 import { Tab, Nav, Offcanvas, Button, Col } from "react-bootstrap";
 import "./App.css";
-import {MultiSemester} from "./Multisemester";
-import {SingleSemester} from "./SingleSemester";
-import { SemesterIntf} from "./OneSemester";
-import {semester_list} from "./Globals";
+import { MyPlan_Pane } from "./components/MyPlan_Pane";
+import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
+import { Semester } from "./interfaces/Semester";
+import {semester_list} from "./assets/Globals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.png";
 
 function App(): JSX.Element {
 
-    const [userSemesters, updateSemesters] = useState<SemesterIntf[]>(semester_list);
-
+    //Constants-------------------
+    const [userSemesters, updateSemesters] = useState<Semester[]>(semester_list);
 
     const [show, setShow] = useState(false);
     const [mainViewWidth, setWidth] = useState(12);
 
+
+    //Functions-------------------
+
+    //Hides degree requirement panel
     function hideDegReqs():void{
         setShow(false);
         setWidth(12);
     }
 
+    //Shows degree requirement panel
     function showDegReqs():void{
         setShow(true);
         setWidth(9);
     }
 
+    
+    //Return Statement---------------
     return (
         <div className="App">
 
@@ -72,11 +79,11 @@ function App(): JSX.Element {
 
                     <Tab.Content>
                         <Tab.Pane eventKey="first">
-                            <MultiSemester userSemesters={userSemesters} updateSemesters={updateSemesters} />
+                            <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
                         </Tab.Pane>
                         
                         <Tab.Pane eventKey="second">
-                            <SingleSemester userSemesters={userSemesters} updateSemesters={updateSemesters} />
+                            <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
                         </Tab.Pane>
 
                     </Tab.Content>

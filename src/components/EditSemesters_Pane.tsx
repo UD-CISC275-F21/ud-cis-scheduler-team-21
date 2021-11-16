@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
-import "./App.css";
-import { Semester_SS, SemesterIntf, CourseIntf } from "./OneSemester";
-import data from "./assets/data.json";
+import { Semester } from "../interfaces/Semester";
+import { Course } from "../interfaces/Course";
+import { SingleSemesterDisplay } from "./SingleSemesterDisplay";
+import data from "../assets/data.json";
 
 interface Single_Semester_View {
-    userSemesters: SemesterIntf[];
-    updateSemesters: (s: SemesterIntf[]) => void;
+    userSemesters: Semester[];
+    updateSemesters: (s: Semester[]) => void;
 }
 
-export function SingleSemester({ userSemesters, updateSemesters }: Single_Semester_View): JSX.Element {
+export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Semester_View): JSX.Element {
 
     //Constants-------------------
     const [current_semester_num, changeSemNum] = useState(0);
@@ -19,14 +20,14 @@ export function SingleSemester({ userSemesters, updateSemesters }: Single_Semest
 
     //Functions-------------------
 
-    //Removes the semester
+    //Removes the current semester
     const remove_semester = () => {
-        const modifiedSemesterList: SemesterIntf[] = [];
-        userSemesters.forEach((semester: SemesterIntf) => {
+        const modifiedSemesterList: Semester[] = [];
+        userSemesters.forEach((semester: Semester) => {
             modifiedSemesterList.push(semester);
         });
         modifiedSemesterList.splice(current_semester_num, 1);
-        modifiedSemesterList.forEach((semester: SemesterIntf, index: number) => {
+        modifiedSemesterList.forEach((semester: Semester, index: number) => {
             semester.semester_number = index + 1;
         });
         updateSemesters(modifiedSemesterList);
@@ -45,11 +46,11 @@ export function SingleSemester({ userSemesters, updateSemesters }: Single_Semest
         return id_list;
     }
 
-    //adds a course to the current semester
+    //Adds a course to the current semester
     function addCourse(entered_id: string): void {
-        let new_crs: CourseIntf = { crsName: "", crsDescription: "", crsCredits: 0 };
-        const modifiedSemesterList: SemesterIntf[] = [];
-        userSemesters.forEach((semester: SemesterIntf) => {
+        let new_crs: Course = { crsName: "", crsDescription: "", crsCredits: 0 };
+        const modifiedSemesterList: Semester[] = [];
+        userSemesters.forEach((semester: Semester) => {
             modifiedSemesterList.push(semester);
         });
         data.map((courseList) => {
@@ -61,6 +62,19 @@ export function SingleSemester({ userSemesters, updateSemesters }: Single_Semest
         });
     }
 
+    //shows next semester on click
+    const show_Next_Semester = () => {
+        if (current_semester_num < userSemesters.length-1) {
+            changeSemNum(v => v + 1);
+        }
+    };
+
+    //shows perv semester on click
+    const show_Prev_Semester = () => {
+        if (current_semester_num > 0) {
+            changeSemNum(v => v - 1);
+        }  
+    };
 
     //Return Statement-------------
     return (
@@ -70,17 +84,19 @@ export function SingleSemester({ userSemesters, updateSemesters }: Single_Semest
                     <div className="col-6">
                         <div className="text-center">
                             <button type="button" className="col-2 btn btn-primary m-1"
-                                onClick={() => changeSemNum(v => v - 1)}>Previous</button>
+                                onClick={() => show_Prev_Semester()}>Previous</button>
                             <button type="button" className="col-2 btn btn-danger m-1"
                                 onClick={() => remove_semester()}>Remove</button>
                             <button type="button" className="col-2 btn btn-primary m-1"
-                                onClick={() => changeSemNum(v => v + 1)}>Next</button>
+                                onClick={() => show_Next_Semester()}>Next</button>
                         </div>
-                        <Semester_SS course_set={userSemesters[current_semester_num].course_set}
+
+                        <SingleSemesterDisplay course_set={userSemesters[current_semester_num].course_set}
                             semester_number={userSemesters[current_semester_num].semester_number}
                             userSemesters={userSemesters} updateSemesters={updateSemesters}
                         />
                     </div>
+
                     <div className="col-3 text-center">
                         <h2 className="text-success mt-5"><b>Add Course</b></h2>
                         <Form id="searchBar" onSubmit={(event) => {
@@ -98,9 +114,7 @@ export function SingleSemester({ userSemesters, updateSemesters }: Single_Semest
                             }}>
                                 Add Course
                             </Button>
-
                         </Form>
-
                     </div>
 
                     <div className="col-3">
