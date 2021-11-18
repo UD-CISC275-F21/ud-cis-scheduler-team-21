@@ -90,7 +90,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     function showCourseInfo(entered_id: string): void {
         data.map((courseList) => {
             if (courseList.id == entered_id) {
-                displayName(courseList.id);
+                displayName(courseList.name);
                 displayDescription(courseList.description);
                 displayCredits(courseList.credits);
                 displayPrereqs(courseList.prereqs);
