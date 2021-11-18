@@ -18,6 +18,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     const [newClassInput, updateInput] = useState<string>("");
     const [showDuplicateCourseError, setShowDupCourseErr] = useState(false);
 
+    const[courseInfoName, displayName] = useState("Course ID");
+    const[courseInfoDescription, displayDescription] = useState("Course Description");
+    const[courseInfoCredits, displayCredits] = useState("Course Credits");
+    const[courseInfoPrereqs, displayPrereqs] = useState("Course Prerequisites");
+
 
     //Functions-------------------
 
@@ -81,7 +86,17 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         });
     }
 
-
+    //Displays a courses information in the course info section
+    function showCourseInfo(entered_id: string): void {
+        data.map((courseList) => {
+            if (courseList.id == entered_id) {
+                displayName(courseList.id);
+                displayDescription(courseList.description);
+                displayCredits(courseList.credits);
+                displayPrereqs(courseList.prereqs);
+            }
+        });
+    }
 
 
     //shows next semester on click
@@ -138,8 +153,10 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 Add Course
                             </Button>
 
-                            <Button className="btn btn-info text-center m-2">
-                                Course Info
+                            <Button className="btn btn-info text-center m-2" onClick={()=>{
+                                showCourseInfo(newClassInput);
+                            }}>
+                                Show Course Info
                             </Button>
 
                             <Toast bg="danger" onClose={() => setShowDupCourseErr(false)} show={showDuplicateCourseError} delay={8000} autohide>
@@ -158,12 +175,14 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                     <div className="col-3 text-center">
                         <h3 className="text-info mt-5"><b>Course Info</b></h3>
                         <div>
-                            <h5>Name</h5>
-                            <p> Course Name here </p>
-                            <h5>Description</h5>
-                            <p>Course Description here</p>
-                            <h5>credits</h5>
-                            <p>Course Credits here</p>
+                            <h5>Name:</h5>
+                            <p> {courseInfoName} </p>
+                            <h5>Description:</h5>
+                            <p>{courseInfoDescription}</p>
+                            <h5>Credits:</h5>
+                            <p>{courseInfoCredits}</p>
+                            <h5>Prerequisites:</h5>
+                            <p>{courseInfoPrereqs}</p>
                         </div>
                     </div>
                 </div>
