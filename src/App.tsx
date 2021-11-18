@@ -1,11 +1,12 @@
 import React, { useState} from "react";
-import { Tab, Nav, Offcanvas, Button, Col} from "react-bootstrap";
+import { Tab, Nav, Offcanvas, Button, Col, Row} from "react-bootstrap";
 import "./App.css";
 import { MyPlan_Pane } from "./components/MyPlan_Pane";
 import ScrollToTopBtn from "./components/gotToTop";
 import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
 import { Semester } from "./interfaces/Semester";
 import {semester_list} from "./assets/Globals";
+import {WelcomeAndHelp_Pane} from "./components/WelcomeAndHelp_Pane";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,6 +19,8 @@ function App(): JSX.Element {
 
     const [show, setShow] = useState(false);
     const [mainViewWidth, setWidth] = useState(12);
+
+    const notify = () => toast("This website offers you to plan your degree, choose courses and manage your credits per semester");
 
 
     //Functions-------------------
@@ -34,8 +37,6 @@ function App(): JSX.Element {
         setWidth(9);
     }
 
-    const notify = () => toast("This website offers you to plan your degree, choose courses and manage your credits per semester");
-
     
     //Return Statement---------------
     return (
@@ -51,7 +52,6 @@ function App(): JSX.Element {
                 <button  className="btn-sm btn-info" onClick={notify}>Help</button>
                 <ToastContainer />
             </div>
-
 
 
             <hr></hr>
@@ -72,18 +72,27 @@ function App(): JSX.Element {
 
                 <Tab.Container defaultActiveKey="first">
                     <Nav variant="pills" role="button" className="flex-row text-center">
-                        <Col md={4}>
-                            <Nav.Item>
-                                <Nav.Link eventKey="first">My Plan</Nav.Link>
-                            </Nav.Item>
+                        <Col md={10}>
+                            <Row>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="first">Welcome and Help</Nav.Link>
+                                </Nav.Item>
+                            </Row>
+                            <Row>
+                                <Col md={6}>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="second">My Plan</Nav.Link>
+                                    </Nav.Item>
+                                </Col>
+                                <Col md={6}>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="third">Edit Semesters</Nav.Link>
+                                    </Nav.Item>
+                                </Col>
+                            </Row>
                         </Col>
-                        <Col md={4}>
-                            <Nav.Item>
-                                <Nav.Link eventKey="second">Edit Semesters</Nav.Link>
-                            </Nav.Item>
-                        </Col>
-                        <Col md={4} className="text-center">
-                            <Button variant="secondary"  onClick={() => showDegReqs()}>
+                        <Col md={2} className="text-center">
+                            <Button variant="secondary" onClick={() => showDegReqs()}>
                                 View Degree Requirements
                             </Button>
                         </Col>
@@ -93,12 +102,16 @@ function App(): JSX.Element {
 
                     <Tab.Content>
                         <Tab.Pane eventKey="first">
-                            <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
+                            <WelcomeAndHelp_Pane />
                         </Tab.Pane>
 
                         <ScrollToTopBtn />
                         
                         <Tab.Pane eventKey="second">
+                            <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
+                        </Tab.Pane>
+
+                        <Tab.Pane eventKey="third">
                             <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
                         </Tab.Pane>
 
