@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
 
@@ -74,7 +73,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
     
     //Return Statement-------------
     return <div className="">
-        <Table responsive className="table">
+        <table className="table">
             <thead>
                 <h2 className="Semester"><b>Semester {semester_number}</b></h2>
                 <tr>
@@ -88,7 +87,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
                     return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
                 })}
             </tbody >
-        </Table >
+        </table >
         <div>
             <b>Total Credits:  </b>
             <b>{creditSum}</b>
