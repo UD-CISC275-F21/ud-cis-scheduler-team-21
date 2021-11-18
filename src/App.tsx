@@ -105,11 +105,13 @@ function App(): JSX.Element {
                             <WelcomeAndHelp_Pane />
                         </Tab.Pane>
 
-                        <ScrollToTopBtn />
+
                         
                         <Tab.Pane eventKey="second">
                             <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
                         </Tab.Pane>
+
+                        <ScrollToTopBtn />
 
                         <Tab.Pane eventKey="third">
                             <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
