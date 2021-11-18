@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Toast } from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
@@ -15,7 +15,8 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
     //Constants-------------------
     const [current_semester_num, changeSemNum] = useState(0);
-    const [inpu, setInpu] = useState<string>("");
+    const [newClassInput, updateInput] = useState<string>("");
+    const [showDuplicateCourseError, setShowDupCourseErr] = useState(false);
 
 
     //Functions-------------------
@@ -46,6 +47,20 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         return id_list;
     }
 
+    //Checks for to make sure course doesnt exist in current plan
+    //and returns true if it ISNT and false if it IS
+    function checkForDuplicates(newCourseID: string): boolean{
+        let canAddCourse = true;
+        userSemesters.forEach((semester: Semester) => {
+            semester.course_set.forEach((course: Course) =>{
+                if(course.crsName == newCourseID){
+                    canAddCourse = false;
+                }
+            });
+        });
+        return canAddCourse;
+    }
+
     //Adds a course to the current semester
     function addCourse(entered_id: string): void {
         let new_crs: Course = { crsName: "", crsDescription: "", crsCredits: 0 };
@@ -55,9 +70,13 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         });
         data.map((courseList) => {
             if (courseList.id == entered_id) {
-                new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits, 10) };
-                modifiedSemesterList[current_semester_num].course_set.push(new_crs);
-                updateSemesters(modifiedSemesterList);
+                if(checkForDuplicates(entered_id)){
+                    new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits, 10) };
+                    modifiedSemesterList[current_semester_num].course_set.push(new_crs);
+                    updateSemesters(modifiedSemesterList);
+                }else{
+                    setShowDupCourseErr(true);
+                }
             }
         });
     }
@@ -103,18 +122,18 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                     <div className="col-3 text-center">
                         <h2 className="text-success mt-5"><b>Add Course</b></h2>
                         <Form id="searchBar" onSubmit={(event) => {
-                            addCourse(inpu);
+                            addCourse(newClassInput);
                             event.preventDefault();
                         }}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Enter the desired course code:</Form.Label>
                                 <Autocomplete onChange={(event, value) => {
-                                    setInpu(value as string); event.preventDefault();
+                                    updateInput(value as string); event.preventDefault();
                                 }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size={undefined} variant='outlined' label="Enter Course ID" placeholder="CISC" />} />
                             </Form.Group>
 
                             <Button className="btn btn-success text-center m-2" onClick={() => {
-                                addCourse(inpu);
+                                addCourse(newClassInput);
                             }}>
                                 Add Course
                             </Button>
@@ -122,6 +141,16 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                             <Button className="btn btn-info text-center m-2">
                                 Course Info
                             </Button>
+
+                            <Toast bg="danger" onClose={() => setShowDupCourseErr(false)} show={showDuplicateCourseError} delay={8000} autohide>
+                                <Toast.Header>
+                                    <strong className="me-auto">Error Adding Course</strong>
+                                </Toast.Header>
+                                <Toast.Body>
+                                    <p><b>The course you are trying to add is already in your current plan!</b></p>
+                                    <p>(If it`s not in the current semester, it might be in one of the other semesters included in your plan)</p>
+                                </Toast.Body>
+                            </Toast>
 
                         </Form>
                     </div>
