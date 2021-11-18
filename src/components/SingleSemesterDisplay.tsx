@@ -47,7 +47,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
     //Defining the display characteristics of a Course in the Single Semester View
     function Course_SS({ crsName, crsDescription, crsCredits, semester_number }:Course):JSX.Element{
         return (
-            <tr>
+            <tr className="w-100">
                 <td><b>{crsName}:</b> {crsDescription}</td>
                 <td className="text-center">{crsCredits}</td>
                 <td className="editcourse">
@@ -72,7 +72,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
 
     
     //Return Statement-------------
-    return <div className="">
+    return <div className="w-100">
         <table className="table">
             <thead>
                 <h2 className="Semester"><b>Semester {semester_number}</b></h2>

@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { Tab, Nav, Offcanvas, Button, Col, Row} from "react-bootstrap";
 import "./App.css";
 import { MyPlan_Pane } from "./components/MyPlan_Pane";
+import ScrollToTopBtn from "./components/gotToTop";
 import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
 import { Semester } from "./interfaces/Semester";
 import {semester_list} from "./assets/Globals";
@@ -57,8 +58,9 @@ function App(): JSX.Element {
 
 
             <Col md={mainViewWidth}>
+                
 
-                <Offcanvas show={show} placement="end" scroll={true} backdrop={true} onHide={() => hideDegReqs()} autohide>
+                <Offcanvas show={show} placement="end" scroll={true} backdrop={true} onHide={() => hideDegReqs()}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Degree Requirements</Offcanvas.Title>
                     </Offcanvas.Header>
@@ -102,6 +104,8 @@ function App(): JSX.Element {
                         <Tab.Pane eventKey="first">
                             <WelcomeAndHelp_Pane />
                         </Tab.Pane>
+
+                        <ScrollToTopBtn />
                         
                         <Tab.Pane eventKey="second">
                             <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
@@ -114,6 +118,7 @@ function App(): JSX.Element {
                     </Tab.Content>
                 </Tab.Container>
             </Col>
+
 
         </div>
 
