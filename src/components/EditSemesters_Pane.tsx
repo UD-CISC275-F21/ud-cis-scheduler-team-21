@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Toast } from "react-bootstrap";
+import { Button, Form, Toast, ToastBody } from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
@@ -20,7 +20,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
     const[courseInfoName, displayName] = useState("Course ID");
     const[courseInfoDescription, displayDescription] = useState("Course Description");
-    const[courseInfoCredits, displayCredits] = useState("Course Credits");
+    const[courseInfoCredits, displayCredits] = useState("");
     const[courseInfoPrereqs, displayPrereqs] = useState("Course Prerequisites");
 
 
@@ -177,12 +177,20 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                         <div>
                             <h5>Name:</h5>
                             <p> {courseInfoName} </p>
+                            <hr></hr>
                             <h5>Description:</h5>
                             <p>{courseInfoDescription}</p>
-                            <h5>Credits:</h5>
-                            <p>{courseInfoCredits}</p>
+
+                            <hr></hr>
+
+                            <h5>Credits: {courseInfoCredits}</h5>
+
+                            <hr></hr>
+
                             <h5>Prerequisites:</h5>
                             <p>{courseInfoPrereqs}</p>
+                            <hr></hr>
+
                         </div>
                     </div>
                 </div>

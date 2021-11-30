@@ -86,7 +86,7 @@ function App(): JSX.Element {
                                 </Col>
                                 <Col md={6}>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="third">Edit Semesters</Nav.Link>
+                                        <Nav.Link eventKey="third">Edit Plan</Nav.Link>
                                     </Nav.Item>
                                 </Col>
                             </Row>
@@ -105,8 +105,6 @@ function App(): JSX.Element {
                             <WelcomeAndHelp_Pane />
                         </Tab.Pane>
 
-
-                        
                         <Tab.Pane eventKey="second">
                             <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
                         </Tab.Pane>

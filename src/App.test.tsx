@@ -7,3 +7,9 @@ test("renders UD CIS Scheduler text", () => {
     const linkElement = screen.getByText(/UD CIS Scheduler/i);
     expect(linkElement).toBeInTheDocument();
 });
+
+test("renders My plan", () => {
+    render(<App />);
+    const linkElement = screen.getByText(/My plan/i);
+    expect(linkElement).toBeInTheDocument();
+});
