@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Toast, ToastBody } from "react-bootstrap";
+import { Button, Form, Toast} from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
