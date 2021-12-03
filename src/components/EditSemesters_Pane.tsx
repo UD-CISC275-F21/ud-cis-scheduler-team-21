@@ -28,14 +28,27 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
     //Removes the current semester
     const remove_semester = () => {
+        // if on last elemnet remove it
+        if (current_semester_num === userSemesters.length - 1) {
+            userSemesters.pop();
+            updateSemesters(userSemesters);
+            changeSemNum(current_semester_num - 1);
+        }else{
+            for(let i = current_semester_num; i < userSemesters.length - 1; i++){
+                userSemesters[i] = userSemesters[i + 1];
+            }
+
+        }                
         const modifiedSemesterList: Semester[] = [];
         userSemesters.forEach((semester: Semester) => {
             modifiedSemesterList.push(semester);
         });
+        
         modifiedSemesterList.splice(current_semester_num, 1);
         modifiedSemesterList.forEach((semester: Semester, index: number) => {
             semester.semester_number = index + 1;
         });
+        
         updateSemesters(modifiedSemesterList);
         if (current_semester_num < userSemesters.length - 1) {
             console.log(current_semester_num);
@@ -120,12 +133,12 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                 <div className="row">
                     <div className="col-6">
                         <div className="text-center">
-                            <button type="button" className="col-2 btn btn-primary m-3"
-                                onClick={() => show_Prev_Semester()}>Previous</button>
-                            <button type="button" className="col-2 btn btn-danger m-3"
-                                onClick={() => remove_semester()}>Remove</button>
-                            <button type="button" className="col-2 btn btn-primary m-3"
-                                onClick={() => show_Next_Semester()}>Next</button>
+                            <button type="button" className="col-3 btn btn-primary m-3"
+                                onClick={() => show_Prev_Semester()}>Previous Semester</button>
+                            <button type="button" className="col-3 btn btn-danger m-3"
+                                onClick={() => remove_semester()}>Remove Semester</button>
+                            <button type="button" className="col-3 btn btn-primary m-3"
+                                onClick={() => show_Next_Semester()}>Next Semester</button>
                         </div>
 
                         <SingleSemesterDisplay course_set={userSemesters[current_semester_num].course_set}
