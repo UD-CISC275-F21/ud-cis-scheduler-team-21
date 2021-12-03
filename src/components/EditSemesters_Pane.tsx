@@ -28,17 +28,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
     //Removes the current semester
     const remove_semester = () => {
-        // if on last elemnet remove it
-        if (current_semester_num === userSemesters.length - 1) {
-            userSemesters.pop();
-            updateSemesters(userSemesters);
-            changeSemNum(current_semester_num - 1);
-        }else{
-            for(let i = current_semester_num; i < userSemesters.length - 1; i++){
-                userSemesters[i] = userSemesters[i + 1];
-            }
 
-        }                
         const modifiedSemesterList: Semester[] = [];
         userSemesters.forEach((semester: Semester) => {
             modifiedSemesterList.push(semester);
@@ -48,6 +38,19 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         modifiedSemesterList.forEach((semester: Semester, index: number) => {
             semester.semester_number = index + 1;
         });
+
+        // if on last elemnet remove it
+        if (current_semester_num === userSemesters.length - 1) {
+            modifiedSemesterList.splice(current_semester_num, 1);
+            updateSemesters(userSemesters);
+            changeSemNum(current_semester_num - 1);
+        }else{
+            for(let i = current_semester_num; i < userSemesters.length - 1; i++){
+                userSemesters[i] = userSemesters[i + 1];
+            }
+
+        }
+        
         
         updateSemesters(modifiedSemesterList);
         if (current_semester_num < userSemesters.length - 1) {
