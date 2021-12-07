@@ -52,7 +52,8 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
                 <td className="text-center">{crsCredits}</td>
                 <td className="editcourse">
                     <button type="button" className="btn btn-outline-secondary m-1">Edit</button>
-                    <button type="button" className="btn btn-outline-danger m-1" onClick={() => remove_class(semester_number as number, crsName)}>X</button>
+                    <button type="button" className="btn btn-outline-danger m-1" data-testid="Remove-Course"
+                        onClick={() => remove_class(semester_number as number, crsName)}>X</button>
                 </td>
             </tr>
         );
@@ -82,7 +83,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
                     <th className="Actions">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody data-testid="course-list">
                 {course_set.map((course: Course, index: number) => {
                     return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
                 })}

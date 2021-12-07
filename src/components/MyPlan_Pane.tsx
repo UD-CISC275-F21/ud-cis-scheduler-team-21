@@ -56,9 +56,9 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
     //Return Statement---------------
     return (
 
-        <div className="container-fluid padding">
+        <div className="container-fluid padding" >
 
-            <div className="row padding">
+            <div className="row padding" data-testid="semester-list">
                 {userSemesters.map((semester: Semester, index: number) => {
                     return <MultiSemesterDisplay key={index} course_set={semester.course_set} semester_number={semester.semester_number} userSemesters={userSemesters} updateSemesters={updateSemesters}/>;
                 })}
@@ -68,7 +68,8 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                 <p><h3>Total Credits: </h3><b>{creditTotal}</b></p>
                 <div className="row">
                     <div className="col-4">
-                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => add_empty_semester()}>Add Semester</button>
+                        <button type="button" className="btn btn-primary btn-lg btn-block"  data-testid="Add-Semester" 
+                            onClick={() => add_empty_semester()}>Add Semester</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className="btn btn-danger btn-lg btn-block" onClick={() => remove_all_semesters()}>Clear Plan</button>
