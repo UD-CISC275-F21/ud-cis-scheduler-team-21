@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import data from "../assets/data.json";
-import { $CombinedState } from "redux";
+
 
 interface Modal_Helper_Intf {
     showModal: boolean;
