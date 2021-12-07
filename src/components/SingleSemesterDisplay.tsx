@@ -85,7 +85,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
             </thead>
             <tbody data-testid="course-list">
                 {course_set.map((course: Course, index: number) => {
-                    return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} />;
+                    return <Course_SS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} semester_number={semester_number} crsPrereqs={course.crsPrereqs}  />;
                 })}
             </tbody >
         </table >

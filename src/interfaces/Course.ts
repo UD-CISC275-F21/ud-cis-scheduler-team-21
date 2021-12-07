@@ -3,5 +3,6 @@ export interface Course{
     crsName: string;
     crsDescription: string;
     crsCredits: number;
-    semester_number?: number;
+    crsPrereqs: string;
+    semester_number: number;
 }
