@@ -164,7 +164,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 onClick={() => show_Prev_Semester()}>Previous Semester</button>
                             <button type="button" className="col-3 btn btn-danger m-3" data-testid="Remove-Semester"
                                 onClick={() => remove_semester()}>Remove Semester</button>
-                            <button type="button" className="col-3 btn btn-primary m-3"
+                            <button type="button" className="col-3 btn btn-primary m-3" data-testid="Next-Semester"
                                 onClick={() => show_Next_Semester()}>Next Semester</button>
                         </div>
 
@@ -183,7 +183,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                         }}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Enter the desired course code:</Form.Label>
-                                <Autocomplete onChange={(event, value) => {
+                                <Autocomplete  data-testid="autoComplete" onChange={(event, value) => {
                                     updateInput(value as string); event.preventDefault();
                                 }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size={undefined} variant='outlined' label="Enter Course ID" placeholder="CISC" />} />
                             </Form.Group>
@@ -194,7 +194,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 Add Course
                             </Button>
 
-                            <Button className="btn btn-info text-center m-2" onClick={()=>{
+                            <Button className="btn btn-info text-center m-2" data-testid="courseInfoButton" onClick={()=>{
                                 showCourseInfo(newClassInput);
                             }}>
                                 Show Course Info
@@ -230,7 +230,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
                     <div className="col-3 text-center">
                         <h3 className="text-info mt-5"><b>Course Info</b></h3>
-                        <div>
+                        <div data-testid="courseInfo">
                             <h5>Name:</h5>
                             <p> {courseInfoName} </p>
                             <hr></hr>
