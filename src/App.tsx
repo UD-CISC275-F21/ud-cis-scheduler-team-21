@@ -52,7 +52,7 @@ function App(): JSX.Element {
 
                         <Tab.Pane eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
 
-                        <Tab.Pane eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
+                        <Tab.Pane data-testid="editPlan" eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
 
                         <ScrollToTopBtn />
 
