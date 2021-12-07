@@ -129,7 +129,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                         <div className="text-center">
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Prev_Semester()}>Previous Semester</button>
-                            <button type="button" className="col-3 btn btn-danger m-3"
+                            <button type="button" className="col-3 btn btn-danger m-3" data-testid="Remove-Semester"
                                 onClick={() => remove_semester()}>Remove Semester</button>
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Next_Semester()}>Next Semester</button>
@@ -139,6 +139,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                             semester_number={userSemesters[current_semester_num].semester_number}
                             userSemesters={userSemesters} updateSemesters={updateSemesters}
                         />
+
                     </div>
 
                     <div className="col-3 text-center">
@@ -154,7 +155,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 }} disablePortal id="combo-box-demo" options={getAllCourses()} renderInput={(params) => <TextField {...params} size={undefined} variant='outlined' label="Enter Course ID" placeholder="CISC" />} />
                             </Form.Group>
 
-                            <Button className="btn btn-success text-center m-2" onClick={() => {
+                            <Button className="btn btn-success text-center m-2" data-testid="Add-Course" onClick={() => {
                                 addCourse(newClassInput);
                             }}>
                                 Add Course
