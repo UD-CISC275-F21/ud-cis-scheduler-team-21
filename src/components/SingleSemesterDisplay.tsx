@@ -96,7 +96,8 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
         </div>
 
         <div className="text-center">
-            <button type="button" className="btn btn-danger m-1" onClick={() => remove_all_classes(semester_number as number)}>Remove all courses</button>
+            <button type="button" className="btn btn-danger m-1" data-testid="Remove-All-Courses"
+                onClick={() => remove_all_classes(semester_number as number)}>Remove all courses</button>
 
         </div>
     </div >

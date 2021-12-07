@@ -72,7 +72,8 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                             onClick={() => add_empty_semester()}>Add Semester</button>
                     </div>
                     <div className="col-4">
-                        <button type="button" className="btn btn-danger btn-lg btn-block" onClick={() => remove_all_semesters()}>Clear Plan</button>
+                        <button type="button" className="btn btn-danger btn-lg btn-block" data-testid="Clear-Plan"
+                            onClick={() => remove_all_semesters()}>Clear Plan</button>
                     </div>
                     <div className="col-4">
                         <form>

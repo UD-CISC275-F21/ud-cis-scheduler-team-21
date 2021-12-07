@@ -85,7 +85,7 @@ function App(): JSX.Element {
                                     </Nav.Item>
                                 </Col>
                                 <Col md={6}>
-                                    <Nav.Item>
+                                    <Nav.Item data-testid="editPlan"> 
                                         <Nav.Link eventKey="third">Edit Plan</Nav.Link>
                                     </Nav.Item>
                                 </Col>
