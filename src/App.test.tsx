@@ -75,7 +75,7 @@ describe("App", () => {
         expect(courseList.children.length).toBe(1);
     });
 
-
+    //shows courseinfo button
     it("Course Info Button shows the course info", () => {
         const courseInfoButton = screen.getByTestId("courseInfoButton");
         const courseInfo = screen.getByTestId("courseInfo");
@@ -85,13 +85,13 @@ describe("App", () => {
     });
 
     //test if Next Semester button works properly and update the single semester.
-    test("Next Semester Button works properly and update the single semester", () => {
-
+    it("Next Semester Button works properly and update the single semester", () => {
         fireEvent.click(screen.getByTestId("editPlan"));
+        waitFor(() => expect(screen.getByText("Semester 2")).not.toBeInTheDocument());    
         const nextSemesterButton = screen.getByTestId("Next-Semester");
-        waitFor(() => expect(screen.getAllByText("Semester 1")).toBeInTheDocument());    
+        waitFor(() => expect(screen.getByText("Semester 1")).toBeInTheDocument());    
         nextSemesterButton.click();
-        waitFor(() => expect(screen.getAllByText("Semester 2")).toBeInTheDocument());    
+        waitFor(() => expect(screen.getByText("Semester 2")).toBeInTheDocument());    
     });
 
 });    
