@@ -1,12 +1,14 @@
-import React, { useState} from "react";
-import { Tab, Nav, Offcanvas, Button, Col, Row} from "react-bootstrap";
+import React, { useState } from "react";
+import { Tab, Col } from "react-bootstrap";
 import "./App.css";
 import { MyPlan_Pane } from "./components/MyPlan_Pane";
 import ScrollToTopBtn from "./components/gotToTop";
 import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
 import { Semester } from "./interfaces/Semester";
-import {semester_list} from "./assets/Globals";
-import {WelcomeAndHelp_Pane} from "./components/WelcomeAndHelp_Pane";
+import { semester_list } from "./assets/Globals";
+import { WelcomeAndHelp_Pane } from "./components/WelcomeAndHelp_Pane";
+import { DegreeRequirements_Section } from "./components/DegreeRequirements_Section";
+import { App_Navbar } from "./components/App_Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,27 +19,11 @@ function App(): JSX.Element {
     //Constants-------------------
     const [userSemesters, updateSemesters] = useState<Semester[]>(semester_list);
 
-    const [show, setShow] = useState(false);
-    const [mainViewWidth, setWidth] = useState(12);
+    const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
+    const [app_Content_Width, setAppContentWidth] = useState(12);
 
-    const notify = () => toast("This website offers you to plan your degree, choose courses and manage your credits per semester");
+    const notify = () => toast("Go to the 'Welcome and Help' Page to see instructions and clear up any confusion you may have");
 
-
-    //Functions-------------------
-
-    //Hides degree requirement panel
-    function hideDegReqs():void{
-        setShow(false);
-        setWidth(12);
-    }
-
-    //Shows degree requirement panel
-    function showDegReqs():void{
-        setShow(true);
-        setWidth(9);
-    }
-
-    
     //Return Statement---------------
     return (
         <div className="App">
@@ -45,77 +31,33 @@ function App(): JSX.Element {
             <header className="App-header">
                 <h1 className="mt-4">UD CIS Scheduler</h1>
             </header>
-            
 
             <div className="text-left"><img className="logo" src={logo} alt="Logo" /></div>
+
             <div className="help">
-                <button  className="btn-sm btn-info" onClick={notify}>Help</button>
+                <button className="btn-sm btn-info" onClick={notify}>Help</button>
                 <ToastContainer />
             </div>
 
+            <Col md={app_Content_Width}>
 
-            <hr></hr>
-
-
-            <Col md={mainViewWidth}>
-                
-
-                <Offcanvas show={show} placement="end" scroll={true} backdrop={true} onHide={() => hideDegReqs()}>
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Degree Requirements</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        This will eventually be an active list. indicating which of the
-                        degree requirements have been met by the current plan and which have not
-                    </Offcanvas.Body>
-                </Offcanvas>
+                <DegreeRequirements_Section show={DegreeReq_View_State} setShow={toggleDegreeReqView} setWidth={setAppContentWidth} />
 
                 <Tab.Container defaultActiveKey="first">
-                    <Nav variant="pills" role="button" className="flex-row text-center">
-                        <Col md={10}>
-                            <Row>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="first">Welcome and Help</Nav.Link>
-                                </Nav.Item>
-                            </Row>
-                            <Row>
-                                <Col md={6}>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="second">My Plan</Nav.Link>
-                                    </Nav.Item>
-                                </Col>
-                                <Col md={6}>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="third">Edit Plan</Nav.Link>
-                                    </Nav.Item>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col md={2} className="text-center">
-                            <Button variant="secondary" onClick={() => showDegReqs()}>
-                                View Degree Requirements
-                            </Button>
-                        </Col>
-                    </Nav>
 
-                    <hr></hr>
+                    <App_Navbar setShow={toggleDegreeReqView} setWidth={setAppContentWidth} />
 
                     <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                            <WelcomeAndHelp_Pane />
-                        </Tab.Pane>
+                        <Tab.Pane eventKey="first"> <WelcomeAndHelp_Pane /> </Tab.Pane>
 
-                        <Tab.Pane eventKey="second">
-                            <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
-                        </Tab.Pane>
+                        <Tab.Pane eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
+
+                        <Tab.Pane eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
 
                         <ScrollToTopBtn />
 
-                        <Tab.Pane eventKey="third">
-                            <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} />
-                        </Tab.Pane>
-
                     </Tab.Content>
+                    
                 </Tab.Container>
             </Col>
 
