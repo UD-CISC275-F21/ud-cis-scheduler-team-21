@@ -55,7 +55,7 @@ export function MultiSemesterDisplay ({ course_set, semester_number, userSemeste
             <tbody>
 
                 {course_set.map((course: Course, index: number) => {
-                    return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} />;
+                    return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} crsPrereqs={course.crsPrereqs} semester_number={semester_number} />;
                 })}
 
             </tbody>

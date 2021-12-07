@@ -17,6 +17,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     const [current_semester_num, changeSemNum] = useState(0);
     const [newClassInput, updateInput] = useState<string>("");
     const [showDuplicateCourseError, setShowDupCourseErr] = useState(false);
+    const [showPrereqCourseErr, setPrereqCourseErr] = useState(false);
 
     const[courseInfoName, displayName] = useState("Course ID");
     const[courseInfoDescription, displayDescription] = useState("Course Description");
@@ -73,21 +74,45 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         return canAddCourse;
     }
 
+    //Checks for to make sure course prerequisites exist in current plan
+    //and returns True if they have prereqs and False if they dont
+    function checkForPrereqs(prereqsString: string): boolean{
+        let canAddCourse = false;
+        const prereqsArray = prereqsString.split(",");
+        userSemesters.forEach((semester: Semester) => {
+            semester.course_set.forEach((course: Course) =>{
+                prereqsArray.forEach((prereqCourseID: string, index:number)=>{
+                    if(course.crsName == prereqCourseID){
+                        prereqsArray.splice(index,1);
+                    }
+                });
+            });
+        });
+        console.log(prereqsArray);
+        console.log(prereqsArray.length);
+        if((prereqsArray.length == 1 && prereqsArray[0]=="")||prereqsArray.length==0){
+            canAddCourse = true;
+        }
+        return canAddCourse;
+    } 
+
     //Adds a course to the current semester
     function addCourse(entered_id: string): void {
-        let new_crs: Course = { crsName: "", crsDescription: "", crsCredits: 0 };
+        let new_crs: Course = { crsName: "", crsDescription: "", crsCredits: 0, crsPrereqs:"", semester_number: 0};
         const modifiedSemesterList: Semester[] = [];
         userSemesters.forEach((semester: Semester) => {
             modifiedSemesterList.push(semester);
         });
         data.map((courseList) => {
             if (courseList.id == entered_id) {
-                if(checkForDuplicates(entered_id)){
-                    new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits, 10) };
+                if(!checkForPrereqs(courseList.prereqs)){
+                    setPrereqCourseErr(true);
+                }else if(!checkForDuplicates(entered_id)){
+                    setShowDupCourseErr(true);
+                }else{
+                    new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits, 10), crsPrereqs: courseList.prereqs, semester_number: current_semester_num+1 };
                     modifiedSemesterList[current_semester_num].course_set.push(new_crs);
                     updateSemesters(modifiedSemesterList);
-                }else{
-                    setShowDupCourseErr(true);
                 }
             }
         });
@@ -156,7 +181,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                             </Form.Group>
 
                             <Button className="btn btn-success text-center m-2" data-testid="Add-Course" onClick={() => {
-                                addCourse(newClassInput);
+                                addCourse(newClassInput, );
                             }}>
                                 Add Course
                             </Button>
@@ -169,11 +194,21 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
                             <Toast bg="danger" onClose={() => setShowDupCourseErr(false)} show={showDuplicateCourseError} delay={8000} autohide>
                                 <Toast.Header>
-                                    <strong className="me-auto">Error Adding Course</strong>
+                                    <strong className="me-auto">Error: Course Already in Plan </strong>
                                 </Toast.Header>
                                 <Toast.Body>
                                     <p><b>The course you are trying to add is already in your current plan!</b></p>
                                     <p>(If it`s not in the current semester, it might be in one of the other semesters included in your plan)</p>
+                                </Toast.Body>
+                            </Toast>
+
+                            <Toast bg="danger" onClose={() => setPrereqCourseErr(false)} show={showPrereqCourseErr} delay={8000} autohide>
+                                <Toast.Header>
+                                    <strong className="me-auto">Error: Not all Prerequisites</strong>
+                                </Toast.Header>
+                                <Toast.Body>
+                                    <p><b>The course you are trying to add has prerequisites not included in your plan!</b></p>
+                                    <p>(If you would like to add this class, please first add all of its prerequisites)</p>
                                 </Toast.Body>
                             </Toast>
 
