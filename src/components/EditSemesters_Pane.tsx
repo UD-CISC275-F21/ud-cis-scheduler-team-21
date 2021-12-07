@@ -5,6 +5,7 @@ import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
 import { SingleSemesterDisplay } from "./SingleSemesterDisplay";
 import data from "../assets/data.json";
+import {Mod} from "../components/modalHelper";
 
 interface Single_Semester_View {
     userSemesters: Semester[];
@@ -18,6 +19,8 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     const [newClassInput, updateInput] = useState<string>("");
     const [showDuplicateCourseError, setShowDupCourseErr] = useState(false);
     const [showPrereqCourseErr, setPrereqCourseErr] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
 
     const[courseInfoName, displayName] = useState("Course ID");
     const[courseInfoDescription, displayDescription] = useState("Course Description");
@@ -149,6 +152,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     return (
         <>
             <div className="container-fluid padding text-left">
+                <Mod
+                    showModal={showModal}
+                    setShow={setShowModal}
+                    crsID={newClassInput}               
+                />
                 <div className="row">
                     <div className="col-6">
                         <div className="text-center">
@@ -190,6 +198,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                                 showCourseInfo(newClassInput);
                             }}>
                                 Show Course Info
+                            </Button>
+                            <Button className="btn btn-info text-center m-2" onClick={()=>{
+                                setShowModal(true);
+                            }}>
+                                Edit
                             </Button>
 
                             <Toast bg="danger" onClose={() => setShowDupCourseErr(false)} show={showDuplicateCourseError} delay={8000} autohide>
