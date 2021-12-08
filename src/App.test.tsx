@@ -85,13 +85,25 @@ describe("App", () => {
     });
 
     //test if Next Semester button works properly and update the single semester.
-    it("Next Semester Button works properly and update the single semester", () => {
+    it("Next Semester Button works properly and update the single semester", async () => {
         fireEvent.click(screen.getByTestId("editPlan"));
-        waitFor(() => expect(screen.getByText("Semester 2")).not.toBeInTheDocument());    
-        const nextSemesterButton = screen.getByTestId("Next-Semester");
-        waitFor(() => expect(screen.getByText("Semester 1")).toBeInTheDocument());    
-        nextSemesterButton.click();
-        waitFor(() => expect(screen.getByText("Semester 2")).toBeInTheDocument());    
+        const NextSemesterButton = screen.getByTestId("Next-Semester");
+        const semesterNumber = screen.getByTestId("semesterNumber");
+        waitFor(() => expect(semesterNumber).toBe("Semester 1"));
+        NextSemesterButton.click();
+        waitFor(() =>  expect(screen.queryAllByText("Semester 1")).not.toBeInTheDocument());
+        waitFor(() => expect(semesterNumber).toBe("Semester 2"));
     });
+
+
+    //test if Previous Semester button works properly and update the single semester.
+    it("Previous Semester Button works properly and update the single semester", () => {
+        fireEvent.click(screen.getByTestId("editPlan"));
+        const previousSemesterButton = screen.getByTestId("Previous-Semester");
+        waitFor(() => expect(screen.getByText("Semester 2")).toBeInTheDocument());    
+        previousSemesterButton.click();
+        waitFor(() => expect(screen.getByText("Semester 1")).toBeInTheDocument());    
+    });
+
 
 });    

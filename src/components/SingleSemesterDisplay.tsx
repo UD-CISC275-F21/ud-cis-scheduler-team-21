@@ -76,7 +76,7 @@ export function SingleSemesterDisplay({ course_set, semester_number, userSemeste
     return <div className="w-100">
         <table className="table">
             <thead>
-                <h2 className="Semester"><b>Semester {semester_number}</b></h2>
+                <h2 data-testid="semesterNumber" className="Semester"><b>Semester {semester_number}</b></h2>
                 <tr>
                     <th className="text-center">Courses</th>
                     <th className="text-center">Credit</th>
