@@ -58,7 +58,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
 
                     <div className="col-6">
                         <div className="text-center">
-                            <button type="button" className="col-3 btn btn-primary m-3"
+                            <button type="button" className="col-3 btn btn-primary m-3" data-testid="Previous-Semester"
                                 onClick={() => show_Prev_Semester()}>Previous Semester</button>
                             <button type="button" className="col-3 btn btn-danger m-3" data-testid="Remove-Semester"
                                 onClick={() => remove_semester()}>Remove Semester</button>
