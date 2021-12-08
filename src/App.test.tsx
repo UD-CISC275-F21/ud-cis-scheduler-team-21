@@ -26,9 +26,9 @@ describe("App", () => {
     it("Add Semester Button adds the semester to the semester list", () => {
         const addButton = screen.getByTestId("Add-Semester");
         const semesterList = screen.getByTestId("semester-list");
-        expect(semesterList.children.length).toBe(8);
+        expect(semesterList.children.length).toBe(7);
         addButton.click();
-        expect(semesterList.children.length).toBe(9);
+        expect(semesterList.children.length).toBe(8);
     });
     
     
@@ -70,7 +70,6 @@ describe("App", () => {
     it("Claer Semester button removes all the Semesters from the semester list", () => {
         const clearbutton = screen.getByTestId("Clear-Plan");
         const courseList = screen.getByTestId("semester-list");
-        expect(courseList.children.length).toBe(8);
         clearbutton.click();
         expect(courseList.children.length).toBe(1);
     });

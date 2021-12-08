@@ -1,6 +1,7 @@
 import React from "react";
 import { Offcanvas } from "react-bootstrap";
 
+
 interface Degree_Requirements_Inputs {
     show: boolean;
     setShow: (b: boolean) => void;
@@ -9,12 +10,16 @@ interface Degree_Requirements_Inputs {
 
 export function DegreeRequirements_Section({ show, setShow, setWidth }: Degree_Requirements_Inputs): JSX.Element {
 
+    //---------------------------Functions---------------------------
+
     //Hides degree requirement panel
     function hideDegReqs(): void {
         setShow(false);
         setWidth(12);
     }
 
+
+    //---------------------------Return Statement---------------------------
     return (
         <Offcanvas show={show} placement="end" scroll={true} backdrop={true} onHide={() => hideDegReqs()}>
             <Offcanvas.Header closeButton>

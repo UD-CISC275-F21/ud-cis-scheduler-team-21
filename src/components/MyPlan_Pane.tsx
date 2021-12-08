@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
-import { MultiSemesterDisplay } from "./MultiSemesterDisplay";
+import { Semester_MS_Display } from "./Semester_MS_Display";
 
 interface Multi_Semester_View {
     userSemesters: Semester[];
@@ -10,27 +10,25 @@ interface Multi_Semester_View {
 
 export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View): JSX.Element {
 
-    //Constants-------------------
+    //---------------------------Constants---------------------------
+    //Total Credits in the users plan
     const [creditTotal, addTotal] = useState(0);
-    const [SemesterCount, addCount] = useState(userSemesters.length);
 
 
-    //Functions-------------------
+    //---------------------------Functions---------------------------
 
     //Removes all the Semesters from the plan
     function remove_all_semesters () {
-        const empty_sem: Semester = {course_set:[], semester_number: 1};
+        const empty_sem: Semester = {course_set:[], semester_number: 1, credits:0 };
         updateSemesters([empty_sem]);
         addTotal(0);
-        console.log(SemesterCount);
     }
 
     //Adds an empty Semester to the plan
     function add_empty_semester(): void{
         console.log(userSemesters[userSemesters.length-1].semester_number+1);
-        const empty_sem: Semester = { course_set: [], semester_number: userSemesters[userSemesters.length-1].semester_number + 1};
+        const empty_sem: Semester = { course_set: [], semester_number: userSemesters[userSemesters.length-1].semester_number + 1, credits:0};
         updateSemesters([...userSemesters, empty_sem]);
-        addCount(userSemesters.length);
     }
 
     //Alerts user before reloading 
@@ -39,12 +37,11 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
     }
 
 
-    //Use Effect-------------------
+    //---------------------------Use Effect---------------------------
 
     //Updates the Sum total at start and when the array 'userSemesters' changes
     useEffect(() => {
         addTotal(0);
-        addCount(userSemesters.length);
         userSemesters.forEach((semester: Semester) => {
             semester.course_set.forEach((course: Course) => {
                 addTotal(totalcredits => totalcredits + course.crsCredits);
@@ -53,14 +50,14 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
     }, [userSemesters]);
 
 
-    //Return Statement---------------
+    //---------------------------Return Statement---------------------------
     return (
 
         <div className="container-fluid padding" >
 
             <div className="row padding" data-testid="semester-list">
                 {userSemesters.map((semester: Semester, index: number) => {
-                    return <MultiSemesterDisplay key={index} course_set={semester.course_set} semester_number={semester.semester_number} userSemesters={userSemesters} updateSemesters={updateSemesters}/>;
+                    return <Semester_MS_Display key={index} course_set={semester.course_set} semester_number={semester.semester_number} userSemesters={userSemesters} />;
                 })}
             </div>
 

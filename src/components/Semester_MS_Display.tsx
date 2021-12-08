@@ -1,35 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
+import { Course_MS_Display } from "./Course_MS_Display";
 
 
-interface MS_Semester{
+interface Semester_MS_Display_Inputs {
     course_set: Course[];
-    semester_number:number;
+    semester_number: number;
     userSemesters: Semester[];
-    updateSemesters: (s : Semester[])=>void;
 }
 
-export function MultiSemesterDisplay ({ course_set, semester_number, userSemesters }:MS_Semester):JSX.Element{
+export function Semester_MS_Display({ course_set, semester_number, userSemesters }: Semester_MS_Display_Inputs): JSX.Element {
 
-    //Constants-------------------
+    //---------------------------Constants---------------------------
+    //Total Credits in the semester
     const [creditSum, addSum] = useState(0);
 
 
-    //Functions-------------------
-
-    //Function Defining the display characteristics of a Course in the Multi Semester View
-    function Course_MS({ crsName, crsDescription, crsCredits }: Course) {
-        return (
-            <tr>
-                <td><b>{crsName}:</b> {crsDescription}</td>
-                <td className="text-center">{crsCredits}</td>
-            </tr>
-        );
-    }
-    
-
-    //Use Effect-------------------
+    //---------------------------Use Effect---------------------------
 
     //Updates the Sum total at start and if the semester number or courses in the semester change
     useEffect(() => {
@@ -39,8 +27,8 @@ export function MultiSemesterDisplay ({ course_set, semester_number, userSemeste
         });
     }, [semester_number, userSemesters, course_set]);
 
-    
-    //Return Statement-------------
+
+    //---------------------------Return Statement---------------------------
     return <div className="col-md-6">
         <h2 className="Semester"><b>Semester {semester_number}</b></h2>
 
@@ -53,12 +41,11 @@ export function MultiSemesterDisplay ({ course_set, semester_number, userSemeste
             </thead>
 
             <tbody>
-
                 {course_set.map((course: Course, index: number) => {
-                    return <Course_MS key={index} crsName={course.crsName} crsDescription={course.crsDescription} crsCredits={course.crsCredits} crsPrereqs={course.crsPrereqs} semester_number={semester_number} />;
+                    return <Course_MS_Display key={index} course={course} />;
                 })}
-
             </tbody>
+
             <tfoot>
                 <tr>
                     <td><b>Total Credits</b></td>
