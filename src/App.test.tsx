@@ -70,7 +70,6 @@ describe("App", () => {
     it("Claer Semester button removes all the Semesters from the semester list", () => {
         const clearbutton = screen.getByTestId("Clear-Plan");
         const courseList = screen.getByTestId("semester-list");
-        expect(courseList.children.length).toBe(8);
         clearbutton.click();
         expect(courseList.children.length).toBe(1);
     });
