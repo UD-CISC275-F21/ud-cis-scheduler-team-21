@@ -8,12 +8,16 @@ interface App_Navbar_Inputs {
 
 export function App_Navbar({ setShow, setWidth }: App_Navbar_Inputs): JSX.Element {
 
+    //---------------------------Functions---------------------------
+
     //Shows degree requirement panel
     function showDegReqs(): void {
         setShow(true);
         setWidth(9);
     }
 
+
+    //---------------------------Return Statement---------------------------
     return (
         <>
             <hr></hr>

@@ -1,30 +1,33 @@
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import { Tab, Col } from "react-bootstrap";
-import "./App.css";
-import { MyPlan_Pane } from "./components/MyPlan_Pane";
-import ScrollToTopBtn from "./components/gotToTop";
-import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
-import { Semester } from "./interfaces/Semester";
-import { semester_list } from "./assets/Globals";
-import { WelcomeAndHelp_Pane } from "./components/WelcomeAndHelp_Pane";
-import { DegreeRequirements_Section } from "./components/DegreeRequirements_Section";
-import { App_Navbar } from "./components/App_Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./logo.png";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { WelcomeAndHelp_Pane } from "./components/WelcomeAndHelp_Pane";
+import { MyPlan_Pane } from "./components/MyPlan_Pane";
+import { EditSemesters_Pane } from "./components/EditSemesters_Pane";
+import { App_Navbar } from "./components/App_Navbar";
+import { DegreeRequirements_Section } from "./components/DegreeRequirements_Section";
+import { Semester } from "./interfaces/Semester";
+import { ExamplePlan } from "./assets/ExamplePlan";
+import ScrollToTopBtn from "./components/gotToTop";
+import logo from "./logo.png";
 
 function App(): JSX.Element {
 
-    //Constants-------------------
-    const [userSemesters, updateSemesters] = useState<Semester[]>(semester_list);
+    //---------------------------Constants---------------------------
+    //List of semesters in users plan
+    const [userSemesters, updateSemesters] = useState<Semester[]>(ExamplePlan);
 
+    //Used to show/hide degree requirements and resize main content
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [app_Content_Width, setAppContentWidth] = useState(12);
 
+    //Help button toast message
     const notify = () => toast("Go to the 'Welcome and Help' Page to see instructions and clear up any confusion you may have");
 
-    //Return Statement---------------
+    //---------------------------Return Statement---------------------------
     return (
         <div className="App">
 

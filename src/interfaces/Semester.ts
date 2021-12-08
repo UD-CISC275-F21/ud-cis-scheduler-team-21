@@ -4,5 +4,5 @@ import { Course } from "./Course";
 export interface Semester{
     course_set: Course[];
     semester_number: number;
-    credits?: number;
+    credits: number;
 }

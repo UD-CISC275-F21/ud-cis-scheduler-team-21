@@ -1,6 +1,8 @@
 import React from "react";
 
 export function WelcomeAndHelp_Pane() :JSX.Element {
+
+    //---------------------------Return Statement---------------------------
     return (
         <div>
             <h2>Welsome to Team 21`s UD CISC Scheduler</h2>
