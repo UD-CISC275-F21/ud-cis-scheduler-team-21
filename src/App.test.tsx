@@ -13,7 +13,7 @@ describe("App", () => {
         expect(linkElement).toBeInTheDocument();
     });
 
-    describe("Add Remove and Clear button works properly", () => {
+    describe("Add Semester, Remove Semester, Rest and Clear button works properly", () => {
 
         // test if Remove Semester button removes the semester from the semester list.
         it("Remove Semester Button removes the semester from the semester list", () => {
@@ -167,4 +167,4 @@ describe("App", () => {
 
 
 
-});    
+});
