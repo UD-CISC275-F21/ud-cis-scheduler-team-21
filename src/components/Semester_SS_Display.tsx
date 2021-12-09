@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
 import { Course_SS_Display } from "./Course_SS_Display";
+import { toast } from "react-toastify";
 
 
 interface Semester_SS_Display_Inputs {
@@ -25,6 +26,11 @@ export function Semester_SS_Display({ course_set, semester_number, userSemesters
         userSemesters[sem_num - 1].course_set.splice(0, userSemesters[sem_num - 1].course_set.length);
         updateSemesters([...userSemesters]);
         addSum(0);
+
+        toast.error("All courses have been removed", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
     }
 
     //Remove a single course from the current Semester
@@ -36,6 +42,11 @@ export function Semester_SS_Display({ course_set, semester_number, userSemesters
                 addSum(v => v - course.crsCredits);
             }
         });
+
+        toast.error("Course has been removed", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
     }
 
 

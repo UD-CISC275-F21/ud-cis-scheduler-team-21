@@ -6,6 +6,7 @@ import { DuplicateError_Toast, PrerequisiteError_Toast } from "./AddCourseError_
 import { Course } from "../interfaces/Course";
 import { Semester } from "../interfaces/Semester";
 import data from "../assets/data.json";
+import { toast } from "react-toastify";
 
 
 interface NewCourse_Section_Inputs {
@@ -49,9 +50,16 @@ export function AddCourse_Section({ userSemesters, updateSemesters, current_seme
                     new_crs = { crsName: courseList.id, crsDescription: courseList.name, crsCredits: parseInt(courseList.credits, 10), crsPrereqs: courseList.prereqs, semester_number: current_semester_num + 1 };
                     userSemesters[current_semester_num].course_set.push(new_crs);
                     updateSemesters([...userSemesters]);
+
+                    toast.success("Course added successfully!", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+            
                 }
             }
         });
+
+
     }
 
     //Checks for to make sure course doesnt exist in current plan
@@ -64,7 +72,10 @@ export function AddCourse_Section({ userSemesters, updateSemesters, current_seme
                     canAddCourse = false;
                 }
             });
+    
         });
+       
+
         return canAddCourse;
     }
 
@@ -84,6 +95,7 @@ export function AddCourse_Section({ userSemesters, updateSemesters, current_seme
         });
         if ((prereqsArray.length == 1 && prereqsArray[0] == "") || prereqsArray.length == 0) {
             canAddCourse = true;
+    
         }
         return canAddCourse;
     }

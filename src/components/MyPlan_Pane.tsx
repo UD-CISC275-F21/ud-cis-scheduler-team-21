@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
 import { Semester_MS_Display } from "./Semester_MS_Display";
+import { toast } from "react-toastify";
 
 
 interface Multi_Semester_View {
@@ -23,6 +24,11 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
         const empty_sem: Semester = {course_set:[], semester_number: 1, credits:0 };
         updateSemesters([empty_sem]);
         addTotal(0);
+
+        toast.error("All semesters have been removed", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
     }
 
     //Adds an empty Semester to the plan
@@ -30,6 +36,17 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
         console.log(userSemesters[userSemesters.length-1].semester_number+1);
         const empty_sem: Semester = { course_set: [], semester_number: userSemesters[userSemesters.length-1].semester_number + 1, credits:0};
         updateSemesters([...userSemesters, empty_sem]);
+
+        toast.success("New semesters has been added", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
+    }
+
+    function rest(): void {
+        window.location.reload();
+        alert("All unsaved changes will be lost, are you sure you still want to reset?");
+
     }
 
 
@@ -71,7 +88,8 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                     <div className="col-4">
                         <form>
                             <button type="button" className="btn btn-secondary btn-lg btn-block" 
-                                onClick={() => window.location.reload()}>Reset</button>
+                                onClick={() => rest()}>Reset</button>
+
                         </form>
                     </div>
 

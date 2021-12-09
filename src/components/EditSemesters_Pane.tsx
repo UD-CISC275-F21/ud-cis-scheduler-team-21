@@ -3,6 +3,7 @@ import { Semester } from "../interfaces/Semester";
 import { Semester_SS_Display } from "./Semester_SS_Display";
 import { AddCourse_Section } from "./AddCourse_Section";
 import { Course } from "../interfaces/Course";
+import { toast } from "react-toastify";
 
 
 
@@ -34,6 +35,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
             });
         }
         updateSemesters([...userSemesters]);
+
+        toast.error("Semesters has been removed", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
     };
 
     //shows next semester on click
