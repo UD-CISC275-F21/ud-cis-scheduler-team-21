@@ -24,6 +24,9 @@ export function App_Navbar({ setShow, setWidth }: App_Navbar_Inputs): JSX.Elemen
             <Nav variant="pills" role="button" className="flex-row text-center">
                 <Col md={10}>
                     <Row>
+                        <Nav.Item><Nav.Link eventKey="first">Welcome and Help</Nav.Link></Nav.Item>
+                    </Row>
+                    <Row>
                         <Col md={6}>
                             <Nav.Item><Nav.Link eventKey="second">My Plan</Nav.Link></Nav.Item>
                         </Col>

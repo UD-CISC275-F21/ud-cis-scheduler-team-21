@@ -3,6 +3,7 @@ import { Semester } from "../interfaces/Semester";
 import { Course } from "../interfaces/Course";
 import { Semester_MS_Display } from "./Semester_MS_Display";
 
+
 interface Multi_Semester_View {
     userSemesters: Semester[];
     updateSemesters: (s : Semester[])=>void;
@@ -31,13 +32,7 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
         updateSemesters([...userSemesters, empty_sem]);
     }
 
-    //Alerts user before reloading 
-    function reset_alert(): void{
-        onclick=() => {
-            window.location.reload();
-        };
-        alert("All unsaved changes will be lost, are you sure you still want to reset?");
-    }
+
 
 
     //---------------------------Use Effect---------------------------
@@ -77,7 +72,8 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                     </div>
                     <div className="col-4">
                         <form>
-                            <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={()=> reset_alert()}>Reset</button>
+                            <button type="button" className="btn btn-secondary btn-lg btn-block" 
+                                onClick={() => window.location.reload()}>Reset</button>
                         </form>
                     </div>
 

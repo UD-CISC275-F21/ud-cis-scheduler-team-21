@@ -13,7 +13,7 @@ describe("App", () => {
         expect(linkElement).toBeInTheDocument();
     });
 
-    describe("Add Remove and Clear button works properly", () => {
+    describe("Add Semester, Remove Semester, Rest and Clear button works properly", () => {
 
         // test if Remove Semester button removes the semester from the semester list.
         it("Remove Semester Button removes the semester from the semester list", () => {
@@ -39,6 +39,15 @@ describe("App", () => {
             const semesterList = screen.getByTestId("semester-list");
             clearbutton.click();
             expect(semesterList.children.length).toBe(1);
+        });
+
+        //test if reset plan works properly
+        it("reset plan works properly", () => {
+            fireEvent.click(screen.getByTestId("myPlan"));
+            fireEvent.click(screen.getByRole("button", { name: "Reset" }));
+            expect(screen.queryByText("Welcome to Team 21s UD CISC Scheduler")).toBeInTheDocument();
+
+
         });
 
     });
