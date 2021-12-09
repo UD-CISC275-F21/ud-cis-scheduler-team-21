@@ -13,23 +13,36 @@ describe("App", () => {
         expect(linkElement).toBeInTheDocument();
     });
 
-    // test if Remove Semester button removes the semester from the semester list.
-    it("Remove Semester Button removes the semester from the semester list", () => {
-        const removeButton = screen.getByTestId("Remove-Semester");
-        const semesterList = screen.getByTestId("semester-list");
-        expect(semesterList.children.length).toBe(8);
-        removeButton.click();
-        expect(semesterList.children.length).toBe(7);
+    describe("Add Remove and Clear button works properly", () => {
+
+        // test if Remove Semester button removes the semester from the semester list.
+        it("Remove Semester Button removes the semester from the semester list", () => {
+            const removeButton = screen.getByTestId("Remove-Semester");
+            const semesterList = screen.getByTestId("semester-list");
+            expect(semesterList.children.length).toBe(8);
+            removeButton.click();
+            expect(semesterList.children.length).toBe(7);
+        });
+
+        // test if Add Semester button adds the semester to the semester list.
+        it("Add Semester Button adds the semester to the semester list", () => {
+            fireEvent.click(screen.getByTestId("myPlan"));
+            const semesterList = screen.getByTestId("semester-list");
+            expect(semesterList.children.length).toBe(7);
+            fireEvent.click(screen.getByRole("button", { name: "Add Semester" }));
+            expect(semesterList.children.length).toBe(8);
+        });
+
+        // test if Clear Plan button works properly and removes all the semesters from the semester list
+        it("Claer Semester button removes all the Semesters from the semester list", () => {
+            const clearbutton = screen.getByTestId("Clear-Plan");
+            const semesterList = screen.getByTestId("semester-list");
+            clearbutton.click();
+            expect(semesterList.children.length).toBe(1);
+        });
+
     });
 
-    // test if Add Semester button adds the semester to the semester list.
-    it("Add Semester Button adds the semester to the semester list", () => {
-        const addButton = screen.getByTestId("Add-Semester");
-        const semesterList = screen.getByTestId("semester-list");
-        expect(semesterList.children.length).toBe(7);
-        addButton.click();
-        expect(semesterList.children.length).toBe(8);
-    });
     
     describe("Add and Remove Course works", () =>{
         // test if Add Course button adds the course to the course list and autocompletes works as expected.
@@ -68,13 +81,6 @@ describe("App", () => {
 
 
 
-    // test if Clear Plan button works properly and removes all the semesters from the semester list
-    it("Claer Semester button removes all the Semesters from the semester list", () => {
-        const clearbutton = screen.getByTestId("Clear-Plan");
-        const semesterList = screen.getByTestId("semester-list");
-        clearbutton.click();
-        expect(semesterList.children.length).toBe(1);
-    });
 
     //shows courseinfo button
     it("Course Info Button shows the course info", () => {
@@ -87,35 +93,33 @@ describe("App", () => {
         fireEvent.click(screen.getByRole("button", { name: "Show Course Info" }));
         expect(screen.queryByText("CISC 220 - Data Structures")).toBeInTheDocument();
         expect(screen.queryByText("Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.")).toBeInTheDocument();
-        
 
     });
 
 
     describe("Previous and Next Semester Button works properly", () => {
-        //test if Previous Semester button works properly and update the single semester.
-        it("Previous Semester Button works properly and update the single semester", async () => {
-            fireEvent.click(screen.getByTestId("editPlan"));
-            const NextSemesterButton = screen.getByTestId("Next-Semester");
-            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 1");
-            NextSemesterButton.click();
-            expect(screen.getByTestId("semesterNumber")).not.toContainHTML("Semester 1");
-            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 2");
-            const PrevSemesterButton = screen.getByTestId("Previous-Semester");
-            PrevSemesterButton.click();
-            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 1");
-        });
-
         //test if Next Semester button works properly and update the single semester.
         it("Next Semester Button works properly and update the single semester", async () => {
             fireEvent.click(screen.getByTestId("editPlan"));
-            const NextSemesterButton = screen.getByTestId("Next-Semester");
             expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 1");
-            NextSemesterButton.click();
+            fireEvent.click(screen.getByRole("button", { name: "Next Semester" }));
             expect(screen.getByTestId("semesterNumber")).not.toContainHTML("Semester 1");
             expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 2");
                 
         });
+        
+        //test if Previous Semester button works properly and update the single semester.
+        //click next semester -> semester 1 becomes semester 2, click previous button to go back to previous semester
+        it("Previous Semester Button works properly and update the single semester", async () => {
+            fireEvent.click(screen.getByTestId("editPlan"));
+            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 1");
+            fireEvent.click(screen.getByRole("button", { name: "Next Semester" }));
+            expect(screen.getByTestId("semesterNumber")).not.toContainHTML("Semester 1");
+            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 2");
+            fireEvent.click(screen.getByRole("button", { name: "Previous Semester" }));
+            expect(screen.getByTestId("semesterNumber")).toContainHTML("Semester 1");
+        });
+
 
 
     });

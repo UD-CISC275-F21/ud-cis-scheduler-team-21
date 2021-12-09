@@ -53,7 +53,7 @@ function App(): JSX.Element {
                     <Tab.Content>
                         <Tab.Pane eventKey="first"> <WelcomeAndHelp_Pane /> </Tab.Pane>
 
-                        <Tab.Pane eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
+                        <Tab.Pane data-testid="myPlan" eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
 
                         <Tab.Pane data-testid="editPlan" eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
 

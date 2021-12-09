@@ -14,10 +14,10 @@ export function EditCourseInfo_Modal({ showModal, setShow, crsID }: EditCourseIn
 
     //---------------------------Constants---------------------------
     const handleClose = () => setShow(false);
-    const [courseDescription, setCourseDescription] = useState("courseDescription");
-    const [courseName, setCourseName] = useState("courseName");
-    const [courseCredits, setCourseCredits] = useState("courseCredits");
-    const [coursePrereqs, setCoursePrereqs] = useState("coursePrereqs");
+    const [courseDescription, setCourseDescription] = useState("Course Description");
+    const [courseName, setCourseName] = useState("Course Name");
+    const [courseCredits, setCourseCredits] = useState("Course Credits");
+    const [coursePrereqs, setCoursePrereqs] = useState("Course Prereqs");
 
 
     //---------------------------Functions---------------------------
@@ -58,38 +58,41 @@ export function EditCourseInfo_Modal({ showModal, setShow, crsID }: EditCourseIn
             <Modal.Body>
                 <div>
                     <div className="row">
-                        <div className="col-5 text-center">
-                            <p>Edit {crsID} Name: </p>
+                        <div className="col-3 text-center mt-3">
+                            <p><b>Name </b></p>
                         </div>
-                        <div className="col-7 text-center">
-                            <input id="NameInput" type="text" value={courseName} onChange={(e) => setCourseName(e.target.value)} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-5 text-center">
-                            <p>Edit {crsID} Description: </p>
-                        </div>
-                        <div className="col-7 text-center">
-                            <input id="DescriptionInput" type="text" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)} />
+                        <div className="col-9 text-center">
+                            <textarea className="form-control m-1" id="NameInput" value={courseName} onChange={(e) => setCourseName(e.target.value)}></textarea>                          
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-5 text-center">
-                            <p>Edit {crsID} Credits: </p>
+                        <div className="col-3 text-center mt-3">
+                            <p><b>Description </b></p>
                         </div>
-                        <div className="col-7 text-center">
-                            <input id="CreditInput" type="text" value={courseCredits} onChange={(e) => setCourseCredits(e.target.value)} />
+                        <div className="col-9 text-center">
+                            <textarea className="form-control m-1" id="DescriptionInput" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)}></textarea>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-5 text-center">
-                            <p>Edit {crsID} Prerequisites: </p>
+                        <div className="col-3 text-center mt-3">
+                            <p><b>Credits</b></p>
                         </div>
-                        <div className="col-7 text-center">
-                            <input id="PrereqsInput" type="text" value={coursePrereqs} onChange={(e) => setCoursePrereqs(e.target.value)} />
+                        <div className="col-9 text-center">
+                            <textarea className="form-control m-1" id="CreditInput" value={courseCredits} onChange={(e) => setCourseCredits(e.target.value)}></textarea>
                         </div>
                     </div>
-                    <Button variant="primary" onClick={() => saveNewData()}>Save</Button>
+                    <div className="row">
+                        <div className="col-3 text-center mt-3">
+                            <p><b>Prerequisites</b></p>
+                        </div>
+                        <div className="col-9 text-center">
+                            <textarea className="form-control m-1" id="PrereqsInput" value={coursePrereqs} onChange={(e) => setCoursePrereqs(e.target.value)}></textarea>
+                        </div>
+                    </div>
+                    <div className="text-center mt-2">
+                        <Button variant="primary" onClick={() => saveNewData()}>Save</Button>
+                    </div>
+ 
                 </div>
             </Modal.Body>
             <Modal.Footer>
