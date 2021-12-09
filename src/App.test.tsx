@@ -80,21 +80,62 @@ describe("App", () => {
     });
 
 
+    describe("Course information is working", () => {
+        //shows course information 
+        it("Course Info Button shows the course info", () => {
+            fireEvent.click(screen.getByTestId("editPlan"));
+            expect(screen.queryByText("ART 290 - Introduction to Ceramics")).not.toBeInTheDocument();
+            expect(screen.queryByText("Introduction to the tools, processes and aesthetics of ceramics.")).not.toBeInTheDocument();
+            fireEvent.click(screen.getByRole("textbox", { name: "Enter Course ID" }));
+            fireEvent.change(screen.getByRole("textbox", { name: "Enter Course ID" }), { target: { value: "ART 290" } });
+            fireEvent.click(screen.getByRole("option", { name: "ART 290" }));
+            fireEvent.click(screen.getByRole("button", { name: "Show Course Info" }));
+            expect(screen.queryByText("ART 290 - Introduction to Ceramics")).toBeInTheDocument();
+            expect(screen.queryByText("Introduction to the tools, processes and aesthetics of ceramics.")).toBeInTheDocument();
+
+        });
+
+        // test if Edit Course button is enabled and is working as expected
+        it("Edit Course button is enabled and is working as expected", () => {
+            // -> go to Edit Plan
+            fireEvent.click(screen.getByTestId("editPlan"));
+            // -> clicks on textbox to enter course code
+            fireEvent.click(screen.getByRole("textbox", { name: "Enter Course ID" }));
+            // -> set the value to "ART 290"
+            fireEvent.change(screen.getByRole("textbox", { name: "Enter Course ID" }), 
+                { target: { value: "ART 290" } });
+            // -> click on textbox "ART 290" option
+            fireEvent.click(screen.getByRole("option", { name: "ART 290" }));
+            // -> show course information
+            fireEvent.click(screen.getByRole("button", { name: "Show Course Info" }));
+            // -> expect the Name true value
+            expect(screen.queryByText("ART 290 - Introduction to Ceramics")).toBeInTheDocument();
+            // -> expects the description true value
+            expect(screen.queryByText("Introduction to the tools, processes and aesthetics of ceramics.")).toBeInTheDocument();
+            // -> clicks on edit course
+            fireEvent.click(screen.getByRole("button", { name: "Edit Course" }));
+            // -> Chnage the name of the course
+            const inputName = screen.getByLabelText("inputName");
+            fireEvent.change(inputName, { target: { value: "Name Test Passed" } });
+            // -> change the description of the course
+            const inputDescription = screen.getByLabelText("inputDescription");
+            fireEvent.change(inputDescription, { target: { value: "Description Test Passed" } });
+            // -> clicks on the save button and updates the information 
+            fireEvent.click(screen.getByRole("button", { name: "Save" }));
+            // -> clicks on show course info and shows the updated information
+            fireEvent.click(screen.getByRole("button", { name: "Show Course Info" }));
+            // -> expects the updated name to show under Course Info
+            expect(screen.getByTestId("courseInfo")).toContainHTML("Name Test Passed");
+            // -> expects the updated description to show under Course Info
+            expect(screen.getByTestId("courseInfo")).toContainHTML("Description Test Passed");
 
 
-    //shows courseinfo button
-    it("Course Info Button shows the course info", () => {
-        fireEvent.click(screen.getByTestId("editPlan"));
-        expect(screen.queryByText("CISC 220 - Data Structures")).not.toBeInTheDocument();
-        expect(screen.queryByText("Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.")).not.toBeInTheDocument();
-        fireEvent.click(screen.getByRole("textbox", { name: "Enter Course ID" }));
-        fireEvent.change(screen.getByRole("textbox", { name: "Enter Course ID" }), { target: { value: "CISC 220" } });
-        fireEvent.click(screen.getByRole("option", { name: "CISC 220" }));
-        fireEvent.click(screen.getByRole("button", { name: "Show Course Info" }));
-        expect(screen.queryByText("CISC 220 - Data Structures")).toBeInTheDocument();
-        expect(screen.queryByText("Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.")).toBeInTheDocument();
+
+        });
 
     });
+
+
 
 
     describe("Previous and Next Semester Button works properly", () => {
