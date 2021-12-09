@@ -140,8 +140,8 @@ export function AddCourse_Section({ userSemesters, updateSemesters, current_seme
                     <Button className="btn btn-info text-center m-2" data-testid="courseInfoButton" onClick={() => showCourseInfo(newClassInput)}>
                         Show Course Info
                     </Button>
-                    <Button className="btn btn-info text-center m-2" onClick={() => setShowModal(true)}>
-                        Edit
+                    <Button className="btn btn-secondary text-center m-2" onClick={() => setShowModal(true)}>
+                        Edit Course
                     </Button>
                 </Form>
             </div>
