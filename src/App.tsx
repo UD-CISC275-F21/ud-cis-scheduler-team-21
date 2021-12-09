@@ -35,9 +35,7 @@ function App(): JSX.Element {
                 <h1 className="mt-4">UD CIS Scheduler</h1>
             </header>
 
-            <div className="text-left">
-                <a href="./components/WelcomeAndHelp_Pane"><img className="logo" src={logo} alt="Logo" /></a>
-            </div>
+            <div className="text-left"><img className="logo" src={logo} alt="Logo" /></div>
 
             <div className="help">
                 <button className="btn-sm btn-info" onClick={notify}>Help</button>
