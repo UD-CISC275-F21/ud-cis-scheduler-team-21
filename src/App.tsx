@@ -19,6 +19,7 @@ function App(): JSX.Element {
     //---------------------------Constants---------------------------
     //List of semesters in users plan
     const [userSemesters, updateSemesters] = useState<Semester[]>(ExamplePlan);
+    const [SS_focused_sem_num, changeSemNum] = useState(0);
 
     //Used to show/hide degree requirements and resize main content
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
@@ -44,7 +45,7 @@ function App(): JSX.Element {
 
             <Col md={app_Content_Width}>
 
-                <DegreeRequirements_Section show={DegreeReq_View_State} setShow={toggleDegreeReqView} setWidth={setAppContentWidth} />
+                <DegreeRequirements_Section show={DegreeReq_View_State} setShow={toggleDegreeReqView} setWidth={setAppContentWidth} userSemesters={userSemesters} />
 
                 <Tab.Container defaultActiveKey="first">
 
@@ -53,9 +54,9 @@ function App(): JSX.Element {
                     <Tab.Content>
                         <Tab.Pane eventKey="first"> <WelcomeAndHelp_Pane /> </Tab.Pane>
 
-                        <Tab.Pane data-testid="myPlan" eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
+                        <Tab.Pane data-testid="myPlan" eventKey="second"> <MyPlan_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} change_SS_SemNum={changeSemNum} /> </Tab.Pane>
 
-                        <Tab.Pane data-testid="editPlan" eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} /> </Tab.Pane>
+                        <Tab.Pane data-testid="editPlan" eventKey="third"> <EditSemesters_Pane userSemesters={userSemesters} updateSemesters={updateSemesters} current_semester_num={SS_focused_sem_num} changeSemNum={changeSemNum} /> </Tab.Pane>
 
                         <ScrollToTopBtn />
 

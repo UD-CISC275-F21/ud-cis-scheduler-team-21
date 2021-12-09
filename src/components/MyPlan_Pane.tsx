@@ -6,9 +6,10 @@ import { Semester_MS_Display } from "./Semester_MS_Display";
 interface Multi_Semester_View {
     userSemesters: Semester[];
     updateSemesters: (s : Semester[])=>void;
+    change_SS_SemNum: (n: number)=>void;
 }
 
-export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View): JSX.Element {
+export function MyPlan_Pane({userSemesters, updateSemesters, change_SS_SemNum}:Multi_Semester_View): JSX.Element {
 
     //---------------------------Constants---------------------------
     //Total Credits in the users plan
@@ -19,8 +20,10 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
 
     //Removes all the Semesters from the plan
     function remove_all_semesters () {
+        change_SS_SemNum(0);
         const empty_sem: Semester = {course_set:[], semester_number: 1, credits:0 };
-        updateSemesters([empty_sem]);
+        userSemesters.splice(0,userSemesters.length);
+        updateSemesters([...userSemesters, empty_sem]);
         addTotal(0);
     }
 
