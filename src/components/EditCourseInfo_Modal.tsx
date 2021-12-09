@@ -62,7 +62,7 @@ export function EditCourseInfo_Modal({ showModal, setShow, crsID }: EditCourseIn
                             <p><b>Name </b></p>
                         </div>
                         <div className="col-9 text-center">
-                            <textarea className="form-control m-1" id="NameInput" value={courseName} onChange={(e) => setCourseName(e.target.value)}></textarea>                          
+                            <textarea className="form-control m-1" aria-label="inputName" id="NameInput" value={courseName} onChange={(e) => setCourseName(e.target.value)}></textarea>                          
                         </div>
                     </div>
                     <div className="row">
@@ -70,7 +70,7 @@ export function EditCourseInfo_Modal({ showModal, setShow, crsID }: EditCourseIn
                             <p><b>Description </b></p>
                         </div>
                         <div className="col-9 text-center">
-                            <textarea className="form-control m-1" id="DescriptionInput" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)}></textarea>
+                            <textarea className="form-control m-1" aria-label="inputDescription" id="DescriptionInput" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)}></textarea>
                         </div>
                     </div>
                     <div className="row">
