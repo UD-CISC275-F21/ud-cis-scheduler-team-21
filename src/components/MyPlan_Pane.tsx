@@ -33,6 +33,9 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
 
     //Alerts user before reloading 
     function reset_alert(): void{
+        onclick=() => {
+            window.location.reload();
+        };
         alert("All unsaved changes will be lost, are you sure you still want to reset?");
     }
 
@@ -74,7 +77,7 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
                     </div>
                     <div className="col-4">
                         <form>
-                            <button type="submit" className="btn btn-secondary btn-lg btn-block" onClick={()=> reset_alert()}>Reset</button>
+                            <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={()=> reset_alert()}>Reset</button>
                         </form>
                     </div>
 
