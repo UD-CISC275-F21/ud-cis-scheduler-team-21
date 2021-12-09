@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React from "react";
 import { Semester } from "../interfaces/Semester";
 import { Semester_SS_Display } from "./Semester_SS_Display";
 import { AddCourse_Section } from "./AddCourse_Section";
@@ -52,11 +52,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters,current_seme
         }  
     };
 
-    useEffect(() => {
+    /*useEffect(() => {
         //if(current_semester_number > userSemesters.length ){
         changeSemNum(0);
         //}
-    }, [userSemesters]);
+    }, [userSemesters]);*/
 
     //---------------------------Return Statement---------------------------
     return (
