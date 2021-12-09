@@ -24,9 +24,10 @@ function App(): JSX.Element {
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [app_Content_Width, setAppContentWidth] = useState(12);
     
+ 
 
     //Help button toast message
-    const notify = () => toast("Go to the 'Welcome and Help' Page to see instructions and clear up any confusion you may have");
+    const notify = () => toast("Go to the 'Home' to see instructions and clear up any confusion you may have");
 
     //---------------------------Return Statement---------------------------
     return (
