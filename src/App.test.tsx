@@ -34,12 +34,12 @@ describe("App", () => {
         });
 
         // test if Clear Plan button works properly and removes all the semesters from the semester list
-        it("Claer Semester button removes all the Semesters from the semester list", () => {
+        /*it("Claer Semester button removes all the Semesters from the semester list", () => {
             const clearbutton = screen.getByTestId("Clear-Plan");
             const semesterList = screen.getByTestId("semester-list");
             clearbutton.click();
             expect(semesterList.children.length).toBe(1);
-        });
+        });*/
 
         //test if reset plan works properly
         it("reset plan works properly", () => {
@@ -176,4 +176,4 @@ describe("App", () => {
 
 
 
-});    
+});
