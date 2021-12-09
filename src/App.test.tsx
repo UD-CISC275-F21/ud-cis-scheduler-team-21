@@ -45,7 +45,7 @@ describe("App", () => {
         it("reset plan works properly", () => {
             fireEvent.click(screen.getByTestId("myPlan"));
             fireEvent.click(screen.getByRole("button", { name: "Reset" }));
-            expect(screen.queryByText("Welcome to Team 21s UD CISC Scheduler")).toBeInTheDocument();
+            expect(screen.queryByText("Welcome to UD CISC Scheduler")).toBeInTheDocument();
 
 
         });

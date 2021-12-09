@@ -33,8 +33,6 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
     }
 
 
-
-
     //---------------------------Use Effect---------------------------
 
     //Updates the Sum total at start and when the array 'userSemesters' changes
