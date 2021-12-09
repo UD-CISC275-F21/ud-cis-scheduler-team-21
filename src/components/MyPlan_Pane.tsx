@@ -62,7 +62,7 @@ export function MyPlan_Pane({userSemesters, updateSemesters}:Multi_Semester_View
             </div>
 
             <div className="text-center">
-                <p><h3>Total Credits: </h3><b>{creditTotal}</b></p>
+                <p><strong>Total Credits: </strong> <b>{creditTotal}</b></p>
                 <div className="row">
                     <div className="col-4">
                         <button type="button" className="btn btn-primary btn-lg btn-block"  data-testid="Add-Semester" 
