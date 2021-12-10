@@ -3,6 +3,7 @@ import { Semester } from "../interfaces/Semester";
 import { Semester_SS_Display } from "./Semester_SS_Display";
 import { AddCourse_Section } from "./AddCourse_Section";
 import { Course } from "../interfaces/Course";
+import { toast } from "react-toastify";
 
 
 
@@ -36,6 +37,11 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters,current_seme
             });
         }
         updateSemesters([...userSemesters]);
+
+        toast.error("Semester has been removed", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+
     };
 
     //shows next semester on click
@@ -68,7 +74,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters,current_seme
                         <div className="text-center">
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Prev_Semester()}>Previous Semester</button>
-                            <button type="button" className="col-3 btn btn-danger m-3" data-testid="Remove-Semester"
+                            <button type="button" className="col-3 btn btn-danger m-3"
                                 onClick={() => remove_semester()}>Remove Semester</button>
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Next_Semester()}>Next Semester</button>

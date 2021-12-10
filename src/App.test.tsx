@@ -13,57 +13,16 @@ describe("App", () => {
         expect(linkElement).toBeInTheDocument();
     });
 
-    describe("Add Semester, Remove Semester, Rest and Clear button works properly", () => {
-
-        // test if Remove Semester button removes the semester from the semester list.
-        it("Remove Semester Button removes the semester from the semester list", () => {
-            const removeButton = screen.getByTestId("Remove-Semester");
-            const semesterList = screen.getByTestId("semester-list");
-            expect(semesterList.children.length).toBe(8);
-            removeButton.click();
-            expect(semesterList.children.length).toBe(7);
-        });
-
-        // test if Add Semester button adds the semester to the semester list.
-        it("Add Semester Button adds the semester to the semester list", () => {
-            fireEvent.click(screen.getByTestId("myPlan"));
-            const semesterList = screen.getByTestId("semester-list");
-            expect(semesterList.children.length).toBe(7);
-            fireEvent.click(screen.getByRole("button", { name: "Add Semester" }));
-            expect(semesterList.children.length).toBe(8);
-        });
-
-        // test if Clear Plan button works properly and removes all the semesters from the semester list
-        /*it("Claer Semester button removes all the Semesters from the semester list", () => {
-            const clearbutton = screen.getByTestId("Clear-Plan");
-            const semesterList = screen.getByTestId("semester-list");
-            clearbutton.click();
-            expect(semesterList.children.length).toBe(1);
-        });*/
-
-        //test if reset plan works properly
-        it("reset plan works properly", () => {
-            fireEvent.click(screen.getByTestId("myPlan"));
-            fireEvent.click(screen.getByRole("button", { name: "Reset" }));
-            expect(screen.queryByText("Welcome to UD CISC Scheduler")).toBeInTheDocument();
-
-
-        });
-
-    });
-
     
     describe("Add and Remove Course works", () =>{
         // test if Add Course button adds the course to the course list and autocompletes works as expected.
         it("Add Course Button adds the course to the course list and autocompletes works as expected", () => {
-            const addButton = screen.getByTestId("Add-Course");
             const courseList = screen.getByTestId("course-list");
-            //const autocomplete: HTMLInputElement  = screen.getByTestId("autoComplete") as HTMLInputElement;
             expect(courseList.children.length).toBe(5);
             fireEvent.click(screen.getByRole("textbox", { name: "Enter Course ID" }));
             fireEvent.change(screen.getByRole("textbox", { name: "Enter Course ID" }), { target: { value: "CISC 101" } });
             fireEvent.click(screen.getByRole("option", { name: "CISC 101" }));
-            addButton.click();
+            fireEvent.click(screen.getByRole("button", { name: "Add Course" }));
             expect(courseList.children.length).toBe(6);
         });
         
@@ -78,13 +37,30 @@ describe("App", () => {
 
         // test if Remove Course button removes the course from the semester list.
         it("Remove All Courses button removes all the courses from the course list", () => {
-            const removeAllCrsButton = screen.getByTestId("Remove-All-Courses");
+            fireEvent.click(screen.getByTestId("editPlan"));
             const courseList = screen.getByTestId("course-list");
             expect(courseList.children.length).toBe(courseList.children.length);
-            removeAllCrsButton.click();
+            fireEvent.click(screen.getByRole("button", { name: "Remove all courses" }));
             expect(courseList.children.length).toBe(0);
         });
 
+
+    });
+
+    describe("Degree requirements works", () => {
+
+        it("Degree requirements works", () => {
+            fireEvent.click(screen.getByTestId("editPlan"));
+            fireEvent.click(screen.getByRole("button", { name: "View Degree Requirements" }));
+            expect(screen.queryByText("Breadth Group B (History and Cultural Change): ✗")).toBeInTheDocument();    
+            fireEvent.click(screen.getByRole("textbox", { name: "Enter Course ID" }));
+            fireEvent.change(screen.getByRole("textbox", { name: "Enter Course ID" }), { target: { value: "HIST 210" } });
+            fireEvent.click(screen.getByRole("option", { name: "HIST 210" }));
+            fireEvent.click(screen.getByRole("button", { name: "Add Course" }));
+            fireEvent.click(screen.getByRole("button", { name: "View Degree Requirements" }));
+            expect(screen.queryByText("Breadth Group B (History and Cultural Change): ✓")).toBeInTheDocument();    
+
+        });
 
     });
 
@@ -145,8 +121,6 @@ describe("App", () => {
     });
 
 
-
-
     describe("Previous and Next Semester Button works properly", () => {
         //test if Next Semester button works properly and update the single semester.
         it("Next Semester Button works properly and update the single semester", async () => {
@@ -173,6 +147,50 @@ describe("App", () => {
 
 
     });
+
+    describe("Add Semester, Remove Semester, Rest and Clear button works properly", () => {
+
+        // test if Remove Semester button removes the semester from the semester list.
+        it("Remove Semester Button removes the semester from the semester list", () => {
+            fireEvent.click(screen.getByTestId("editPlan"));
+            const semesterList = screen.getByTestId("semester-list");
+            expect(semesterList.children.length).toBe(8);
+            fireEvent.click(screen.getByRole("button", { name: "Remove Semester" }));
+            expect(semesterList.children.length).toBe(7);
+        });
+
+        // test if Add Semester button adds the semester to the semester list.
+        it("Add Semester Button adds the semester to the semester list", () => {
+            fireEvent.click(screen.getByTestId("myPlan"));
+            const semesterList = screen.getByTestId("semester-list");
+            expect(semesterList.children.length).toBe(7);
+            fireEvent.click(screen.getByRole("button", { name: "Add Semester" }));
+            expect(semesterList.children.length).toBe(8);
+        });
+
+
+        //test if reset plan works properly
+        it("reset plan works properly", () => {
+            fireEvent.click(screen.getByTestId("myPlan"));
+            fireEvent.click(screen.getByRole("button", { name: "Reset" }));
+            expect(screen.queryByText("Welcome to UD CISC Scheduler")).toBeInTheDocument();
+
+
+        });
+
+        // test if Clear Plan button works properly and removes all the semesters from the semester list
+        it("Claer Semester button removes all the Semesters from the semester list", () => {
+            fireEvent.click(screen.getByTestId("myPlan"));
+            const semesterList = screen.getByTestId("semester-list");
+            fireEvent.click(screen.getByRole("button", { name: "Clear Plan" }));
+            expect(semesterList.children.length).toBe(1);
+        });
+
+    });
+
+
+
+    
 
 
 
