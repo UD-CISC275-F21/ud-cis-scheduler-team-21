@@ -1,0 +1,14 @@
+* User Stories 
+Establish tab at top similar to browser to switch between single semester view and multiple semester view <br/>
+Start with multiple semester view showing all active semesters and options to add or remove a semester and to clear all semesters <br/>
+When user clicks a particular semester it enters single semester view where editing buttons are enabled to add or remove a course from the semester or to clear the whole semester <br/>
+Button with every course allowing name and description to be altered in semester view<br/>
+
+* Personas
+Matt is a Freshman CS major at UD who is trying to plan out his course load over 4 years but feels overwhelmed and doesn’t know where to start. 
+
+Rachael is a Junior CS major at UD who wants to graduate on time but has mistakenly failed to take prerequisites on time leading to her falling behind.
+
+Heather recently started as a counselor at UD in the college of engineering and would like to help students but doesn’t have any concept of the CS classes and how they relate to each other. 
+
+John is a student at UD who knows what he wants to do but is still deciding on a concentration and would like some additional guidance and information

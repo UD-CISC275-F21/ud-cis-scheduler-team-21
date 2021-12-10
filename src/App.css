@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  text-align: auto;
+  margin-bottom: 1cm;
+  zoom: 95%;
 }
 
 .App-logo {
@@ -7,32 +9,91 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  text-align: center;
+  background-color: #00539f;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
+  color:white;
+}
+
+.logo{
+  height: 11%;
+  width: 8%;
+  position: absolute;
+  left: 1%;
+  top: 2%;
+}
+
+.help{
+
+  position: absolute;
+  right: 1%;
+  top: 2%;
+
+
+}
+
+
+.deletecourse{
+  color: #700101;
+  text-align: center;
+}
+.editcourse{
+  text-align: center;  
+}
+.Actions{
+  text-align: center;
+  margin: 5px;
+}
+
+
+
+table, th, td, thead, tr {
+  border: 1px solid black;
+}
+
+table{
+  word-break: break-all;
+  vertical-align: middle;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.Year{
+  padding: 0.2%;
+  text-align: center;
+  background: #1abc9c;
   color: white;
+}
+.Semester{
+  text-align: left;
+  margin-left: 200px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+}
+
