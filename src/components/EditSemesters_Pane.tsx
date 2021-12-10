@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Semester } from "../interfaces/Semester";
 import { Semester_SS_Display } from "./Semester_SS_Display";
 import { AddCourse_Section } from "./AddCourse_Section";
@@ -10,13 +10,15 @@ import { toast } from "react-toastify";
 interface Single_Semester_View {
     userSemesters: Semester[];
     updateSemesters: (s: Semester[]) => void;
+    current_semester_num: number;
+    changeSemNum: (n: number)=>void;
 }
 
-export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Semester_View): JSX.Element {
+export function EditSemesters_Pane({ userSemesters, updateSemesters,current_semester_num, changeSemNum}: Single_Semester_View): JSX.Element {
 
     //---------------------------Constants---------------------------
     //Tracks the focussed semester (value=0 when focused on semester 1)
-    const [current_semester_num, changeSemNum] = useState(0);
+    //const [current_semester_num, changeSemNum] = useState(0);
 
     //---------------------------Functions---------------------------
 
@@ -36,7 +38,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
         }
         updateSemesters([...userSemesters]);
 
-        toast.error("Semesters has been removed", {
+        toast.error("Semester has been removed", {
             position: toast.POSITION.TOP_RIGHT
         });
 
@@ -45,16 +47,22 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
     //shows next semester on click
     const show_Next_Semester = () => {
         if (current_semester_num < userSemesters.length-1) {
-            changeSemNum(v => v + 1);
+            changeSemNum(current_semester_num + 1);
         }
     };
 
     //shows perv semester on click
     const show_Prev_Semester = () => {
         if (current_semester_num > 0) {
-            changeSemNum(v => v - 1);
+            changeSemNum(current_semester_num - 1);
         }  
     };
+
+    /*useEffect(() => {
+        //if(current_semester_number > userSemesters.length ){
+        changeSemNum(0);
+        //}
+    }, [userSemesters]);*/
 
     //---------------------------Return Statement---------------------------
     return (
@@ -66,7 +74,7 @@ export function EditSemesters_Pane({ userSemesters, updateSemesters }: Single_Se
                         <div className="text-center">
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Prev_Semester()}>Previous Semester</button>
-                            <button type="button" className="col-3 btn btn-danger m-3" data-testid="Remove-Semester"
+                            <button type="button" className="col-3 btn btn-danger m-3"
                                 onClick={() => remove_semester()}>Remove Semester</button>
                             <button type="button" className="col-3 btn btn-primary m-3"
                                 onClick={() => show_Next_Semester()}>Next Semester</button>

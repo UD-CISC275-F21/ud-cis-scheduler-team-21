@@ -146,10 +146,10 @@ export function AddCourse_Section({ userSemesters, updateSemesters, current_seme
                     <DuplicateError_Toast showDuplicateCourseError={showDuplicateCourseError} setShowDupCourseErr={setShowDupCourseErr} />
                     <PrerequisiteError_Toast setPrereqCourseErr={setPrereqCourseErr} showPrereqCourseErr={showPrereqCourseErr} />
 
-                    <Button className="btn btn-success text-center m-2" data-testid="Add-Course" onClick={() => addCourse(newClassInput)}>
+                    <Button className="btn btn-success text-center m-2" onClick={() => addCourse(newClassInput)}>
                         Add Course
                     </Button>
-                    <Button className="btn btn-info text-center m-2" data-testid="courseInfoButton" onClick={() => showCourseInfo(newClassInput)}>
+                    <Button className="btn btn-info text-center m-2"  onClick={() => showCourseInfo(newClassInput)}>
                         Show Course Info
                     </Button>
                     <Button className="btn btn-secondary text-center m-2" onClick={() => setShowModal(true)}>
